@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube da Torre</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styleacademia.css">
+    <link rel="stylesheet" href="../../header-footer/header.css">
+    <link rel="stylesheet" href="../../header-footer/footer.css">
+    <link rel="stylesheet" href="cardavaliacao.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+ </head>
+ <body>
+   <header class="header">
+      <nav class="nav container">
+        <div class="nav__data">
+          <a href="../../home.html" class="nav__logo">
+            <img src="../../imgshome/Clube Logo.png" alt="Logo do Clube">
+          </a>
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+          </div>
+        </div>
+        <!--=============== NAV MENU ===============-->
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="dropdown__item">
+              <div class="nav__link">
+                <p>O Clube</p> <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </div>
+              <ul class="dropdown__menu">
+                <li><a href="../../home.html" class="dropdown__link">Início</a></li>
+                <li><a href="../../clube/historia.html" class="dropdown__link">História</a></li>
+              </ul>
+            </li>
+            <li class="dropdown__item">
+              <div class="nav__link">
+                Aulas <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+              </div>
+              <ul class="dropdown__menu">
+                <li><a href="../../aulas/escolinhaparticular/escolinhaparticular.html" class="dropdown__link">Escolinha Particular</a></li>
+                <li><a href="../../aulas/escolinha/escolinhaeducacao.html" class="dropdown__link">Escolinha de Futebol</a></li>
+                <li><a href="../../aulas/zumba/zumba.html" class="dropdown__link">Zumba</a></li>
+                <li><a href="academia.html" class="dropdown__link">Atividade Física</a></li>
+              </ul>
+            </li>
+            <li><a href="https://www.instagram.com/clubedatorrerj/" class="nav__link" target="_blank">Eventos</a></li>
+            <li><a href="https://wa.me/5521971134079" class="nav__link" target="_blank">Locações</a></li>
+            <li><a href="../../contato/contato.html" class="nav__link">Contato</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>  
+  <main>
+    <!-- Hero Section (com onda no final para a próxima seção branca) -->
+    <section class="hero wave-section animate">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Atividades Físicas</h1>
+        <a href="https://www.instagram.com/clubedatorrerj/" target="_blank">
+          <button class="conhecer">Venha conhecer!</button>
+        </a>
+      </div>
+  
+    
+      <div class="wave-divider wave-bottom" >
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path style="fill: #F5F8FF;" 
+            d="M985.66,50.26C913.09,69.41,840.52,88.56,761,88
+               C680.86,87.42,602.77,66.21,521.06,63.12
+               C429.25,59.69,337.93,85.37,247.08,91.63
+               C185.49,96,120.84,84.23,60.11,72.1
+               C39.62,67.84,19.31,63.36,0,59.76
+               V120H1200V0
+               C1148.11,14.25,1093.06,31.07,1039.42,42.61
+               C1020.7,46.61,1002.05,49.03,985.66,50.26Z"
+            class="shape-fill"   />
+        </svg>
+      </div>
+    </section>
+    <section class="about wave-section animate">
+    <section class="cards-container" >
+       <h2 class="section-title" style="padding-top: 40px;">Nossas Aulas</h2>
+       <p class="section-subtitle">Acompanhe os dias e horários das aulas.</p>
+         <div class="carousel-container">
+             <!-- Botão de voltar -->
+             <button class="carousel-button prev">&#10094;</button>
+       
+             <!-- Cards -->
+             <div class="cards" >
+                 <!-- Turma Kids -->
+                 <div class="card">
+                     <div class="card-header">
+                         <div class="carousel-inner">
+                             <img src="Funcionalkids/1.png" alt="Kids 1">
+                         </div>
+                         <div class="card-label">Kids</div>
+                     </div>
+                     <div class="card-body">
+                         <h3>Funcional Kids - 08 até 14 anos</h3>
+                         <p>Terça e Quinta <span>17:00h</span></p>
+                         <a href="https://wa.link/1qbb6v" target="_blank" class="card-btn">Entre em contato!</a>
+                     </div>
+                 </div>
+                 <!-- Turma Juvenil -->
+                 <div class="card">
+                     <div class="card-header">
+                         <div class="carousel-inner">
+                             <img src="Funcional/1.jpg" alt="Juvenil 1">
+                         </div>
+                         <div class="card-label">Funcional Adulto</div>
+                     </div>
+                     <div class="card-body">
+                         <h3 >Funcional Adulto</h3>
+                         <p>Segunda, Quarta e Sextas<span>06:00h às 08:00h e 17:00h às 18:00h</span></p>
+                         <a href="https://wa.link/1qbb6v" target="_blank" class="card-btn">Entre em contato!</a>
+                     </div>
+                 </div>
+                 <!-- Turma Infantil -->
+                 <div class="card">
+                     <div class="card-header">
+                         <div class="carousel-inner">
+                             <img src="Jump/1.jpeg" alt="Infantil 1">
+                         </div>
+                         <div class="card-label">Jump</div>
+                     </div>
+                     <div class="card-body">
+                         <h3>Jump</h3>
+                         <p>Terça e Quinta <span>07:00h às 08:00h</span></p>
+                         <a href="https://wa.link/1qbb6v" target="_blank" class="card-btn">Entre em contato!</a>
+                     </div>
+                 </div>
+             </div>
+             <!-- Botão de avançar -->
+             <button class="carousel-button next">&#10095;</button>
+         </div>        
+         </div>
+         <div class="wave-divider wave-bottom">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path style="fill: rgb(255, 255, 255);"
+              d="M985.66,50.26C913.09,69.41,840.52,88.56,761,88
+                 C680.86,87.42,602.77,66.21,521.06,63.12
+                 C429.25,59.69,337.93,85.37,247.08,91.63
+                 C185.49,96,120.84,84.23,60.11,72.1
+                 C39.62,67.84,19.31,63.36,0,59.76
+                 V120H1200V0
+                 C1148.11,14.25,1093.06,31.07,1039.42,42.61
+                 C1020.7,46.61,1002.05,49.03,985.66,50.26Z"
+              class="shape-fill" />
+          </svg>
+        </div>
+      </section>
+    </section>
+    <div class="testimonials-section">
+      <div class="testimonials-container">
+        <h2>Avaliações</h2>
+        <p class="subtitle">Feedback de nossos alunos</p>
+  
+        <div class="testimonials-carousel">
+          <button class="nav-button prev" aria-label="Slide anterior">❮</button>
+  
+          <div class="testimonials-slides">
+            <!-- Cada card representa um depoimento -->
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto1.jpg" alt="Maria Silva" />
+              </div>
+              <h3>Maria Silva</h3>
+              <p class="description">Aluno desde 2023</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Incrível experiência! O serviço superou todas as minhas expectativas. Recomendo fortemente para todos que buscam qualidade e profissionalismo.</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto2.jpg" alt="João Santos" />
+              </div>
+              <h3>João Santos</h3>
+              <p class="description">Aluno desde 2022</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Excelente atendimento do início ao fim. A equipe é muito profissional e dedicada. Voltarei com certeza!</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto3.jpg" alt="Ana Oliveira" />
+              </div>
+              <h3>Ana Oliveira</h3>
+              <p class="description">Aluno desde 2023</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Fiquei impressionada com a qualidade do serviço. Profissionais extremamente competentes e atenciosos.</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto4.jpg" alt="Pedro Costa" />
+              </div>
+              <h3>Pedro Costa</h3>
+              <p class="description">Aluno desde 2021</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Melhor experiência que já tive! Atendimento personalizado e resultados extraordinários. Super recomendo!</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto5.jpg" alt="Carla Mendes" />
+              </div>
+              <h3>Carla Mendes</h3>
+              <p class="description">Aluno desde 2022</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Serviço excepcional! A atenção aos detalhes e o profissionalismo da equipe são admiráveis.</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto6.jpg" alt="Lucas Ribeiro" />
+              </div>
+              <h3>Lucas Ribeiro</h3>
+              <p class="description">Aluno desde 2023</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Simplesmente sensacional! A equipe me tratou com muito respeito e atenção em todos os momentos. Recomendo demais.</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto7.jpg" alt="Lucas Ribeiro" />
+              </div>
+              <h3>Lucas Ribeiro</h3>
+              <p class="description">Aluno desde 2022</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Simplesmente sensacional! A equipe me tratou com muito respeito e atenção em todos os momentos. Recomendo demais.</p>
+            </div>
+  
+            <div class="testimonial-card">
+              <div class="testimonial-image">
+                <img src="fotos/foto8.jpg" alt="Lucas Ribeiro" />
+              </div>
+              <h3>Lucas Ribeiro</h3>
+              <p class="description">Aluno desde 2021</p>
+              <div class="stars">★★★★★</div>
+              <p class="texto">Simplesmente sensacional! A equipe me tratou com muito respeito e atenção em todos os momentos. Recomendo demais.</p>
+            </div>
+          </div>
+          
+  
+          <button class="nav-button next" aria-label="Próximo slide">❯</button>
+        </div>
+  
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+  <footer>
+   <div class="containerfoot">
+     <div class="logofoot">
+       <img src="../../imgshome/Clube Logo.png" alt="Logo da empresa">
+     </div>
+     <div class="footer-section">
+       <h4>Informações Gerais</h4>
+       <p><i class="fas fa-map-marker-alt"></i> R. Leopoldo Muilaert - Largo da Batalha, Niterói - RJ, 24320-330</p>
+       <p><i class="fa fa-clock"></i>Segunda a Sexta: 06:00 às 00:00<br>Sábado: 08:00 às 19:00</br> Domingo: 06:00 às 17:00</p>
+         
+     </div>
+     <div class="footer-section">
+       <h4>Redes Sociais</h4>
+       <p><a href="https://wa.me/5521971134079"><i class="fab fa-whatsapp"></i>/ <strong>&#40;21&#41; 97113-4079</strong></a></p></a>
+       <p><a href="https://www.instagram.com/clubedatorrerj/" target="_blank"><i class="fab fa-instagram"></i> / <strong>Clubedatorrerj</strong></a></p>
+       <p><a href="https://www.facebook.com/clubedatorre/" target="_blank"><i class="fab fa-facebook-square"></i> /<strong> Clube Da Torre</strong></a></p>
+     </div>
+   </div>
+   <div class="footer-bottom">
+     <div class="logo-bottom">
+       <img src="../../imgshome/Clube Logo.png" alt="Outra Logo">
+     </div>
+   </div>
+  </footer>
+            <script src="academia.js"></script>
+            <script src="../../script.js"></script>
+            <script src="cardavaliacao.js"></script>
+        </body>
+        </html>

@@ -1,0 +1,185 @@
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #0061b1, #004a94); /* Gradiente de fundo */
+    color: #fff;
+    padding: 50px 0px 30px;
+    position: relative; /* Para permitir o posicionamento da logo no fundo */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .containerfoot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha as seções no topo */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logofoot img {
+    height: 100%; /* Tamanho da logo à esquerda */
+    width: 300px;
+    margin-top: 30px;
+    margin-right: 60px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+  }
+  
+  .logofoot img:hover {
+    transform: scale(1.05);
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 0 15px; /* Ajuste a margem entre as seções */
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-section:hover {
+    transform: translateY(-5px);
+  }
+  
+  .footer-section h4 {
+    font-size: 1.5rem;
+    color: #ffffff; /* Cor do título */
+    margin-bottom: 20px;
+    margin-left: 7px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .footer-section h4:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: #fff;
+    bottom: -8px;
+    left: 0;
+    border-radius: 2px;
+  }
+  
+  footer i.fab.fa-instagram {
+    color: rgb(255, 0, 157);
+    transition: transform 0.3s ease;
+  }
+  
+  footer i.fa-facebook-square {
+    color: rgb(0, 140, 255);
+    transition: transform 0.3s ease;
+  }
+  
+  footer i.fa-whatsapp {
+    color: rgb(0, 255, 85);
+    transition: transform 0.3s ease;
+  }
+  
+  footer i:hover {
+    transform: scale(1.2);
+  }
+  
+  .footer-section p {
+    font-size: 1rem;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-section p:hover {
+    transform: translateX(5px);
+  }
+  
+  .footer-section a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .footer-section a:hover {
+    color: #a8d1ff; /* Cor ao passar o mouse */
+  }
+  
+  .footer-section a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background: #a8d1ff;
+    bottom: -2px;
+    left: 0;
+    transition: width 0.3s ease;
+  }
+  
+  .footer-section a:hover:after {
+    width: 100%;
+  }
+
+  .footer-section i {
+    font-size: 20px;
+    margin: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-bottom {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-bottom:hover {
+    transform: scale(1.1);
+  }
+  
+  .logo-bottom img {
+    height: 50px; /* Tamanho da logo menor no rodapé inferior */
+    width: auto;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+  }
+  
+  @media (max-width: 768px) {
+    footer {
+      padding: 30px 20px;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .containerfoot {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .footer-section {
+      margin-bottom: 30px;
+      align-items: center; /* Ajuste para alinhar as seções corretamente */
+    }
+    
+    .footer-section h4:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .footer-section p {
+      justify-content: center;
+    }
+    
+    .footer-section p:hover {
+      transform: translateY(-5px);
+    }
+  
+    .logo-bottom {
+      position: relative;
+      bottom: 0;
+      right: 0;
+      margin-top: 20px;
+    }
+    
+    .logofoot img {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }

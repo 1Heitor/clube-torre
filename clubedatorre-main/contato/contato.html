@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Clube da Torre</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../header-footer/header.css">
+    <link rel="stylesheet" href="../header-footer/footer.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__data">
+                <a href="../home.html" class="nav__logo">
+                    <img src="../imgshome/Clube Logo.png" alt="Logo do Clube">
+                </a>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav__burger"></i>
+                    <i class="ri-close-line nav__close"></i>
+                </div>
+            </div>
+            <!--=============== NAV MENU ===============-->
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="dropdown__item">
+                        <div class="nav__link">
+                            <p>O Clube</p> <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+                        <ul class="dropdown__menu">
+                            <li><a href="../home.html" class="dropdown__link">Início</a></li>
+                            <li><a href="../clube/historia.html" class="dropdown__link">História</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown__item">
+                        <div class="nav__link">
+                            Aulas <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+                        <ul class="dropdown__menu">
+                            <li><a href="../aulas/escolinhaparticular/escolinhaparticular.html" class="dropdown__link">Escolinha Particular</a></li>
+                            <li><a href="../aulas/escolinha/escolinhaeducacao.html" class="dropdown__link" style="text-align: start;">Escolinha de Futebol</a></li>
+                            <li><a href="../aulas/zumba/zumba.html" class="dropdown__link">Zumba</a></li>
+                            <li><a href="../aulas/academia/academia.html" class="dropdown__link">Atividade Física</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.instagram.com/clubedatorrerj/" class="nav__link" target="_blank">Eventos</a></li>
+                    <li><a href="https://wa.me/5521971134079" class="nav__link" target="_blank">Locações</a></li>
+                    <li><a href="../contato/contato.html" class="nav__link">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section para Contato -->
+    <section class="contact-hero animate fadeIn">
+        <div class="contact-hero-content">
+
+        </div>
+        
+        <!-- Onda decorativa na parte inferior -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Container Principal de Contato -->
+    <div class="container-contato">
+        <!-- Cards de Contato -->
+        <div class="titlecontainer">
+          <h2>Entre em Contato</h2>
+          <p>Estamos sempre disponíveis para ajudar e responder suas dúvidas.</p>
+        </div>
+        <div class="contact-cards">
+            <!-- Card Instagram -->
+            <div class="contact-card animate fadeInUp delay-1">
+                <div class="contact-icon">
+                    <img src="imgs/logoinsta.png" alt="Instagram">
+                </div>
+                <h3>Instagram</h3>
+                <p>Siga-nos para acompanhar eventos, novidades e o dia a dia do clube</p>
+                <a href="https://www.instagram.com/clubedatorrerj/" class="social-link" target="_blank">
+                    @Clubedatorrerj <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <!-- Card Facebook -->
+            <div class="contact-card animate fadeInUp delay-2">
+                <div class="contact-icon">
+                    <img src="imgs/logoface.png" alt="Facebook">
+                </div>
+                <h3>Facebook</h3>
+                <p>Curta nossa página e fique por dentro de todas as nossas novidades</p>
+                <a href="https://www.facebook.com/clubedatorre/" class="social-link" target="_blank">
+                    Clube Da Torre <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <!-- Card WhatsApp -->
+            <div class="contact-card animate fadeInUp delay-3">
+                <div class="contact-icon">
+                    <img src="imgs/Whatsapp.png" alt="WhatsApp">
+                </div>
+                <h3>WhatsApp</h3>
+                <p>Atendimento rápido para informações sobre aulas e agendamentos</p>
+                <a href="https://wa.me/5521971134079" class="social-link" target="_blank">
+                    (21) 97113-4079 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Seção do Mapa -->
+        <div class="map-section animate fadeInUp delay-3">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.1544325125765!2d-43.06698789001412!3d-22.907674037814505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99866046711105%3A0xb0d2f1bbd7bcd954!2sClube%20da%20Torre!5e0!3m2!1spt-BR!2sbr!4v1721910550089!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <div class="map-info animate fadeIn delay-4">
+                <h3>Como Chegar</h3>
+                <div class="location-details">
+                    <p><i class="fas fa-map-marker-alt"></i> R. Leopoldo Muilaert - Largo da Batalha, Niterói - RJ</p>
+                    <p><i class="fas fa-bus"></i> Diversas linhas de ônibus passam próximo ao clube</p>
+                    <p><i class="fas fa-car"></i> Amplo estacionamento disponível</p>
+                </div>
+                <a href="https://www.google.com/maps/dir//Clube+da+Torre/@-22.9076777,-43.067012,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x99866046711105:0xb0d2f1bbd7bcd954!2m2!1d-43.0670118!2d-22.9076776" class="direction-btn" target="_blank">
+                    <i class="fas fa-directions"></i> Como Chegar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="containerfoot">
+            <div class="logofoot">
+                <img src="../imgshome/Clube Logo.png" alt="Logo da empresa">
+            </div>
+            <div class="footer-section">
+                <h4>Informações Gerais</h4>
+                <p><i class="fas fa-map-marker-alt"></i> R. Leopoldo Muilaert - Largo da Batalha, Niterói - RJ, 24320-330</p>
+                <p><i class="fa fa-clock"></i>Segunda a Sexta: 06:00 às 00:00<br>Sábado: 08:00 às 19:00</br> Domingo: 06:00 às 17:00</p>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <p><a href="https://wa.me/5521971134079"><i class="fab fa-whatsapp"></i>/ <strong>&#40;21&#41; 97113-4079</strong></a></p>
+                <p><a href="https://www.instagram.com/clubedatorrerj/" target="_blank"><i class="fab fa-instagram"></i> / <strong>Clubedatorrerj</strong></a></p>
+                <p><a href="https://www.facebook.com/clubedatorre/" target="_blank"><i class="fab fa-facebook-square"></i> /<strong> Clube Da Torre</strong></a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="logo-bottom">
+                <img src="../imgshome/Clube Logo.png" alt="Outra Logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../header-footer/script.js"></script>
+    <script>
+        // Script para animações
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona classe aos elementos com a classe 'animate'
+            const animateElements = document.querySelectorAll('.animate');
+            
+            // Função para verificar se o elemento está visível na viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Função para animar elementos quando ficarem visíveis
+            function checkElements() {
+                animateElements.forEach(element => {
+                    if (isElementInViewport(element) && !element.classList.contains('animated')) {
+                        element.classList.add('animated');
+                    }
+                });
+            }
+            
+            // Verificar elementos no carregamento da página
+            checkElements();
+            
+            // Verificar elementos durante o scroll
+            window.addEventListener('scroll', checkElements);
+        });
+    </script>
+</body>
+</html>
