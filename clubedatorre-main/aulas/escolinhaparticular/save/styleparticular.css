@@ -482,22 +482,23 @@ line-height: 1.6;
   display: none;
   justify-content: center;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #e0e0e0;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dot.active {
-  background: var(--azul-claro);
+  background: #007bff;
   transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -505,31 +506,20 @@ line-height: 1.6;
     padding: 10px 0;
     position: relative;
     overflow: hidden;
-    width: 100%;
   }
-  
+
   .cards {
     display: flex;
+    gap: 20px;
     transition: transform 0.5s ease;
     cursor: grab;
-    overflow: visible;
   }
   
-  .card {
-    width: 85% !important;
-    min-width: 85% !important;
-    margin: 0 7.5% !important;
-    box-sizing: border-box;
-    scroll-snap-align: center;
+  .cards:active {
+    cursor: grabbing;
   }
-  
-  .card-header {
-    height: auto;
-    max-height: 200px;
-  }
-  
-  .carousel-inner img {
-    height: 200px;
-    object-fit: cover;
+
+  .carousel-dots {
+    display: flex;
   }
 }

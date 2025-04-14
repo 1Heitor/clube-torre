@@ -1,124 +1,336 @@
-  window.addEventListener('load', function() {
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-    const cards = document.querySelector('.cards');
+window.addEventListener('load', function() {
+  // Elementos do carrossel
+  const carouselContainer = document.querySelector('.carousel-container');
+  const cards = document.querySelector('.cards');
+  const cardElements = cards.querySelectorAll('.card');
+  const prevButton = document.querySelector('.carousel-button.prev');
+  const nextButton = document.querySelector('.carousel-button.next');
+  
+  // Obter apenas os cards originais
+  const originalCards = Array.from(cards.querySelectorAll('.card'));
+  
+  // Variáveis para o carrossel
+  let isDragging = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let isMobile = window.innerWidth <= 768;
+  let currentIndex = 0;
+  
+  // Criar container para bolinhas de navegação
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots';
+  carouselContainer.appendChild(dotsContainer);
+  
+  // Configuração para Desktop: duplicar cards para criar loop infinito
+  function setupDesktop() {
+    // Remover todos os elementos clones existentes
+    const allCards = cards.querySelectorAll('.card');
+    for (let i = originalCards.length; i < allCards.length; i++) {
+      cards.removeChild(allCards[i]);
+    }
     
-    let isDragging = false;
-    let startX = 0;
-    let scrollStart = 0;
-    
-    // Variáveis para scroll contínuo dos botões
-    let scrollInterval;
-    const scrollSpeed = 5; // pixels a cada intervalo
-    const intervalDelay = 10; // milissegundos entre intervalos
-    // 1) Duplicar os cards para criar o loop infinito
-    const originalCards = Array.from(cards.children);
+    // Adicionar clones para desktop
     originalCards.forEach(card => {
-    const clone = card.cloneNode(true);
-    cards.appendChild(clone);
+      const clone = card.cloneNode(true);
+      cards.appendChild(clone);
     });
     
-    // 2) Posicionar o scroll no meio (início dos clones)
+    // Configurar estilo para desktop
+    cards.style.transform = '';
+    cards.style.transition = '';
+    cards.style.width = '';
+    
+    // Esconder bolinhas de navegação
+    dotsContainer.style.display = 'none';
+    
+    // Garantir estilo original dos cards
+    originalCards.forEach(card => {
+      card.style.width = '';
+      card.style.minWidth = '';
+      card.style.margin = '';
+    });
+    
+    // Posicionar scroll
     setTimeout(() => {
-    cards.scrollLeft = cards.scrollWidth / 4; // posiciona no meio dos clones
+      cards.scrollLeft = 0;
     }, 100);
+  }
+  
+  // Configuração para Mobile
+  function setupMobile() {
+    // Remover clones se existirem
+    const allCards = cards.querySelectorAll('.card');
+    for (let i = originalCards.length; i < allCards.length; i++) {
+      cards.removeChild(allCards[i]);
+    }
     
-    // Função de teletransporte com limiar para ambos os lados
-    function teleport() {
+    // Resetar o índice
+    currentIndex = 0;
+    
+    // Mostrar bolinhas de navegação
+    updateDots();
+    dotsContainer.style.display = 'flex';
+    
+    // Mover para o primeiro card
+    moveToCard(0);
+  }
+  
+  // Função de teletransporte para desktop
+  function teleport() {
+    if (isMobile) return;
+    
     const half = cards.scrollWidth / 2;
-    const threshold = 50; // 50px de margem
+    const threshold = 50;
+    
     if (cards.scrollLeft <= threshold) {
-    cards.scrollLeft += half - threshold;
+      cards.scrollLeft += half - threshold;
     } else if (cards.scrollLeft >= half + threshold) {
-    cards.scrollLeft -= half - threshold;
+      cards.scrollLeft -= half - threshold;
     }
-    }
+  }
+  
+  // Atualizar bolinhas de navegação
+  function updateDots() {
+    dotsContainer.innerHTML = '';
     
-    // 3) Funções para iniciar/pausar o scroll contínuo
-    function startScrolling(direction) {
-    stopScrolling(); // Garante que não existam múltiplos intervals
+    if (!isMobile) return;
+    
+    for (let i = 0; i < originalCards.length; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('dot');
+      if (i === currentIndex) {
+        dot.classList.add('active');
+      }
+      dot.addEventListener('click', () => moveToCard(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+  
+  // Mover para um card específico (mobile)
+  function moveToCard(index) {
+    if (!isMobile) return;
+    
+    currentIndex = index;
+    
+    // Em vez de calcular com percentagens, usamos valores fixos do CSS
+    const cardWidth = originalCards[0].offsetWidth;
+    const cardMargin = parseInt(window.getComputedStyle(originalCards[0]).marginRight) || 
+                      parseInt(window.getComputedStyle(originalCards[0]).marginLeft) || 0;
+    
+    const position = index * (cardWidth + (cardMargin * 2));
+    cards.style.transition = 'transform 0.5s ease';
+    cards.style.transform = `translateX(-${position}px)`;
+    
+    updateDots();
+  }
+  
+  // Próximo card
+  function nextCard() {
+    if (isMobile) {
+      currentIndex = (currentIndex + 1) % originalCards.length;
+      moveToCard(currentIndex);
+    } else {
+      // Desktop: scroll contínuo
+      cards.scrollBy({
+        left: 100,
+        behavior: 'smooth'
+      });
+    }
+  }
+  
+  // Card anterior
+  function prevCard() {
+    if (isMobile) {
+      currentIndex = (currentIndex - 1 + originalCards.length) % originalCards.length;
+      moveToCard(currentIndex);
+    } else {
+      // Desktop: scroll contínuo
+      cards.scrollBy({
+        left: -100,
+        behavior: 'smooth'
+      });
+    }
+  }
+  
+  // Variáveis para scroll contínuo (desktop)
+  let scrollInterval;
+  const scrollSpeed = 5;
+  const intervalDelay = 10;
+  
+  function startScrolling(direction) {
+    if (isMobile) return;
+    
+    stopScrolling();
     scrollInterval = setInterval(() => {
-    cards.scrollLeft += direction * scrollSpeed;
-    teleport(); // Adiciona a função de teletransporte durante a rolagem contínua
+      cards.scrollLeft += direction * scrollSpeed;
+      teleport();
     }, intervalDelay);
-    }
-    function stopScrolling() {
+  }
+  
+  function stopScrolling() {
     clearInterval(scrollInterval);
+  }
+  
+  // Event listeners para os botões
+  prevButton.addEventListener('click', prevCard);
+  nextButton.addEventListener('click', nextCard);
+  
+  // Desktop: eventos para manter pressionado
+  prevButton.addEventListener('mousedown', () => {
+    if (!isMobile) startScrolling(-1);
+  });
+  
+  nextButton.addEventListener('mousedown', () => {
+    if (!isMobile) startScrolling(1);
+  });
+  
+  document.addEventListener('mouseup', () => {
+    stopScrolling();
+    if (!isDragging && !isMobile) teleport();
+  });
+  
+  // Eventos de arraste (mouse)
+  cards.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    scrollStart = cards.scrollLeft;
+    
+    if (isMobile) {
+      cards.style.transition = 'none';
     }
     
-    // 4) Eventos dos botões de seta – resposta instantânea
-    prevButton.addEventListener('mousedown', () => startScrolling(-1));
-    nextButton.addEventListener('mousedown', () => startScrolling(1));
-    // Para dispositivos de toque
-    prevButton.addEventListener('touchstart', () => startScrolling(-1));
-    nextButton.addEventListener('touchstart', () => startScrolling(1));
-    
-    // Para parar quando o usuário soltar o botão
-    document.addEventListener('mouseup', () => {
-    stopScrolling();
-    if (!isDragging) teleport();
-    });
-    prevButton.addEventListener('mouseleave', stopScrolling);
-    nextButton.addEventListener('mouseleave', stopScrolling);
-    prevButton.addEventListener('touchend', () => {
-    stopScrolling();
-    if (!isDragging) teleport();
-    });
-    nextButton.addEventListener('touchend', () => {
-    stopScrolling();
-    if (!isDragging) teleport();
-    });
-    
-    // 5) Arraste com mouse
-    cards.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.pageX;
-    scrollStart = cards.scrollLeft;
     cards.style.cursor = 'grabbing';
-    });
-    cards.addEventListener('mouseleave', () => {
-    isDragging = false;
-    cards.style.cursor = 'grab';
-    teleport();
-    });
-    cards.addEventListener('mouseup', () => {
-    isDragging = false;
-    cards.style.cursor = 'grab';
-    teleport();
-    });
-    cards.addEventListener('mousemove', (e) => {
+  });
+  
+  cards.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX;
-    const walk = x - startX; // Movimento livre
-    cards.scrollLeft = scrollStart - walk;
-    });
     
-    // 6) Arraste com toque
-    cards.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].pageX;
-    scrollStart = cards.scrollLeft;
-    }, { passive: true });
-    cards.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const x = e.touches[0].pageX;
-    const walk = x - startX;
-    cards.scrollLeft = scrollStart - walk;
-    }, { passive: true });
-    cards.addEventListener('touchend', () => {
-    isDragging = false;
-    teleport();
-    });
-    cards.addEventListener('touchcancel', () => {
-    isDragging = false;
-    teleport();
-    });
+    const x = e.clientX;
+    const walk = (x - startX);
     
-    // 7) Loop infinito: Teletransporta o scroll ao atingir os extremos (quando não estiver arrastando)
-    cards.addEventListener('scroll', () => {
-    if (!isDragging) {
-    teleport();
+    if (isMobile) {
+      const cardWidth = originalCards[0].offsetWidth;
+      const cardMargin = parseInt(window.getComputedStyle(originalCards[0]).marginRight) || 
+                         parseInt(window.getComputedStyle(originalCards[0]).marginLeft) || 0;
+      
+      const position = currentIndex * (cardWidth + (cardMargin * 2));
+      cards.style.transform = `translateX(-${position - walk}px)`;
+    } else {
+      cards.scrollLeft = scrollStart - walk;
     }
-    });
-    });
+  });
+  
+  function endDrag(e) {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    cards.style.cursor = 'grab';
+    
+    if (isMobile) {
+      cards.style.transition = 'transform 0.5s ease';
+      
+      const threshold = originalCards[0].offsetWidth * 0.2; // 20% da largura do card
+      const endX = e && e.clientX ? e.clientX : startX;
+      
+      // Detectar direção do arrasto
+      if (startX - endX > threshold) {
+        nextCard();
+      } else if (startX - endX < -threshold) {
+        prevCard();
+      } else {
+        moveToCard(currentIndex);
+      }
+    } else {
+      teleport();
+    }
+  }
+  
+  cards.addEventListener('mouseup', endDrag);
+  cards.addEventListener('mouseleave', (e) => {
+    if (isDragging) endDrag(e);
+  });
+  
+  // Eventos de toque
+  cards.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    
+    if (isMobile) {
+      cards.style.transition = 'none';
+    }
+  }, { passive: true });
+  
+  cards.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const x = e.touches[0].clientX;
+    const walk = (x - startX);
+    
+    if (isMobile) {
+      const cardWidth = originalCards[0].offsetWidth;
+      const cardMargin = parseInt(window.getComputedStyle(originalCards[0]).marginRight) || 
+                        parseInt(window.getComputedStyle(originalCards[0]).marginLeft) || 0;
+      
+      const position = currentIndex * (cardWidth + (cardMargin * 2));
+      cards.style.transform = `translateX(-${position - walk}px)`;
+    } else {
+      cards.scrollLeft = scrollStart - walk;
+    }
+  }, { passive: true });
+  
+  cards.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const threshold = originalCards[0].offsetWidth * 0.2; // 20% da largura do card
+    
+    cards.style.transition = 'transform 0.5s ease';
+    
+    isDragging = false;
+    
+    // Detectar direção do arrasto
+    if (startX - endX > threshold) {
+      nextCard();
+    } else if (startX - endX < -threshold) {
+      prevCard();
+    } else {
+      moveToCard(currentIndex);
+    }
+  });
+  
+  // Loop infinito para desktop
+  cards.addEventListener('scroll', () => {
+    if (!isMobile && !isDragging) {
+      teleport();
+    }
+  });
+  
+  // Detectar redimensionamento da janela
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const wasMobile = isMobile;
+      isMobile = window.innerWidth <= 768;
+      
+      if (wasMobile !== isMobile) {
+        // Mudou de modo
+        if (isMobile) {
+          setupMobile();
+        } else {
+          setupDesktop();
+        }
+      } else if (isMobile) {
+        // Continuou no mobile, mas redimensionou - atualizar posição
+        moveToCard(currentIndex);
+      }
+    }, 250);
+  });
+  
+  // Inicializar
+  if (isMobile) {
+    setupMobile();
+  } else {
+    setupDesktop();
+  }
+});

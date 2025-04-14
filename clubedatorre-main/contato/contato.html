@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body class="page-contato">
     <header class="header">
         <nav class="nav container">
             <div class="nav__data">
@@ -123,13 +123,12 @@
                 <div class="location-details">
                     <p><i class="fas fa-map-marker-alt"></i> R. Leopoldo Muilaert - Largo da Batalha, Niterói - RJ</p>
                     <p><i class="fas fa-bus"></i> Diversas linhas de ônibus passam próximo ao clube</p>
-                    <p><i class="fas fa-car"></i> Amplo estacionamento disponível</p>
-                </div>
                 <a href="https://www.google.com/maps/dir//Clube+da+Torre/@-22.9076777,-43.067012,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x99866046711105:0xb0d2f1bbd7bcd954!2m2!1d-43.0670118!2d-22.9076776" class="direction-btn" target="_blank">
                     <i class="fas fa-directions"></i> Como Chegar
                 </a>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Footer -->
@@ -158,37 +157,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../header-footer/script.js"></script>
-    <script>
-        // Script para animações
-        document.addEventListener('DOMContentLoaded', function() {
-            // Adiciona classe aos elementos com a classe 'animate'
-            const animateElements = document.querySelectorAll('.animate');
-            
-            // Função para verificar se o elemento está visível na viewport
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.bottom >= 0
-                );
-            }
-            
-            // Função para animar elementos quando ficarem visíveis
-            function checkElements() {
-                animateElements.forEach(element => {
-                    if (isElementInViewport(element) && !element.classList.contains('animated')) {
-                        element.classList.add('animated');
-                    }
-                });
-            }
-            
-            // Verificar elementos no carregamento da página
-            checkElements();
-            
-            // Verificar elementos durante o scroll
-            window.addEventListener('scroll', checkElements);
-        });
-    </script>
+    <script src="../header-footer/header.js"></script>
+    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

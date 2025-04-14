@@ -144,6 +144,11 @@ footer {
       padding: 30px 20px;
       align-items: center;
       justify-content: center;
+      margin-top: 40px;
+      clear: both;
+      width: 100%;
+      position: relative;
+      bottom: 0;
     }
   
     .containerfoot {
@@ -151,11 +156,13 @@ footer {
       text-align: center;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
   
     .footer-section {
       margin-bottom: 30px;
-      align-items: center; /* Ajuste para alinhar as seções corretamente */
+      align-items: center;
+      width: 100%;
     }
     
     .footer-section h4:after {
@@ -176,10 +183,39 @@ footer {
       bottom: 0;
       right: 0;
       margin-top: 20px;
+      width: 100%;
+      text-align: center;
     }
     
     .logofoot img {
       margin-right: 0;
       margin-bottom: 20px;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 576px) {
+    footer {
+      padding: 25px 15px;
+      margin-top: 30px;
+    }
+    
+    .footer-section h4 {
+      font-size: 1.3rem;
+    }
+    
+    .footer-section p {
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+    
+    .footer-section i {
+      font-size: 18px;
+      margin: 6px;
+    }
+    
+    .logo-bottom img {
+      height: 40px;
     }
   }
