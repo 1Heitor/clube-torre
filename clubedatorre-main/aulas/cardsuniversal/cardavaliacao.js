@@ -54,34 +54,34 @@ window.addEventListener('load', function() {
   // Atualizar a posição dos slides com base no grupo atual
   function updateSlidePosition() {
     const carouselWidth = carousel.offsetWidth;
-    // Define a largura total necessária para todos os cards, considerando o gap
-    const cardWidth = cards[0].offsetWidth;
-    const cardGap = 20; // Este é o valor do gap entre os cards definido no CSS
-    
-    // Calcula a posição correta para cada card
+    const cardGap = 20; // Corresponder ao CSS
+
     if (visibleCount === 1) {
-      // Quando estiver em visualização móvel, posicionamos cada card individualmente
-      const position = -currentGroup * (cardWidth + cardGap);
-      slides.style.transform = `translateX(${position}px)`;
-      
-      // Ajuste para garantir que o card ocupe toda a largura disponível
-      cards.forEach(card => {
-        card.style.width = `${carouselWidth - cardGap}px`;
-      });
+        // Quando estiver em visualização móvel (1 card)
+        const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0; // Lê a largura do primeiro card após CSS aplicado
+        // Calcula a posição baseado no índice do card (currentGroup)
+        const position = -currentGroup * (cardWidth + cardGap); 
+        slides.style.transform = `translateX(${position}px)`;
+        
+        // NÃO definir a largura do card aqui via JS
+
     } else {
-      // Para desktop/tablet, mantenha o comportamento original
-      slides.style.transform = `translateX(-${currentGroup * carouselWidth}px)`;
+        // Para desktop/tablet, usa a lógica de grupos baseada na largura do carrossel
+        slides.style.transform = `translateX(-${currentGroup * carouselWidth}px)`;
     }
-    
-    updateDots();
+
+    updateDots(); // Atualiza os dots para refletir o grupo atual
   }
 
   function nextGroup() {
+    // Lógica original com wrap-around (%) funciona bem para desktop/tablet
+    // Para mobile, finishDrag já limita, mas usar % aqui não prejudica
     currentGroup = (currentGroup + 1) % groupCount;
     updateSlidePosition();
   }
 
   function prevGroup() {
+    // Lógica original com wrap-around (%)
     currentGroup = (currentGroup - 1 + groupCount) % groupCount;
     updateSlidePosition();
   }
@@ -125,6 +125,8 @@ window.addEventListener('load', function() {
 
   slides.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
+    // Impede o comportamento padrão do navegador (ex: rolar a página) durante o arraste do slide
+    e.preventDefault(); 
     const distance = e.touches[0].clientX - startX;
     dragDistance = distance;
     
@@ -139,49 +141,51 @@ window.addEventListener('load', function() {
       const currentTransform = -currentGroup * carouselWidth + distance;
       slides.style.transform = `translateX(${currentTransform}px)`;
     }
-  });
+  }, { passive: false }); // Adiciona passive: false para permitir preventDefault
 
   slides.addEventListener('touchend', () => {
     finishDrag();
+  });
+
+  // Adiciona listener para touchcancel
+  slides.addEventListener('touchcancel', () => {
+    if (isDragging) {
+      // Trata cancelamento como fim do toque para garantir estado consistente
+      finishDrag();
+    }
   });
 
   function finishDrag() {
     if (!isDragging) return;
     slides.style.transition = 'transform 0.5s ease';
     isDragging = false;
-    
+
     if (visibleCount === 1) {
-      const cardWidth = cards[0].offsetWidth;
-      const cardGap = 20;
-      const threshold = (cardWidth + cardGap) / 4;
-      
-      if (Math.abs(dragDistance) > threshold) {
-        if (dragDistance < 0) {
-          // Deslizando para a esquerda (próximo)
-          if (currentGroup < groupCount - 1) {
-            nextGroup();
-          } else {
-            // Se estiver no último grupo, vá para o primeiro
-            currentGroup = 0;
-            updateSlidePosition();
-          }
-        } else {
-          // Deslizando para a direita (anterior)
-          if (currentGroup > 0) {
-            prevGroup();
-          } else {
-            // Se estiver no primeiro grupo, vá para o último
-            currentGroup = groupCount - 1;
-            updateSlidePosition();
-          }
-        }
-      } else {
+        // Lógica revisada (v3) para mobile (1 card visível) - Foco na Direção + Limites
+        const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
+        const cardGap = 20; // Deve corresponder ao gap no CSS
+        const slideWidth = cardWidth + cardGap;
+        const threshold = slideWidth / 4; // Limite para swipe válido
+
+        if (Math.abs(dragDistance) > threshold) {
+             // Swipe foi significativo, determinar direção e calcular novo grupo com limites
+            if (dragDistance < 0) {
+                // Arrastou para esquerda (próximo)
+                currentGroup = Math.min(currentGroup + 1, groupCount - 1);
+            } else {
+                // Arrastou para direita (anterior)
+                currentGroup = Math.max(currentGroup - 1, 0);
+            }
+        } 
+        // Se não foi significativo (else implícito), currentGroup não muda.
+        // Sempre chama updateSlidePosition para animar para a posição final (nova ou a mesma)
         updateSlidePosition();
-      }
+
     } else {
+      // Lógica original para desktop/tablet (grupos maiores)
       const carouselWidth = carousel.offsetWidth;
-      
-      if (Math.abs(dragDistance) > carouselWidth / 4) {
+      const threshold = carouselWidth / 4;
+      if (Math.abs(dragDistance) > threshold) {
         if (dragDistance < 0) {
           nextGroup();
         } else {
@@ -196,20 +200,16 @@ window.addEventListener('load', function() {
   // Função inicial para configurar o carrossel
   function initCarousel() {
     calculateVisibleCount();
-    calculateGroupCount();
-    
-    // Ajustar o tamanho dos cards para visualização móvel
-    if (visibleCount === 1) {
-      const cardGap = 20;
-      const carouselWidth = carousel.offsetWidth;
-      cards.forEach(card => {
-        // Define a largura do card para preencher o carrossel, menos o gap
-        card.style.width = `${carouselWidth - cardGap}px`;
-      });
-    }
-    
-    updateDots();
-    updateSlidePosition();
+    calculateGroupCount(); // groupCount será cards.length no mobile
+
+    // Confiar no CSS para a largura dos cards no mobile e desktop
+    cards.forEach(card => {
+      card.style.width = ''; // Limpa qualquer estilo inline de largura pré-existente
+    });
+
+    updateDots(); // Recalcula os dots com base no novo groupCount
+    currentGroup = 0; // Garante que começa no primeiro grupo
+    updateSlidePosition(); // Atualiza a posição inicial
   }
 
   // Iniciar quando carregar e também atualizar na mudança de tamanho da janela
