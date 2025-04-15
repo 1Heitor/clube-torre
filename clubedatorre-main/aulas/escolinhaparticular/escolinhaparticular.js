@@ -12,6 +12,7 @@ window.addEventListener('load', function() {
   // Variáveis para o carrossel
   let isDragging = false;
   let startX = 0;
+  let startY = 0;
   let scrollStart = 0;
   let isMobile = window.innerWidth <= 768;
   let currentIndex = 0;
@@ -71,10 +72,18 @@ window.addEventListener('load', function() {
     const viewportWidth = carouselContainer.offsetWidth;
     
     // Ajustar cada card para 90% da largura do viewport com margens automáticas
-    originalCards.forEach(card => {
+    originalCards.forEach((card, index) => {
       card.style.width = `${viewportWidth * 0.9}px`;
       card.style.minWidth = `${viewportWidth * 0.9}px`;
-      card.style.margin = '0 auto';
+      if (index === 0) {
+        card.style.margin = '00px 27px';
+      } else if (index === 1) {
+        card.style.margin = '0 -2px'; 
+      } else if (index === 2) {
+        card.style.margin = '0 30px';
+      } else {
+        card.style.margin = '10px 27px';
+      }
     });
     
     // Definir a largura total do container para acomodar todos os slides
@@ -204,6 +213,7 @@ window.addEventListener('load', function() {
   cards.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.clientX;
+    startY = e.clientY;
     scrollStart = cards.scrollLeft;
     
     if (isMobile) {
@@ -213,19 +223,49 @@ window.addEventListener('load', function() {
     cards.style.cursor = 'grabbing';
   });
   
+  // Variáveis para controlar a direção do movimento
+  let isHorizontalDrag = false;
+  let isVerticalDrag = false;
+  
   cards.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     
     const x = e.clientX;
-    const walk = (x - startX);
+    const y = e.clientY;
+    const walkX = (x - startX);
+    const walkY = Math.abs(y - startY);
     
-    if (isMobile) {
-      // Usar a largura do viewport para cálculos
-      const viewportWidth = carouselContainer.offsetWidth;
-      const position = currentIndex * viewportWidth;
-      cards.style.transform = `translateX(-${position - walk}px)`;
-    } else {
-      cards.scrollLeft = scrollStart - walk;
+    // Determinar direção do movimento nos primeiros pixels de arrasto
+    if (!isHorizontalDrag && !isVerticalDrag) {
+      // Se o movimento horizontal for maior que o vertical com uma margem, é horizontal
+      if (Math.abs(walkX) > walkY + 5) {
+        isHorizontalDrag = true;
+        e.preventDefault(); // Prevenir apenas para arrasto horizontal
+      }
+      // Se o movimento for mais vertical, não fazemos nada e deixamos a página rolar
+      else if (walkY > Math.abs(walkX) + 5) {
+        isVerticalDrag = true;
+        isDragging = false; // Liberamos o controle de arrasto
+        cards.style.cursor = 'default';
+        return;
+      }
+    }
+    
+    // Se for identificado como arrasto vertical, não interferimos
+    if (isVerticalDrag) return;
+    
+    // Se for arrasto horizontal, processamos normalmente
+    if (isHorizontalDrag) {
+      e.preventDefault(); // Impedir scroll da página apenas para arrasto horizontal
+      
+      if (isMobile) {
+        // Usar a largura do viewport para cálculos
+        const viewportWidth = carouselContainer.offsetWidth;
+        const position = currentIndex * viewportWidth;
+        cards.style.transform = `translateX(-${position - walkX}px)`;
+      } else {
+        cards.scrollLeft = scrollStart - walkX;
+      }
     }
   });
   
@@ -233,6 +273,8 @@ window.addEventListener('load', function() {
     if (!isDragging) return;
     
     isDragging = false;
+    isHorizontalDrag = false;
+    isVerticalDrag = false;
     cards.style.cursor = 'grab';
     
     if (isMobile) {
@@ -263,6 +305,7 @@ window.addEventListener('load', function() {
   cards.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     
     if (isMobile) {
       cards.style.transition = 'none';
@@ -273,17 +316,40 @@ window.addEventListener('load', function() {
     if (!isDragging) return;
     
     const x = e.touches[0].clientX;
-    const walk = (x - startX);
+    const y = e.touches[0].clientY;
+    const walkX = (x - startX);
+    const walkY = Math.abs(y - startY);
     
-    if (isMobile) {
-      // Usar a largura do viewport para cálculos
-      const viewportWidth = carouselContainer.offsetWidth;
-      const position = currentIndex * viewportWidth;
-      cards.style.transform = `translateX(-${position - walk}px)`;
-    } else {
-      cards.scrollLeft = scrollStart - walk;
+    // Determinar direção do movimento
+    if (!isHorizontalDrag && !isVerticalDrag) {
+      // Se o movimento horizontal for maior que o vertical, é horizontal
+      if (Math.abs(walkX) > walkY + 5) {
+        isHorizontalDrag = true;
+      }
+      // Se o movimento for mais vertical, liberamos para a página rolar
+      else if (walkY > Math.abs(walkX) + 5) {
+        isVerticalDrag = true;
+        isDragging = false;
+        return;
+      }
     }
-  }, { passive: true });
+    
+    // Se for identificado como arrasto vertical, não interferimos
+    if (isVerticalDrag) return;
+    
+    // Processar apenas movimento horizontal
+    if (isHorizontalDrag && e.cancelable) {
+      e.preventDefault(); // Impedir comportamento padrão apenas para arrasto horizontal
+      
+      if (isMobile) {
+        const viewportWidth = carouselContainer.offsetWidth;
+        const position = currentIndex * viewportWidth;
+        cards.style.transform = `translateX(-${position - walkX}px)`;
+      } else {
+        cards.scrollLeft = scrollStart - walkX;
+      }
+    }
+  }, { passive: false });
   
   cards.addEventListener('touchend', (e) => {
     if (!isDragging) return;
@@ -294,6 +360,8 @@ window.addEventListener('load', function() {
     cards.style.transition = 'transform 0.5s ease';
     
     isDragging = false;
+    isHorizontalDrag = false;
+    isVerticalDrag = false;
     
     // Detectar direção do arrasto
     if (startX - endX > threshold) {
