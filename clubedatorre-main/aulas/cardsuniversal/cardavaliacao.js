@@ -97,10 +97,16 @@ window.addEventListener('load', function() {
 
   // Eventos de arraste (mouse)
   slides.addEventListener('mousedown', (e) => {
+    // Limpar timeout de transição pendente e remover transição
+    if (slides.transitionTimeout) {
+        clearTimeout(slides.transitionTimeout);
+        slides.transitionTimeout = null;
+        slides.style.transition = 'none'; 
+    }
     isDragging = true;
     startX = e.clientX;
-    dragDistance = 0;
-    slides.style.transition = 'none';
+    dragDistance = 0; 
+    // slides.style.transition = 'none'; // Já definido acima ou no fim do timeout
   });
 
   slides.addEventListener('mousemove', (e) => {
@@ -117,10 +123,16 @@ window.addEventListener('load', function() {
 
   // Eventos de toque (touch) para mobile
   slides.addEventListener('touchstart', (e) => {
+    // Limpar timeout de transição pendente e remover transição
+    if (slides.transitionTimeout) {
+        clearTimeout(slides.transitionTimeout);
+        slides.transitionTimeout = null;
+        slides.style.transition = 'none'; 
+    }
     isDragging = true;
     startX = e.touches[0].clientX;
-    dragDistance = 0;
-    slides.style.transition = 'none';
+    dragDistance = 0; 
+    // slides.style.transition = 'none'; // Já definido acima ou no fim do timeout
   });
 
   slides.addEventListener('touchmove', (e) => {
@@ -157,44 +169,57 @@ window.addEventListener('load', function() {
 
   function finishDrag() {
     if (!isDragging) return;
-    slides.style.transition = 'transform 0.5s ease';
     isDragging = false;
 
-    if (visibleCount === 1) {
-        // Lógica revisada (v3) para mobile (1 card visível) - Foco na Direção + Limites
-        const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
-        const cardGap = 20; // Deve corresponder ao gap no CSS
-        const slideWidth = cardWidth + cardGap;
-        const threshold = slideWidth / 4; // Limite para swipe válido
+    const originalGroup = currentGroup; // Guardar grupo original para comparação
 
+    if (visibleCount === 1) {
+        // Mobile logic (posição final + rounding)
+        const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
+        const cardGap = 20;
+        const slideWidth = cardWidth + cardGap;
+        const threshold = slideWidth / 4;
+
+        const currentOffset = -currentGroup * slideWidth;
+        const finalOffset = currentOffset + dragDistance;
+        let targetGroup = slideWidth > 0 ? Math.round(-finalOffset / slideWidth) : currentGroup;
+        targetGroup = Math.max(0, Math.min(targetGroup, groupCount - 1));
+
+        // Atualiza currentGroup APENAS se swipe foi significativo
         if (Math.abs(dragDistance) > threshold) {
-             // Swipe foi significativo, determinar direção e calcular novo grupo com limites
-            if (dragDistance < 0) {
-                // Arrastou para esquerda (próximo)
-                currentGroup = Math.min(currentGroup + 1, groupCount - 1);
-            } else {
-                // Arrastou para direita (anterior)
-                currentGroup = Math.max(currentGroup - 1, 0);
-            }
-        } 
-        // Se não foi significativo (else implícito), currentGroup não muda.
-        // Sempre chama updateSlidePosition para animar para a posição final (nova ou a mesma)
-        updateSlidePosition();
+             currentGroup = targetGroup;
+        }
+        // Se não ultrapassou o threshold, currentGroup não muda.
 
     } else {
-      // Lógica original para desktop/tablet (grupos maiores)
+      // Desktop/tablet logic
       const carouselWidth = carousel.offsetWidth;
       const threshold = carouselWidth / 4;
       if (Math.abs(dragDistance) > threshold) {
         if (dragDistance < 0) {
-          nextGroup();
+          currentGroup = (currentGroup + 1) % groupCount;
         } else {
-          prevGroup();
+          currentGroup = (currentGroup - 1 + groupCount) % groupCount;
         }
-      } else {
-        updateSlidePosition();
       }
+      // Se não ultrapassou o threshold, currentGroup não muda.
     }
+
+    // SEMPRE aplicar a transição ANTES de atualizar a posição
+    slides.style.transition = 'transform 0.5s ease';
+    
+    // Atualiza a posição para o currentGroup final (animado)
+    updateSlidePosition();
+    
+    // SEMPRE agendar a limpeza da transição após a animação
+    // Limpar timeout anterior se existir (segurança extra)
+    if (slides.transitionTimeout) {
+        clearTimeout(slides.transitionTimeout);
+    }
+    slides.transitionTimeout = setTimeout(() => {
+        slides.style.transition = 'none'; 
+        slides.transitionTimeout = null; // Limpar a referência
+    }, 500); // Tempo igual à duração da transição CSS
   }
 
   // Função inicial para configurar o carrossel
