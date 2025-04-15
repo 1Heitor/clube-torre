@@ -124,49 +124,6 @@ body {
   padding: 10px 0; /* Adiciona um pouco de espaçamento */
 }
 
-.carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 20px 0;
-}
-
-.cards {
-  display: flex;
-  margin-bottom: 80px;
-  padding-bottom: 20px;
-  gap: 30px;
-  user-select: none;
-  touch-action: pan-x;
-  cursor: grab;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.cards::-webkit-scrollbar {
-  display: none;
-}
-
-.card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: var(--sombra);
-  overflow: hidden;
-  transition: var(--transicao);
-  flex-shrink: 0;
-  width: calc(33% - 20px); /* 3 cards por linha */
-  min-width: 300px;
-  margin: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 47, 255, 0.267);
-}
-
 .card-header {
   position: relative;
   height: 250px;
@@ -287,37 +244,6 @@ line-height: 1.6;
   transition: 100ms;
 }
 
-.carousel-button {
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  color: var(--azul-claro);
-  cursor: pointer;
-  transition: var(--transicao);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-button:hover {
-  background: var(--gradiente-azul);
-  color: white;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 47, 255, 0.267);
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
-
-
   /* ========== Ondas (wave dividers) ========== */
 .wave-section {
   position: relative; /* Fundamental para posicionar a onda */
@@ -371,21 +297,6 @@ line-height: 1.6;
   }
 }
 /* Responsividade */
-@media (max-width: 768px) {
-  .card {
-      width: calc(50% - 20px);
-      min-width: 280px;
-  }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-}
-
 @media (max-width: 480px) {
   .card {
       width: 100%;
@@ -400,11 +311,6 @@ line-height: 1.6;
     font-size: 1.8rem;
   }
   
-  .carousel-button {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-  }
 }
   @media (max-width: 768px) {
     footer{ 
@@ -476,62 +382,5 @@ line-height: 1.6;
   color: white;
   transform: translateY(1px);
   transition: 100ms;
-}
-
-.carousel-dots {
-  display: none;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #e0e0e0;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: var(--azul-claro);
-  transform: scale(1.2);
-}
-@media (max-width: 768px) {
-  .carousel-container {
-    padding: 10px 0;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  .cards {
-    display: flex;
-    transition: transform 0.5s ease;
-    cursor: grab;
-    overflow: visible;
-    /* A largura será definida pelo JavaScript */
-  }
-  
-  .card {
-    flex: 0 0 auto;
-    margin: 0 auto;
-    /* A largura será definida pelo JavaScript como 90% do viewport */
-    min-width: auto;
-    box-sizing: border-box;
-    scroll-snap-align: center;
-  }
-  
-  .card-header {
-    height: auto;
-    max-height: 200px;
-  }
-  
-  .carousel-inner img {
-    height: 200px;
-    object-fit: cover;
-  }
 }
 
