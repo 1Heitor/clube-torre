@@ -171,28 +171,32 @@ window.addEventListener('load', function() {
     if (!isDragging) return;
     isDragging = false;
 
-    const originalGroup = currentGroup; // Guardar grupo original para comparação
+    const originalGroup = currentGroup; 
 
     if (visibleCount === 1) {
-        // Mobile logic (posição final + rounding)
+        // Mobile logic (posição final + rounding + WRAP-AROUND)
         const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
         const cardGap = 20;
         const slideWidth = cardWidth + cardGap;
         const threshold = slideWidth / 4;
 
-        const currentOffset = -currentGroup * slideWidth;
-        const finalOffset = currentOffset + dragDistance;
-        let targetGroup = slideWidth > 0 ? Math.round(-finalOffset / slideWidth) : currentGroup;
-        targetGroup = Math.max(0, Math.min(targetGroup, groupCount - 1));
-
-        // Atualiza currentGroup APENAS se swipe foi significativo
-        if (Math.abs(dragDistance) > threshold) {
-             currentGroup = targetGroup;
+        // Calcular o deslocamento relativo em termos de slides
+        let slideShift = 0;
+        if (slideWidth > 0) {
+             slideShift = Math.round(dragDistance / slideWidth);
         }
-        // Se não ultrapassou o threshold, currentGroup não muda.
+        
+        // Atualizar currentGroup APENAS se swipe foi significativo
+        if (Math.abs(dragDistance) > threshold && slideShift !== 0) {
+             // Calcula o novo índice com wrap-around usando módulo
+             // (originalGroup - slideShift) porque dragDistance positivo é para a direita (anterior)
+             // Adiciona groupCount antes do módulo para garantir resultado positivo
+             currentGroup = (originalGroup - slideShift + groupCount) % groupCount; 
+        }
+        // Se não ultrapassou o threshold ou slideShift é 0, currentGroup não muda.
 
     } else {
-      // Desktop/tablet logic
+      // Desktop/tablet logic (já usa módulo em next/prev)
       const carouselWidth = carousel.offsetWidth;
       const threshold = carouselWidth / 4;
       if (Math.abs(dragDistance) > threshold) {
