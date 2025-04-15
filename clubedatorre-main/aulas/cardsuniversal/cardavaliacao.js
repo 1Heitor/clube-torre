@@ -115,6 +115,36 @@ window.addEventListener('load', function() {
   slides.addEventListener('mouseup', finishDrag);
   slides.addEventListener('mouseleave', finishDrag);
 
+  // Eventos de toque (touch) para mobile
+  slides.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    dragDistance = 0;
+    slides.style.transition = 'none';
+  });
+
+  slides.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const distance = e.touches[0].clientX - startX;
+    dragDistance = distance;
+    
+    // Ajustes para visualização móvel
+    if (visibleCount === 1) {
+      const cardWidth = cards[0].offsetWidth;
+      const cardGap = 20;
+      const currentTransform = -currentGroup * (cardWidth + cardGap) + distance;
+      slides.style.transform = `translateX(${currentTransform}px)`;
+    } else {
+      const carouselWidth = carousel.offsetWidth;
+      const currentTransform = -currentGroup * carouselWidth + distance;
+      slides.style.transform = `translateX(${currentTransform}px)`;
+    }
+  });
+
+  slides.addEventListener('touchend', () => {
+    finishDrag();
+  });
+
   function finishDrag() {
     if (!isDragging) return;
     slides.style.transition = 'transform 0.5s ease';
@@ -162,66 +192,6 @@ window.addEventListener('load', function() {
       }
     }
   }
-
-  // Eventos de toque (touch) para mobile
-  slides.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].clientX;
-    dragDistance = 0;
-    slides.style.transition = 'none';
-  });
-
-  slides.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const distance = e.touches[0].clientX - startX;
-    dragDistance = distance;
-    
-    // Ajustes para visualização móvel
-    if (visibleCount === 1) {
-      const cardWidth = cards[0].offsetWidth;
-      const cardGap = 20;
-      const currentTransform = -currentGroup * (cardWidth + cardGap) + distance;
-      slides.style.transform = `translateX(${currentTransform}px)`;
-    } else {
-      const carouselWidth = carousel.offsetWidth;
-      const currentTransform = -currentGroup * carouselWidth + distance;
-      slides.style.transform = `translateX(${currentTransform}px)`;
-    }
-  });
-
-  slides.addEventListener('touchend', () => {
-    finishDrag();
-  });
-
-  // Adicionar eventos de toque diretamente ao carrossel para garantir que funcione desde o início
-  carousel.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].clientX;
-    dragDistance = 0;
-    slides.style.transition = 'none';
-  });
-
-  carousel.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const distance = e.touches[0].clientX - startX;
-    dragDistance = distance;
-    
-    // Ajustes para visualização móvel
-    if (visibleCount === 1) {
-      const cardWidth = cards[0].offsetWidth;
-      const cardGap = 20;
-      const currentTransform = -currentGroup * (cardWidth + cardGap) + distance;
-      slides.style.transform = `translateX(${currentTransform}px)`;
-    } else {
-      const carouselWidth = carousel.offsetWidth;
-      const currentTransform = -currentGroup * carouselWidth + distance;
-      slides.style.transform = `translateX(${currentTransform}px)`;
-    }
-  });
-
-  carousel.addEventListener('touchend', () => {
-    finishDrag();
-  });
 
   // Função inicial para configurar o carrossel
   function initCarousel() {
