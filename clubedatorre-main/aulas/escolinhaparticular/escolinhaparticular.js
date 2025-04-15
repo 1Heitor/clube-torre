@@ -73,44 +73,23 @@ window.addEventListener('load', function() {
     
     // Ajustar cada card para 90% da largura do viewport com margens automáticas
     originalCards.forEach((card, index) => {
-      // Ajusta a largura do card baseado no viewport
-      card.style.width = `${viewportWidth * 0.9}px`;
-      card.style.minWidth = `${viewportWidth * 0.9}px`;
+      // Define largura base do card como 90% do viewport
+      const cardWidth = viewportWidth * 0.9;
+      card.style.width = `${cardWidth}px`;
+      card.style.minWidth = `${cardWidth}px`;
 
-      // Margens específicas para cada viewport
-      if (viewportWidth <= 480) {
-        // Mobile pequeno
-        if (index === 0) {
-          card.style.margin = '0px 5px 0px 20px';
-        } else if (index === 1) {
-          card.style.margin = '0px 15px 0px 20px';
-        } else if (index === 2) {
-          card.style.margin = '0px 0px 0px 10px';
-        } else {
-          card.style.margin = '5px 15px';
-        }
-      } else if (viewportWidth <= 768) {
-        // Tablet/Mobile maior
-        if (index === 0) {
-          card.style.margin = '0px 10px 0px 35px';
-        } else if (index === 1) {
-          card.style.margin = '0px 30px 0px 40px';
-        } else if (index === 2) {
-          card.style.margin = '0px 0px 0px 18px';
-        } else {
-          card.style.margin = '10px 27px';
-        }
+      // Calcula margem lateral para centralizar
+      const totalMargin = (viewportWidth - cardWidth) / 2;
+      
+      if (index === 0) {
+        // Primeiro card - margem à esquerda para centralizar
+        card.style.margin = `0px 10px 0px ${totalMargin}px`;
+      } else if (index === originalCards.length - 1) {
+        // Último card - margem à direita para centralizar
+        card.style.margin = `0px ${totalMargin}px 0px 10px`;
       } else {
-        // Desktop
-        if (index === 0) {
-          card.style.margin = '0px 15px 0px 45px';
-        } else if (index === 1) {
-          card.style.margin = '0px 40px 0px 50px';
-        } else if (index === 2) {
-          card.style.margin = '0px 0px 0px 25px';
-        } else {
-          card.style.margin = '15px 35px';
-        }
+        // Cards do meio - margens iguais
+        card.style.margin = '0px 10px';
       }
     });
     
