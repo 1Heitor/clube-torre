@@ -60,15 +60,14 @@ window.addEventListener('load', function() {
 
   function updateSlidePosition() {
     const carouselWidth = carousel.offsetWidth;
-    const cardGap = 20; // Corresponder ao CSS
-
     let position = 0;
+
     if (visibleCount === 1) {
-        // Calcula a largura do card visível (considera o gap)
-        const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
-        position = -currentGroup * (cardWidth + cardGap);
+        // Mobile: Calcula baseado na largura do viewport (área visível)
+        // Não na largura do card + gap, pois cada card preenche o viewport
+        position = -currentGroup * carouselWidth;
     } else {
-        // Calcula a posição baseada na largura do carrossel para visualização em grupo
+        // Desktop: Calcula baseado na largura do carrossel (área visível do grupo)
         position = -currentGroup * carouselWidth;
     }
     slides.style.transform = `translateX(${position}px)`;
@@ -132,7 +131,7 @@ window.addEventListener('load', function() {
     // Só considera scroll vertical se ainda não começou a arrastar horizontalmente significativamente
     if (!isScrollingVertically && dragDistance === 0 && Math.abs(deltaY) > Math.abs(deltaX) * 1.5) {
         isScrollingVertically = true;
-        // Se detectou scroll vertical, podemos liberar o drag para permitir scroll da página
+        // Se detectou scroll vertical, LIBERA o drag para permitir scroll da página
         isDragging = false;
         if (e.type === 'mousedown') {
              slides.style.cursor = 'grab';
@@ -231,17 +230,47 @@ window.addEventListener('load', function() {
     calculateVisibleCount();
     calculateGroupCount();
 
-    // Limpa estilos inline de largura que podem ter sido definidos antes
-    cards.forEach(card => {
-      card.style.width = '';
-    });
+    // CONFIGURAR LAYOUT BASEADO NO MODO (MOBILE/DESKTOP)
+    if (visibleCount === 1) {
+        // Mobile Layout (como carousel.js)
+        const viewportWidth = carousel.offsetWidth;
+        const cardWidthPercentage = 0.9; // Usar 90% como no carousel.js
+        const calculatedCardWidth = viewportWidth * cardWidthPercentage;
+        const cardGap = 0; // Sem gap no mobile, usamos margin
+        
+        slides.style.gap = `${cardGap}px`; // Define gap como 0
+        slides.style.overflow = 'hidden'; // Garante overflow hidden
+
+        cards.forEach(card => {
+            card.style.width = `${calculatedCardWidth}px`;
+            card.style.margin = `0 auto`; // Centraliza o card único
+            card.style.minWidth = ''; // Limpa min-width
+        });
+
+        // Calcula e define a largura total do container de slides
+        // Neste caso, a largura visível * número de cards (já que não há clones)
+        const totalWidth = groupCount * viewportWidth; // Cada card ocupa a largura do viewport
+        slides.style.width = `${totalWidth}px`;
+        
+    } else {
+        // Desktop Layout (Reset para CSS padrão)
+        slides.style.gap = '20px'; // Restaura gap do CSS (ou valor desejado)
+        slides.style.overflowX = 'scroll'; // Permitir scroll desktop (se necessário)
+        slides.style.overflowY = 'hidden';
+        slides.style.width = ''; // Deixa o CSS/browser calcular
+
+        cards.forEach(card => {
+            card.style.width = ''; // Limpa width inline
+            card.style.margin = ''; // Limpa margin inline
+            card.style.minWidth = '280px'; // Restaura min-width desktop do CSS
+        });
+    }
 
     updateDots();
     currentGroup = 0;
-    // Define posição inicial SEM transição
     slides.style.transition = 'none';
-    updateSlidePosition();
-    slides.style.cursor = 'grab'; // Cursor inicial
+    updateSlidePosition(); // Chama após configurar o layout
+    slides.style.cursor = 'grab';
   }
 
   let resizeTimeout;
@@ -269,9 +298,38 @@ window.addEventListener('load', function() {
        }
        currentGroup = Math.max(0, currentGroup); // Garante que não é negativo
 
+      // RE-CONFIGURAR LAYOUT APÓS RESIZE
+      if (visibleCount === 1) {
+          const viewportWidth = carousel.offsetWidth;
+          const cardWidthPercentage = 0.9;
+          const calculatedCardWidth = viewportWidth * cardWidthPercentage;
+          const cardGap = 0;
+
+          slides.style.gap = `${cardGap}px`;
+          slides.style.overflow = 'hidden';
+
+          cards.forEach(card => {
+              card.style.width = `${calculatedCardWidth}px`;
+              card.style.margin = `0 auto`;
+              card.style.minWidth = '';
+          });
+
+          const totalWidth = groupCount * viewportWidth;
+          slides.style.width = `${totalWidth}px`;
+      } else {
+          slides.style.gap = '20px';
+          slides.style.overflowX = 'scroll';
+          slides.style.overflowY = 'hidden';
+          slides.style.width = '';
+
+          cards.forEach(card => {
+              card.style.width = '';
+              card.style.margin = '';
+              card.style.minWidth = '280px';
+          });
+      }
 
       updateDots();
-      // Atualiza posição SEM transição após resize
       slides.style.transition = 'none';
       updateSlidePosition();
     }, 250);
