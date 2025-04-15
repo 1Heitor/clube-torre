@@ -277,61 +277,71 @@ window.addEventListener('load', function() {
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      // Guarda o índice do primeiro card visível atualmente (aproximado)
-      let firstVisibleCardIndex = 0;
-      if (visibleCount === 1) {
-           firstVisibleCardIndex = currentGroup;
-      } else {
-          // Tenta estimar qual era o primeiro card do grupo atual
-          firstVisibleCardIndex = currentGroup * visibleCount;
-      }
+        console.log('Resize handler executing...'); // Log para depuração
+        
+        // 1. Guarda o índice do primeiro card visível atualmente (aproximado)
+        let firstVisibleCardIndex = 0;
+        if (visibleCount === 1) {
+             firstVisibleCardIndex = currentGroup;
+        } else {
+            firstVisibleCardIndex = currentGroup * visibleCount;
+        }
+        console.log(`Before resize: visibleCount=${visibleCount}, currentGroup=${currentGroup}, firstVisibleCardIndex=${firstVisibleCardIndex}`);
 
-      calculateVisibleCount();
-      calculateGroupCount();
+        // 2. Calcula novas contagens
+        calculateVisibleCount();
+        calculateGroupCount();
+        console.log(`After count calculation: visibleCount=${visibleCount}, groupCount=${groupCount}`);
 
-      // Tenta restaurar para o grupo que contém o card que estava visível
-       if (visibleCount === 1) {
-           currentGroup = Math.min(firstVisibleCardIndex, groupCount - 1); // groupCount é cards.length aqui
-       } else {
-           // Calcula o novo grupo baseado no índice do card e nova contagem visível
-           currentGroup = Math.min(Math.floor(firstVisibleCardIndex / visibleCount), groupCount - 1);
-       }
-       currentGroup = Math.max(0, currentGroup); // Garante que não é negativo
+        // 3. Recalcula currentGroup para o novo layout
+        if (visibleCount === 1) {
+            // Mobile: Tenta manter o card que estava visível
+            currentGroup = Math.min(firstVisibleCardIndex, groupCount - 1); // groupCount é cards.length aqui
+        } else {
+            // Desktop/Tablet: Simplesmente reseta para o início para evitar bugs complexos de mapeamento
+            currentGroup = 0; 
+            // Alternativa (se quiser tentar manter posição desktop): 
+            // currentGroup = Math.min(Math.floor(firstVisibleCardIndex / visibleCount), groupCount - 1);
+        }
+        currentGroup = Math.max(0, currentGroup); // Garante que não é negativo
+        console.log(`Recalculated currentGroup=${currentGroup}`);
 
-      // RE-CONFIGURAR LAYOUT APÓS RESIZE
-      if (visibleCount === 1) {
-          const viewportWidth = carousel.offsetWidth;
-          const cardWidthPercentage = 0.9;
-          const calculatedCardWidth = viewportWidth * cardWidthPercentage;
-          const cardGap = 0;
+        // 4. Reconfigura o Layout (larguras, etc.)
+        if (visibleCount === 1) {
+            const viewportWidth = carousel.offsetWidth;
+            const cardWidthPercentage = 0.9;
+            const calculatedCardWidth = viewportWidth * cardWidthPercentage;
+            slides.style.gap = `0px`;
+            slides.style.overflow = 'hidden';
+            cards.forEach(card => {
+                card.style.width = `${calculatedCardWidth}px`;
+                card.style.margin = `0 auto`;
+                card.style.minWidth = '';
+            });
+            const totalWidth = groupCount * viewportWidth;
+            slides.style.width = `${totalWidth}px`;
+        } else {
+            slides.style.gap = '20px';
+            slides.style.overflowX = 'scroll'; // Ou 'hidden' se não quiser scroll desktop
+            slides.style.overflowY = 'hidden';
+            slides.style.width = '';
+            cards.forEach(card => {
+                card.style.width = '';
+                card.style.margin = '';
+                card.style.minWidth = '280px'; // Ou o min-width definido no CSS
+            });
+        }
+        console.log('Layout reconfigured.');
 
-          slides.style.gap = `${cardGap}px`;
-          slides.style.overflow = 'hidden';
+        // 5. Atualiza os Dots (AGORA, com groupCount e currentGroup corretos)
+        updateDots();
+        console.log('Dots updated.');
 
-          cards.forEach(card => {
-              card.style.width = `${calculatedCardWidth}px`;
-              card.style.margin = `0 auto`;
-              card.style.minWidth = '';
-          });
+        // 6. Atualiza Posição SEM transição
+        slides.style.transition = 'none';
+        updateSlidePosition();
+        console.log('Position updated.');
 
-          const totalWidth = groupCount * viewportWidth;
-          slides.style.width = `${totalWidth}px`;
-      } else {
-          slides.style.gap = '20px';
-          slides.style.overflowX = 'scroll';
-          slides.style.overflowY = 'hidden';
-          slides.style.width = '';
-
-          cards.forEach(card => {
-              card.style.width = '';
-              card.style.margin = '';
-              card.style.minWidth = '280px';
-          });
-      }
-
-      updateDots();
-      slides.style.transition = 'none';
-      updateSlidePosition();
     }, 250);
   });
 
