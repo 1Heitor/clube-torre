@@ -499,7 +499,6 @@ line-height: 1.6;
   background: var(--azul-claro);
   transform: scale(1.2);
 }
-
 @media (max-width: 768px) {
   .carousel-container {
     padding: 10px 0;
@@ -513,12 +512,14 @@ line-height: 1.6;
     transition: transform 0.5s ease;
     cursor: grab;
     overflow: visible;
+    /* A largura será definida pelo JavaScript */
   }
   
   .card {
-    width: 85% !important;
-    min-width: 85% !important;
-    margin: 0 7.5% !important;
+    flex: 0 0 auto;
+    margin: 0 auto;
+    /* A largura será definida pelo JavaScript como 90% do viewport */
+    min-width: auto;
     box-sizing: border-box;
     scroll-snap-align: center;
   }
@@ -533,3 +534,4 @@ line-height: 1.6;
     object-fit: cover;
   }
 }
+

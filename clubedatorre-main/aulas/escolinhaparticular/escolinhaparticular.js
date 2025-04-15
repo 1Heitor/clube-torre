@@ -67,6 +67,19 @@ window.addEventListener('load', function() {
     // Resetar o índice
     currentIndex = 0;
     
+    // Configurar layout para mobile - usar a largura do viewport como referência
+    const viewportWidth = carouselContainer.offsetWidth;
+    
+    // Ajustar cada card para 90% da largura do viewport com margens automáticas
+    originalCards.forEach(card => {
+      card.style.width = `${viewportWidth * 0.9}px`;
+      card.style.minWidth = `${viewportWidth * 0.9}px`;
+      card.style.margin = '0 auto';
+    });
+    
+    // Definir a largura total do container para acomodar todos os slides
+    cards.style.width = `${originalCards.length * viewportWidth}px`;
+    
     // Mostrar bolinhas de navegação
     updateDots();
     dotsContainer.style.display = 'flex';
@@ -112,12 +125,10 @@ window.addEventListener('load', function() {
     
     currentIndex = index;
     
-    // Em vez de calcular com percentagens, usamos valores fixos do CSS
-    const cardWidth = originalCards[0].offsetWidth;
-    const cardMargin = parseInt(window.getComputedStyle(originalCards[0]).marginRight) || 
-                      parseInt(window.getComputedStyle(originalCards[0]).marginLeft) || 0;
+    // Usar a largura do viewport para cálculos em vez de cardWidth + margins
+    const viewportWidth = carouselContainer.offsetWidth;
+    const position = index * viewportWidth;
     
-    const position = index * (cardWidth + (cardMargin * 2));
     cards.style.transition = 'transform 0.5s ease';
     cards.style.transform = `translateX(-${position}px)`;
     
@@ -209,11 +220,9 @@ window.addEventListener('load', function() {
     const walk = (x - startX);
     
     if (isMobile) {
-      const cardWidth = originalCards[0].offsetWidth;
-      const cardMargin = parseInt(window.getComputedStyle(originalCards[0]).marginRight) || 
-                         parseInt(window.getComputedStyle(originalCards[0]).marginLeft) || 0;
-      
-      const position = currentIndex * (cardWidth + (cardMargin * 2));
+      // Usar a largura do viewport para cálculos
+      const viewportWidth = carouselContainer.offsetWidth;
+      const position = currentIndex * viewportWidth;
       cards.style.transform = `translateX(-${position - walk}px)`;
     } else {
       cards.scrollLeft = scrollStart - walk;
@@ -267,11 +276,9 @@ window.addEventListener('load', function() {
     const walk = (x - startX);
     
     if (isMobile) {
-      const cardWidth = originalCards[0].offsetWidth;
-      const cardMargin = parseInt(window.getComputedStyle(originalCards[0]).marginRight) || 
-                        parseInt(window.getComputedStyle(originalCards[0]).marginLeft) || 0;
-      
-      const position = currentIndex * (cardWidth + (cardMargin * 2));
+      // Usar a largura do viewport para cálculos
+      const viewportWidth = carouselContainer.offsetWidth;
+      const position = currentIndex * viewportWidth;
       cards.style.transform = `translateX(-${position - walk}px)`;
     } else {
       cards.scrollLeft = scrollStart - walk;
