@@ -71,8 +71,9 @@
   border: 1px solid #f0f0f0;
   position: relative;
   overflow: hidden;
+  flex: 0 0 calc(25% - 20px);
+  min-width: calc(25% - 20px);
   width: auto;
-  min-width: 280px;
   flex-shrink: 0;
 }
 
@@ -206,7 +207,8 @@
 
 @media (max-width: 1024px) {
   .testimonial-card {
-    min-width: 280px;
+    flex: 0 0 calc(50% - 20px);
+    min-width: calc(50% - 20px);
   }
   
   .testimonials-container h2 {
@@ -224,6 +226,7 @@
     min-width: initial;
     margin: 0;
     flex-shrink: 0;
+    flex-basis: auto;
   }
   
   .testimonials-container h2 {

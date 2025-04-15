@@ -63,12 +63,13 @@ window.addEventListener('load', function() {
     let position = 0;
 
     if (visibleCount === 1) {
-        // Mobile: Calcula baseado na largura do viewport (área visível)
-        // Não na largura do card + gap, pois cada card preenche o viewport
+        // Mobile: Calcula baseado na largura do viewport
         position = -currentGroup * carouselWidth;
     } else {
-        // Desktop: Calcula baseado na largura do carrossel (área visível do grupo)
+        // Desktop/Tablet: Calcula baseado na largura do carrossel (grupo)
         position = -currentGroup * carouselWidth;
+        // Certifica que groupCount está correto para desktop/tablet aqui também
+        // calculateGroupCount(); // Já chamado no init/resize
     }
     slides.style.transform = `translateX(${position}px)`;
 
@@ -228,48 +229,39 @@ window.addEventListener('load', function() {
   // --- Configuração Inicial e Redimensionamento ---
   function initCarousel() {
     calculateVisibleCount();
-    calculateGroupCount();
+    calculateGroupCount(); // Recalcula groupCount baseado em visibleCount
 
-    // CONFIGURAR LAYOUT BASEADO NO MODO (MOBILE/DESKTOP)
+    // CONFIGURAR LAYOUT APENAS PARA MOBILE
     if (visibleCount === 1) {
-        // Mobile Layout (como carousel.js)
+        // Mobile Layout 
         const viewportWidth = carousel.offsetWidth;
-        const cardWidthPercentage = 0.9; // Usar 90% como no carousel.js
+        const cardWidthPercentage = 0.9;
         const calculatedCardWidth = viewportWidth * cardWidthPercentage;
-        const cardGap = 0; // Sem gap no mobile, usamos margin
-        
-        slides.style.gap = `${cardGap}px`; // Define gap como 0
-        slides.style.overflow = 'hidden'; // Garante overflow hidden
-
+        slides.style.gap = `0px`;
+        slides.style.overflow = 'hidden';
         cards.forEach(card => {
             card.style.width = `${calculatedCardWidth}px`;
-            card.style.margin = `0 auto`; // Centraliza o card único
-            card.style.minWidth = ''; // Limpa min-width
+            card.style.margin = `0 auto`;
+            card.style.minWidth = '';
         });
-
-        // Calcula e define a largura total do container de slides
-        // Neste caso, a largura visível * número de cards (já que não há clones)
-        const totalWidth = groupCount * viewportWidth; // Cada card ocupa a largura do viewport
+        const totalWidth = groupCount * viewportWidth;
         slides.style.width = `${totalWidth}px`;
-        
     } else {
-        // Desktop Layout (Reset para CSS padrão)
-        slides.style.gap = '20px'; // Restaura gap do CSS (ou valor desejado)
-        slides.style.overflowX = 'scroll'; // Permitir scroll desktop (se necessário)
-        slides.style.overflowY = 'hidden';
-        slides.style.width = ''; // Deixa o CSS/browser calcular
-
+        // Desktop/Tablet: RESETAR estilos inline para usar CSS
+        slides.style.gap = ''; // Usa gap do CSS
+        slides.style.overflow = ''; // Usa overflow do CSS
+        slides.style.width = ''; // Usa width do CSS
         cards.forEach(card => {
-            card.style.width = ''; // Limpa width inline
-            card.style.margin = ''; // Limpa margin inline
-            card.style.minWidth = '280px'; // Restaura min-width desktop do CSS
+            card.style.width = '';
+            card.style.margin = '';
+            card.style.minWidth = ''; // Usa min-width do CSS
         });
     }
 
     updateDots();
-    currentGroup = 0;
+    currentGroup = 0; // Sempre começa no 0 ao inicializar
     slides.style.transition = 'none';
-    updateSlidePosition(); // Chama após configurar o layout
+    updateSlidePosition();
     slides.style.cursor = 'grab';
   }
 
@@ -289,51 +281,49 @@ window.addEventListener('load', function() {
         console.log(`Before resize: visibleCount=${visibleCount}, currentGroup=${currentGroup}, firstVisibleCardIndex=${firstVisibleCardIndex}`);
 
         // 2. Calcula novas contagens
-        calculateVisibleCount();
-        calculateGroupCount();
+        calculateVisibleCount(); 
+        calculateGroupCount(); // Recalcula groupCount com base no novo visibleCount
         console.log(`After count calculation: visibleCount=${visibleCount}, groupCount=${groupCount}`);
 
-        // 3. Recalcula currentGroup para o novo layout
+        // 3. Recalcula currentGroup 
         if (visibleCount === 1) {
             // Mobile: Tenta manter o card que estava visível
-            currentGroup = Math.min(firstVisibleCardIndex, groupCount - 1); // groupCount é cards.length aqui
+            currentGroup = Math.min(firstVisibleCardIndex, groupCount - 1); 
         } else {
-            // Desktop/Tablet: Simplesmente reseta para o início para evitar bugs complexos de mapeamento
+            // Desktop/Tablet: Reseta para 0 
             currentGroup = 0; 
-            // Alternativa (se quiser tentar manter posição desktop): 
-            // currentGroup = Math.min(Math.floor(firstVisibleCardIndex / visibleCount), groupCount - 1);
         }
-        currentGroup = Math.max(0, currentGroup); // Garante que não é negativo
+        currentGroup = Math.max(0, currentGroup);
         console.log(`Recalculated currentGroup=${currentGroup}`);
 
-        // 4. Reconfigura o Layout (larguras, etc.)
+        // 4. Reconfigura Layout (APENAS PARA MOBILE)
         if (visibleCount === 1) {
-            const viewportWidth = carousel.offsetWidth;
-            const cardWidthPercentage = 0.9;
-            const calculatedCardWidth = viewportWidth * cardWidthPercentage;
-            slides.style.gap = `0px`;
-            slides.style.overflow = 'hidden';
-            cards.forEach(card => {
-                card.style.width = `${calculatedCardWidth}px`;
-                card.style.margin = `0 auto`;
-                card.style.minWidth = '';
-            });
-            const totalWidth = groupCount * viewportWidth;
-            slides.style.width = `${totalWidth}px`;
+             const viewportWidth = carousel.offsetWidth;
+             const cardWidthPercentage = 0.9;
+             const calculatedCardWidth = viewportWidth * cardWidthPercentage;
+             slides.style.gap = `0px`;
+             slides.style.overflow = 'hidden';
+             cards.forEach(card => {
+                 card.style.width = `${calculatedCardWidth}px`;
+                 card.style.margin = `0 auto`;
+                 card.style.minWidth = '';
+             });
+             const totalWidth = groupCount * viewportWidth;
+             slides.style.width = `${totalWidth}px`;
         } else {
-            slides.style.gap = '20px';
-            slides.style.overflowX = 'scroll'; // Ou 'hidden' se não quiser scroll desktop
-            slides.style.overflowY = 'hidden';
+            // Desktop/Tablet: RESETAR estilos inline
+            slides.style.gap = '';
+            slides.style.overflow = '';
             slides.style.width = '';
             cards.forEach(card => {
                 card.style.width = '';
                 card.style.margin = '';
-                card.style.minWidth = '280px'; // Ou o min-width definido no CSS
+                card.style.minWidth = '';
             });
         }
         console.log('Layout reconfigured.');
 
-        // 5. Atualiza os Dots (AGORA, com groupCount e currentGroup corretos)
+        // 5. Atualiza os Dots 
         updateDots();
         console.log('Dots updated.');
 
