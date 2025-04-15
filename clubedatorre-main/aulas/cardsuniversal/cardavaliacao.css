@@ -220,6 +220,9 @@
   .testimonials-section {
     padding: 60px 20px;
   }
+  .dot {
+opacity: 0;
+  }
   
   .testimonial-card {
     width: auto;

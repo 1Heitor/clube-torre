@@ -58,6 +58,116 @@
   justify-content: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+.card-label {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  background-size: 200% 200%;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-family: 'bluestar';
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  transition: all 0.5s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: gradientShift 0s ease forwards;
+}
+.card-header {
+  position: relative;
+  height: 250px;
+}
+
+.carousel-inner {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s;
+  overflow: visible; /* Revela todas as bordas */
+  padding: 0 5px; /* Espaço para as bordas laterais */
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-top: 3px;
+  border: 5px solid #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box; /* Inclui a borda no cálculo da largura */
+  transition: var(--transicao);
+}
+.card:hover .carousel-inner img {
+  transform: scale(1.05);
+}
+
+.card:hover .card-label {
+  animation: gradientShift 2s ease infinite alternate;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+  letter-spacing: 1px;
+}
+
+.card:active .card-label {
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transform: translateY(1px);
+  transition: 100ms;
+}
+
+.card-body {
+padding: 20px;
+font-family:Poppins, sans-serif;
+text-align: left;
+}
+.card-body h3 {
+font-size: 1.3rem;
+margin-top: 0px;
+margin-bottom: 10px;
+color: var(--azul-claro);
+font-weight: 600;
+}
+.card-body  p {
+font-size: 0.95em;
+margin-bottom: 15px;
+color: #555;
+line-height: 1.6;
+}
+.card-body span {
+  color: var(--azul-claro);
+  font-weight: 600;
+}
+
+.card-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  color: #fff;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.2);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.card-btn:hover {
+  background: linear-gradient(135deg, #005bb5, #004a94);
+  box-shadow: 0 6px 15px rgba(0, 132, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.card-btn:active {
+  background: linear-gradient(135deg, #004a94, #003a73);
+  box-shadow: 0 2px 8px rgba(0, 132, 255, 0.2);
+  transform: translateY(1px);
+  transition: 100ms;
+}
 
 .carousel-button:hover {
   background: var(--gradiente-azul);
@@ -80,6 +190,11 @@
   transform: translateX(-50%);
   z-index: 5;
 }
+.cards-container{
+  background-color: #F5F8FF;
+  padding: 60px 0;
+}
+
 
 .dot {
   width: 10px;
@@ -97,6 +212,18 @@
 }
 
 /* Responsividade */
+@media (max-width:1040px)
+{
+
+  .containeraulas{
+    justify-content: center;
+    align-items: center;
+  }
+  .carousel{
+    width: 300px;
+  }
+}
+
 @media (max-width: 768px) {
   .carousel-container {
     overflow: hidden;

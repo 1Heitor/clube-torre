@@ -797,4 +797,9 @@ body {
   .custom-shape-divider svg {
     height: 60px;
   }
+  .map-info {
+    top: 10px;
+    height: 210px;
+    max-width: 280px;
+}
 }

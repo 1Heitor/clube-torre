@@ -794,7 +794,11 @@ textarea.form-control {
 
 @media (max-width: 768px) {
     .contact-hero {
-        min-height: 200px;
+        height: 10px;
+
+    }
+    .contact-hero {
+        min-height: 160px;
     }
     
     .contact-hero-content h1 {
