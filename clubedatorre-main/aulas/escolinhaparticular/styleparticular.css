@@ -184,6 +184,26 @@ body {
     transform: translateY(0);
   }
 }
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 30px); /* Reduz para duas colunas em telas menores */
+  }
+  
+  .hero{
+    background: url('imgfundomenor.png') center/cover no-repeat;
+  }
+  .hero-content h1 {
+    font-size: 3.1rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 2.3rem;
+  }
+}
 /* Responsividade */
 @media (max-width: 480px) {
   .card {

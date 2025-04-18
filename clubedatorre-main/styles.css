@@ -369,6 +369,9 @@ body {
     width: calc(50% - 30px); /* Reduz para duas colunas em telas menores */
   }
   
+  .hero{
+    background: url('imgshome/imgfundomenor.png') center/cover no-repeat;
+  }
   .hero-content h1 {
     font-size: 3.5rem;
   }
