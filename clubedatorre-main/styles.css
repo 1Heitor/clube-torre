@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-
-
+/* Estilos Básicos */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,7 @@ body {
   line-height: 1.6;
 }
 
-/* Animações de fade in */
+/* Animações */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -27,16 +26,55 @@ body {
   }
 }
 
+@keyframes waveFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .animate {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Quando o elemento estiver visível, a classe "visible" será adicionada */
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Estilos de Títulos e Seções */
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #0084ff;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #0084ff, #005bb5);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  color: #666666;
+  font-weight: 300;
 }
 
 /* Hero Section */
@@ -85,18 +123,19 @@ body {
   font-weight: 300;
 }
 
+/* Botões */
 .conhecer{
- padding: 17px 40px;
- border-radius: 50px;
- border: 0;
- background: linear-gradient(135deg, #0084ff, #005bb5);
- box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
- letter-spacing: 1.5px;
- text-transform: uppercase;
- font-size: 15px;
- transition: all .5s ease;
- color: white;
- font-weight: bold;
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: 0;
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
 }
 
 .conhecer:hover{
@@ -116,12 +155,64 @@ body {
   transition: 100ms;
 }
 
+.card-btn, .direction-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  color: #fff;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.2);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.card-btn:hover, .direction-btn:hover {
+  background: linear-gradient(135deg, #005bb5, #004a94);
+  box-shadow: 0 6px 15px rgba(0, 132, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.direction-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 132, 255, 0.3);
+}
+
+.direction-btn i {
+  margin-right: 8px;
+}
+
+.about-btn {
+  padding: 14px 35px;
+  border: 2px solid #0084ff;
+  border-radius: 50px;
+  background: transparent;
+  color: #0084ff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.1);
+}
+
+.about-btn:hover {
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 47, 255, 0.267);
+  transform: translateY(-3px);
+}
+
 /* Seção Services/Destaques */
 .services {
-  background-color: #fff; /* Fundo branco */
+  background-color: #fff;
   text-align: center;
   padding: 80px 0px;
-  margin-bottom: 40px; /* Espaço abaixo da seção */
+  margin-bottom: 40px;
 }
 
 .services .container {
@@ -130,40 +221,13 @@ body {
   padding: 0 20px;
 }
 
-.section-title {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-  color: #0084ff;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title:after {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #0084ff, #005bb5);
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 3px;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 50px;
-  color: #666666;
-  font-weight: 300;
-}
-
 /* Carrossel */
 .carousel-container {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 30px 0px; /* Espaço interno para separar os cards das bordas */
-  background-color: #ffffff; /* Cor de fundo leve para contraste */
+  padding: 30px 0px;
+  background-color: #ffffff;
 }
 
 .cards {
@@ -172,13 +236,13 @@ body {
   user-select: none;
   cursor: grab;
   overflow-x: scroll;
-  -ms-overflow-style: none; /* IE e Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   padding: 10px 0;
 }
 
 .cards::-webkit-scrollbar {
-  display: none; /* Chrome, Safari e Opera */
+  display: none;
 }
 
 .card {
@@ -188,9 +252,9 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
-  width: calc(25% - 30px); /* Ajuste o tamanho para caber em 4 colunas */
-  min-width: 300px; /* Define um tamanho mínimo */
-  margin: 10px; /* Espaçamento entre os cards */
+  width: calc(25% - 30px);
+  min-width: 300px;
+  margin: 10px;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -229,28 +293,7 @@ body {
   line-height: 1.6;
 }
 
-.card-btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #0084ff, #005bb5);
-  color: #fff;
-  border-radius: 50px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.2);
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-}
-
-.card-btn:hover {
-  background: linear-gradient(135deg, #005bb5, #004a94);
-  box-shadow: 0 6px 15px rgba(0, 132, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Botões de Navegação */
+/* Botões de Navegação do Carrossel */
 .carousel-button {
   background-color: rgba(255, 255, 255, 0.9);
   border: none;
@@ -287,211 +330,6 @@ body {
   right: 20px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .card {
-    width: calc(50% - 30px); /* Reduz para duas colunas em telas menores */
-    /* Estilos mobile adicionados */
-    flex: 0 0 auto;
-    margin: 0 auto; /* JS controla isso em configureMobileLayout */
-    width: 90%; /* JS controla isso em configureMobileLayout */
-    min-width: initial;
-    border: initial;
-  }
-  
-  /* Estilos mobile para o container dos cards */
-  .cards {
-    display: flex;
-    gap: 0; /* JS controla margem/largura */
-    overflow: hidden; /* Usa transform translateX, não scroll */
-    margin-bottom: 20px; 
-    padding-bottom: 60px; 
-    /* Reset do gap e margin-bottom do desktop */
-    gap: initial; 
-    margin-bottom: initial; 
-  }
-
-  .hero{
-    background: url('imgshome/imgfundomenor.png') center/cover no-repeat;
-  }
-  .hero-content h1 {
-    font-size: 3.5rem;
-  }
-  
-  .hero-content h2 {
-    font-size: 1.8rem;
-  }
-  
-  .section-title {
-    font-size: 2.3rem;
-  }
-
-  /* Estilos mobile para os botões */
-  .carousel-button {
-    width: 35px;
-    height: 35px;
-    font-size: 1.4rem;
-  }
-  .prev { left: 10px; }
-  .next { right: 10px; }
-
-  /* Estilos para os dots */
-  .carousel-dots {
-      display: flex; /* Mostra os dots em mobile */
-      justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
-      position: absolute; /* Para posicionar abaixo dos cards */
-      bottom: 40px; /* Ajuste a distância do fundo */
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-  }
-
-  .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #e0e0e0;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-  }
-
-  .dot.active {
-      background: #0084ff; /* Cor dos dots ativos */
-      transform: scale(1.2);
-  }
-
-  /* Aumenta a altura da imagem no mobile */
-  .card img {
-    height: 250px; /* Altura aumentada */
-  }
-}
-
-.map-info {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 350px;
-  height: 240px;
-  z-index: 10;
-  transition: all 0.3s ease;
-  text-align: left;
-}
-
-.map-info h3 {
-  font-size: 1.5rem;
-  color: #0084ff;
-  margin-bottom: -6px;
-  text-align: left;
-}
-
-.location-details {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.location-details i {
-  color: #0084ff;
-  margin-right: 10px;
-  font-size: 1.2rem;
-}
-
-.location-details p {
-  margin-bottom: 10px;
-  color: #555;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.direction-btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #0084ff, #005bb5);
-  color: white;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 132, 255, 0.2);
-  text-align: center;
-}
-
-.direction-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 132, 255, 0.3);
-}
-
-.direction-btn i {
-  margin-right: 8px;
-}
-
-.stars {
-  color: #FFD700;
-  font-size: 24px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.stars-text {
-  font-size: 18px;
-  color: #c2c0c0;
-  margin-right: 5px;
-  text-align: left;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .card {
-    width: calc(50% - 30px); /* Reduz para duas colunas em telas menores */
-  }
-  
-  .hero{
-    background: url('imgshome/imgfundomenor.png') center/cover no-repeat;
-  }
-  .hero-content h1 {
-    font-size: 3.5rem;
-  }
-  
-  .hero-content h2 {
-    font-size: 1.8rem;
-  }
-  
-  .section-title {
-    font-size: 2.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    width: calc(100% - 30px); /* Uma única coluna em dispositivos móveis */
-  }
-  
-  .hero-content h1 {
-    font-size: 2.8rem;
-  }
-  
-  .hero-content h2 {
-    font-size: 1.5rem;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .carousel-button {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-  }
-}
-
 /* Seção Sobre o Clube */
 .about {
   background-color: #f7f7f7;
@@ -499,7 +337,7 @@ body {
   padding: 80px 20px;
   position: relative;
   z-index: 1;
-  padding-bottom: 120px; /* espaço extra pro botão não encostar na onda */
+  padding-bottom: 120px;
 }
 
 .about-container {
@@ -535,36 +373,14 @@ body {
   font-weight: 300;
 }
 
-.about-btn {
-  padding: 14px 35px;
-  border: 2px solid #0084ff;
-  border-radius: 50px;
-  background: transparent;
-  color: #0084ff;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.1);
-}
-
-.about-btn:hover {
-  background: linear-gradient(135deg, #0084ff, #005bb5);
-  color: #fff;
-  box-shadow: 0 6px 15px rgba(0, 47, 255, 0.267);
-  transform: translateY(-3px);
-}
-
 /* Ondas no topo */
 .wave-top {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 40px; /* Curvatura suave */
-  z-index: 1; /* Coloca a onda acima do iframe */
+  height: 40px;
+  z-index: 1;
 }
 
 .custom-shape-divider {
@@ -595,7 +411,7 @@ body {
   background: linear-gradient(0deg, #ffffff 0%, #f7f7f7 100%);
 }
 
-/* Ajuste na seção do mapa para conectar com o divisor */
+/* Seção do Mapa */
 .map {
   position: relative;
   background: #ffffff;
@@ -722,14 +538,71 @@ body {
   border-radius: 20px;
 }
 
-/* ========== Ondas (wave dividers) ========== */
+.map-info {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  height: 240px;
+  z-index: 10;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.map-info h3 {
+  font-size: 1.5rem;
+  color: #0084ff;
+  margin-bottom: -6px;
+  text-align: left;
+}
+.justify-text {
+  text-align: justify;
+}
+
+.location-details {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.location-details i {
+  color: #0084ff;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.location-details p {
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.stars {
+  color: #FFD700;
+  font-size: 24px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.stars-text {
+  font-size: 18px;
+  color: #c2c0c0;
+  margin-right: 5px;
+  text-align: left;
+}
+
+/* Ondas (wave dividers) */
 .wave-section {
-  position: relative; /* Fundamental para posicionar a onda */
+  position: relative;
 }
 
 .wave-divider {
   position: absolute;
-  left: 0; /* cola na borda esquerda */
+  left: 0;
   width: 100%;
   line-height: 0;
   overflow: hidden;
@@ -741,82 +614,142 @@ body {
 
 .wave-bottom svg {
   display: block;
-  width: 100%; /* remove calc(100% + 1.3px) */
-  height: 80px; /* ajuste se quiser a onda mais alta ou baixa */
+  width: 100%;
+  height: 80px;
   animation: waveFloat 6s ease-in-out infinite;
 }
 
-/* Cada onda deve ter a cor do fundo da próxima seção */
+/* Cores de preenchimento das ondas */
 .hero .wave-bottom .shape-fill {
-  fill: #fff; /* Próxima seção .services é branca */
+  fill: #fff;
 }
 
 .services .wave-bottom .shape-fill {
-  fill: #f7f7f7; /* Próxima seção .about é #f7f7f7 */
+  fill: #f7f7f7;
 }
 
 .about .wave-bottom .shape-fill {
-  fill: #fff; /* Próxima seção .map é branca */
+  fill: #fff;
 }
 
 .map .wave-bottom .shape-fill {
-  fill: #0061b1; /* Footer é #0061b1 */
+  fill: #0061b1;
 }
 
-/* (Opcional) Animação sutil de flutuação da onda */
-@keyframes waveFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
+/* Media Queries */
 @media (max-width: 1200px) {
   .map-info {
-      height: 240px;
-      right: auto;
-      width: 80%;
-      margin-bottom: 30px;
-      margin-right: 30px;
+    height: 240px;
+    right: auto;
+    width: 80%;
+    margin-bottom: 30px;
+    margin-right: 30px;
   }
 }
+
 @media (max-width: 992px) {
-.map-info {
-  position: absolute;
-  top: 10px;
-  max-width: 300px;
-  background: rgb(255, 255, 255);
-  z-index: 10;
-  height: 220px;
-  border: 1px solid rgba(0, 132, 255, 0.2);
-}
+  .map-info {
+    position: absolute;
+    top: 10px;
+    max-width: 300px;
+    background: rgb(255, 255, 255);
+    z-index: 10;
+    height: 220px;
+    border: 1px solid rgba(0, 132, 255, 0.2);
+  }
 
-.map-info h3 {
-  font-size: 1.3rem;
-  margin-bottom: -6px;
-}
+  .map-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: -6px;
+  }
 
-.location-details p {
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-}
+  .location-details p {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
 
-.direction-btn {
-  padding: 10px 20px;
-  font-size: 0.85rem;
-}
+  .direction-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .map-title {
+  .hero {
+    background: url('imgshome/imgfundomenor.png') center/cover no-repeat;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-title, .map-title {
     font-size: 2.3rem;
   }
 
+  .card {
+    width: calc(50% - 30px);
+    flex: 0 0 auto;
+    margin: 0 auto;
+    width: 90%;
+    min-width: initial;
+    border: initial;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 60px;
+    gap: initial;
+    margin-bottom: initial;
+  }
+
+  .carousel-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.4rem;
+  }
+  
+  .prev { left: 10px; }
+  .next { right: 10px; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: #0084ff;
+    transform: scale(1.2);
+  }
+
+  .card img {
+    height: 250px;
+  }
+  
   .map-description {
     font-size: 1rem;
     padding: 0 20px;
@@ -829,16 +762,36 @@ body {
 
   #map-container {
     height: 400px;
-
-    
+  }
+  
+  .custom-shape-divider svg {
+    height: 80px;
   }
 }
 
 @media (max-width: 480px) {
-  .map-title {
+  .card {
+    width: calc(100% - 30px);
+  }
+  
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section-title, .map-title {
     font-size: 2rem;
   }
-
+  
+  .carousel-button {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+  }
+  
   .location-item {
     padding: 20px;
   }
@@ -846,46 +799,14 @@ body {
   #map-container {
     height: 300px;
   }
-  .map-info {
-    position: absolute;
-    top: 26px;
-    height: 210px;
-    max-width: 280px;
-    background: rgb(255, 255, 255);
-    z-index: 10;
-    border: 1px solid rgba(0, 132, 255, 0.2);
-}
-
-.map-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: -6px;
-    margin-top: -10px;
-}
-
-.location-details p {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-}
-
-.direction-btn {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-}
-}
-
-@media (max-width: 767px) {
-  .custom-shape-divider svg {
-    height: 80px;
-  }
-}
-
-@media (max-width: 480px) {
-  .custom-shape-divider svg {
-    height: 60px;
-  }
+  
   .map-info {
     top: 10px;
     height: 210px;
     max-width: 280px;
-}
+  }
+  
+  .custom-shape-divider svg {
+    height: 60px;
+  }
 }
