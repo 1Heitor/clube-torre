@@ -61,7 +61,7 @@ window.addEventListener('load', function() {
   function updateSlidePosition() {
     const carouselWidth = carousel.offsetWidth;
     let position = 0;
-
+    
     if (visibleCount === 1) {
         // Mobile: Calcula baseado na largura do viewport
         position = -currentGroup * carouselWidth;
@@ -154,7 +154,7 @@ window.addEventListener('load', function() {
     let currentPixelOffset = 0;
     if (visibleCount === 1) {
         const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
-        const cardGap = 20;
+      const cardGap = 20;
         currentPixelOffset = -currentGroup * (cardWidth + cardGap);
     } else {
          currentPixelOffset = -currentGroup * carouselWidth;
@@ -183,7 +183,7 @@ window.addEventListener('load', function() {
         const cardWidth = cards.length > 0 ? cards[0].offsetWidth : 0;
         threshold = cardWidth * 0.25; // Threshold de 25% da largura do card
     } else {
-        const carouselWidth = carousel.offsetWidth;
+      const carouselWidth = carousel.offsetWidth;
         threshold = carouselWidth * 0.2; // Threshold de 20% da largura do container
     }
 
@@ -230,7 +230,7 @@ window.addEventListener('load', function() {
   function initCarousel() {
     calculateVisibleCount();
     calculateGroupCount(); // Recalcula groupCount baseado em visibleCount
-
+    
     // CONFIGURAR LAYOUT APENAS PARA MOBILE
     if (visibleCount === 1) {
         // Mobile Layout 
@@ -251,13 +251,13 @@ window.addEventListener('load', function() {
         slides.style.gap = ''; // Usa gap do CSS
         slides.style.overflow = ''; // Usa overflow do CSS
         slides.style.width = ''; // Usa width do CSS
-        cards.forEach(card => {
+      cards.forEach(card => {
             card.style.width = '';
             card.style.margin = '';
             card.style.minWidth = ''; // Usa min-width do CSS
-        });
+      });
     }
-
+    
     updateDots();
     currentGroup = 0; // Sempre começa no 0 ao inicializar
     slides.style.transition = 'none';
@@ -281,7 +281,7 @@ window.addEventListener('load', function() {
         console.log(`Before resize: visibleCount=${visibleCount}, currentGroup=${currentGroup}, firstVisibleCardIndex=${firstVisibleCardIndex}`);
 
         // 2. Calcula novas contagens
-        calculateVisibleCount(); 
+      calculateVisibleCount();
         calculateGroupCount(); // Recalcula groupCount com base no novo visibleCount
         console.log(`After count calculation: visibleCount=${visibleCount}, groupCount=${groupCount}`);
 
@@ -324,12 +324,12 @@ window.addEventListener('load', function() {
         console.log('Layout reconfigured.');
 
         // 5. Atualiza os Dots 
-        updateDots();
+      updateDots();
         console.log('Dots updated.');
 
         // 6. Atualiza Posição SEM transição
         slides.style.transition = 'none';
-        updateSlidePosition();
+      updateSlidePosition();
         console.log('Position updated.');
 
     }, 250);

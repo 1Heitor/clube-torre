@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
+
+
 * {
   margin: 0;
   padding: 0;
@@ -168,7 +170,6 @@ body {
   display: flex;
   gap: 30px;
   user-select: none;
-  touch-action: pan-x;
   cursor: grab;
   overflow-x: scroll;
   -ms-overflow-style: none; /* IE e Edge */
@@ -284,6 +285,88 @@ body {
 
 .next {
   right: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 30px); /* Reduz para duas colunas em telas menores */
+    /* Estilos mobile adicionados */
+    flex: 0 0 auto;
+    margin: 0 auto; /* JS controla isso em configureMobileLayout */
+    width: 90%; /* JS controla isso em configureMobileLayout */
+    min-width: initial;
+    border: initial;
+  }
+  
+  /* Estilos mobile para o container dos cards */
+  .cards {
+    display: flex;
+    gap: 0; /* JS controla margem/largura */
+    overflow: hidden; /* Usa transform translateX, não scroll */
+    margin-bottom: 20px; 
+    padding-bottom: 60px; 
+    /* Reset do gap e margin-bottom do desktop */
+    gap: initial; 
+    margin-bottom: initial; 
+  }
+
+  .hero{
+    background: url('imgshome/imgfundomenor.png') center/cover no-repeat;
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 2.3rem;
+  }
+
+  /* Estilos mobile para os botões */
+  .carousel-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.4rem;
+  }
+  .prev { left: 10px; }
+  .next { right: 10px; }
+
+  /* Estilos para os dots */
+  .carousel-dots {
+      display: flex; /* Mostra os dots em mobile */
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      position: absolute; /* Para posicionar abaixo dos cards */
+      bottom: 40px; /* Ajuste a distância do fundo */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+  }
+
+  .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .dot.active {
+      background: #0084ff; /* Cor dos dots ativos */
+      transform: scale(1.2);
+  }
+
+  /* Aumenta a altura da imagem no mobile */
+  .card img {
+    height: 250px; /* Altura aumentada */
+  }
 }
 
 .map-info {
