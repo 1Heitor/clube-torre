@@ -148,6 +148,8 @@ body {
   margin-bottom: 35px;
   color: #444;
   font-weight: 300;
+  padding: 0 15px; /* Adicionar padding lateral */
+  text-align: justify; /* Justificar texto */
 }
 
 @keyframes gradientShift {
@@ -307,7 +309,7 @@ body {
   background: url('historiaimgs/fundomissao.png') center/cover no-repeat;
   background-color: #003da5;
   position: relative;
-  height: 1200px;
+  min-height: 1000px;
   width: 100%;
   padding: 0; /* Remove padding para permitir que as ondas determinem os limites */
   color: #fff;
@@ -327,7 +329,6 @@ body {
 
 .wave-top img {
   width: 100%;
-
   display: block;
 }
 
@@ -370,12 +371,21 @@ body {
 .missao .card-container {
   width: 90%;
   max-width: 1200px;
-  margin-left: 100px;
+  margin-left: auto; /* Centralizar */
+  margin-right: auto; /* Centralizar */
+  display: flex; /* Garantir flex */
+  justify-content: space-around; /* Espaçar */
+  flex-wrap: wrap; /* Permitir quebra de linha */
+  align-items: center; /* Alinhar verticalmente */
 }
 
 .missao .card-column {
   width: 45%;
-  align-items: center;
+  min-width: 280px; /* Largura mínima */
+  display: flex; /* Habilitar flex */
+  flex-direction: column; /* Organizar verticalmente */
+  align-items: center; /* Centralizar itens */
+  margin-bottom: 30px; /* Espaço abaixo */
 }
 
 .card-player {
@@ -542,9 +552,11 @@ body {
   line-height: 1.8;
   text-align: justify;
   color: #fff;
+  padding: 0 10px; /* Padding lateral */
 }
 
 /* Estilos específicos para os texto-missao baseados nos inline styles */
+/*
 .missao .card-column:last-child .texto-missao:nth-of-type(1) {
   margin-right: 500px;
 }
@@ -552,22 +564,26 @@ body {
 .missao .card-column:last-child .texto-missao:nth-of-type(2) {
   margin-right: 200px;
 }
+*/
 
 /* Responsividade para a seção missão */
 @media (max-width: 992px) {
   .missao .card-container {
     flex-direction: column;
     align-items: center;
+    margin-left: 0;
+    width: 100%; /* Ocupar largura total */
+    padding: 0 15px; /* Adicionar padding */
   }
   
   .missao .card-column {
-    width: 90%;
+    width: 90%; /* Ajustar largura */
+    max-width: 950px; /* Largura máxima */
     margin: 20px 0 !important;
   }
   
   .missao {
     height: auto;
-    padding-bottom: 80px;
   }
 }
 
@@ -578,6 +594,7 @@ body {
   
   .card-player {
     margin: 0 auto;
+    padding: 0 20px;
   }
   
   .texto-missao {
@@ -587,11 +604,393 @@ body {
   .texto-missao p {
     font-size: 1rem;
   }
+
+  .missao .card-column:last-child .texto-missao:nth-of-type(1),
+  .missao .card-column:last-child .texto-missao:nth-of-type(2) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content h1 {
+    font-size: 2.2rem; /* Reduzir um pouco mais */
+  }
+
+  .about {
+    height: auto; /* Altura automática */
+    padding: 40px 15px; /* Adicionar padding */
+    margin-top: 50px; /* Reduzir margem superior */
+  }
+
+  .about h2 {
+    font-size: 2rem; /* Ajustar tamanho */
+  }
+
+  .about p {
+    font-size: 1rem; /* Ajustar tamanho */
+  }
+
+  .missao {
+    padding: 40px 0 60px; /* Ajustar padding, adicionar bottom */
+    height: auto; /* Altura automática */
+  }
+
+  .missao-content {
+    padding: 30px 15px; /* Adicionar padding horizontal */
+  }
+
+  .missao-header h2 {
+    font-size: 2rem;
+  }
+
+  .card-player {
+    width: 90%; /* Ajustar largura */
+    max-width: 300px; /* Definir largura máxima */
+    padding: 0 10px;
+    margin: 20px auto; /* Centralizar e adicionar margem */
+    transform: scale(1); /* Resetar escala */
+  }
+
+  #card-carlinhos, #card-pedro {
+    width: 90%; /* Usar porcentagem */
+    max-width: 300px;
+    height: auto; /* Altura automática */
+    left: 0; /* Resetar posição */
+    top: 0; /* Resetar posição */
+    margin: 20px auto; /* Centralizar */
+    position: relative; /* Mudar para relativo para fluxo normal */
+  }
+
+  .missao .card-container {
+    width: 100%;
+    margin-left: 0; /* Resetar margem */
+    flex-direction: column; /* Garantir coluna */
+    align-items: center; /* Centralizar itens */
+  }
+
+  .missao .card-column {
+    width: 100%;
+    display: flex; /* Usar flex */
+    flex-direction: column; /* Empilhar cards */
+    align-items: center; /* Centralizar cards */
+    margin: 0 !important; /* Resetar margens !important */
+  }
+
+  .texto-missao {
+    padding: 15px;
+    width: 100%; /* Ocupar largura total */
+    text-align: center; /* Centralizar texto */
+  }
+
+  .texto-missao p {
+    font-size: 0.9rem;
+    text-align: justify; /* Justificar parágrafos */
+  }
+
+  /* Metodologia */
+  .metodolgia {
+    padding: 40px 15px 0; /* Adicionar padding */
+    height: auto; /* Altura automática */
+  }
+
+  .metodologia-container {
+    flex-direction: column; /* Empilhar */
+    height: auto; /* Altura automática */
+    padding: 0; /* Remover padding interno */
+    align-items: center; /* Centralizar itens */
+  }
+
+  .texto-metodologia {
+    width: 100%; /* Largura total */
+    padding-right: 0; /* Remover padding */
+    text-align: center; /* Centralizar */
+    margin-bottom: 30px; /* Adicionar espaço abaixo */
+  }
+
+  .texto-metodologia h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+    text-align: center;
+  }
+
+  .texto-metodologia p {
+    font-size: 1rem; /* Ajustar tamanho */
+    text-align: justify;
+  }
+
+  .metodolgia .card-container {
+    width: 100%; /* Largura total */
+    flex-direction: column; /* Empilhar colunas */
+    align-items: center; /* Centralizar */
+  }
+
+  .metodolgia .card-column {
+    width: 100%; /* Largura total */
+    max-width: 350px; /* Limitar largura */
+    margin-top: 0; /* Remover margens */
+  }
+
+  .metodolgia .card {
+    height: auto; /* Altura automática */
+    min-height: 300px; /* Altura mínima */
+  }
+
+  .divider {
+    margin-bottom: -50px; /* Ajustar sobreposição da onda */
+  }
+
+  .divider img {
+    height: auto; /* Altura automática */
+  }
+
+
+  /* Projeto */
+  .projeto {
+    padding: 60px 15px 40px; /* Adicionar padding */
+    margin-top: 50px; /* Adicionar espaço acima */
+  }
+
+  .projeto-container {
+    padding: 0; /* Remover padding interno */
+  }
+
+  .projeto-header {
+    display: block; /* Empilhar */
+    padding-left: 0; /* Remover padding */
+    margin-top: 0; /* Remover margem */
+    margin-bottom: 30px; /* Adicionar espaço abaixo */
+  }
+
+  .bola {
+    /* Opcional: esconder a bola em telas muito pequenas */
+    /* display: none; */
+    width: 250px; /* Reduzir tamanho */
+    height: 250px;
+    left: 50%; /* Centralizar */
+    transform: translateX(-50%); /* Centralizar */
+    top: -100px; /* Ajustar posição vertical */
+    filter: drop-shadow(0 10px 15px rgba(8, 135, 255, 0.3)); /* Sombra menor */
+  }
+
+  .bola:before {
+    /* Ajustar efeito de água ou remover */
+     display: none;
+  }
+
+  .projeto-titulo {
+    width: 100%; /* Largura total */
+    padding-right: 0; /* Remover padding */
+    margin-left: 0; /* Remover margem */
+    text-align: center; /* Centralizar */
+  }
+
+  .projeto-titulo h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+    text-align: center; /* Centralizar */
+    margin-left: 0; /* Remover margem */
+  }
+
+  .projeto-titulo p {
+    width: 100%; /* Largura total */
+    margin-left: auto; /* Resetar margem */
+    margin-right: auto; /* Resetar margem */
+    font-size: 1rem; /* Ajustar tamanho */
+    text-align: justify;
+  }
+
+  .projeto-content {
+    flex-direction: column; /* Empilhar */
+    padding-right: 0; /* Remover padding */
+    margin-top: 30px; /* Adicionar espaço */
+  }
+
+  .projeto-text-column {
+    width: 100%; /* Largura total */
+    padding-right: 0; /* Remover padding */
+    margin-bottom: 30px; /* Espaço abaixo */
+    text-align: center; /* Centralizar */
+  }
+
+  .projeto-text-column h2 {
+    text-align: center; /* Centralizar */
+    font-size: 1.5rem; /* Ajustar tamanho */
+  }
+
+  .projeto-text-column p {
+    font-size: 1rem; /* Ajustar tamanho */
+    text-align: justify;
+  }
+
+  .projeto-img-column {
+    width: 100%; /* Largura total */
+  }
+
+  .projeto-img-column img {
+     height: auto; /* Altura automática */
+     max-height: 400px; /* Limitar altura máxima */
+     object-fit: cover; /* Cobrir container */
+  }
+
+  /* Objetivos */
+  .objetivos {
+    padding: 40px 15px; /* Adicionar padding */
+  }
+
+  .objetivos-container {
+     padding: 0; /* Remover padding interno */
+  }
+
+  .textocompromisso h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+  }
+
+  .textocompromisso h3 {
+    font-size: 1.3rem; /* Ajustar tamanho */
+  }
+
+  .textocompromisso p {
+    font-size: 1rem; /* Ajustar tamanho */
+  }
+
+  .graficos h2 {
+    font-size: 1.5rem; /* Ajustar tamanho */
+  }
+
+  .grafico {
+    height: 200px; /* Reduzir altura */
+    margin-bottom: 40px; /* Ajustar margem */
+  }
+
+  .numeros {
+    width: 100%; /* Largura total */
+    margin-bottom: 15px; /* Adicionar espaço */
+  }
+  .numeros h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+  }
+  .numeros h4 {
+    font-size: 0.9rem; /* Ajustar tamanho */
+  }
+}
+
+@media (max-width: 414px) {
+  .hero-content h1 {
+    font-size: 2rem; /* Reduzir mais */
+  }
+  .about h2 {
+    font-size: 1.8rem;
+  }
+  .about p {
+    font-size: 0.95rem;
+  }
+
+  .missao-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .card-player {
+    transform: scale(1); /* Manter escala normal */
+  }
+
+  .texto-missao {
+    padding: 10px;
+  }
+  .texto-missao p {
+     font-size: 0.85rem;
+  }
+
+  .metodolgia .card h3 {
+    font-size: 1.1rem;
+  }
+  .metodolgia .card p {
+     font-size: 0.9rem;
+  }
+
+  .projeto-titulo h1 {
+    font-size: 1.8rem;
+  }
+   .projeto-titulo p {
+    font-size: 0.95rem;
+   }
+   .projeto-text-column h2 {
+     font-size: 1.4rem;
+   }
+   .projeto-text-column p {
+     font-size: 0.95rem;
+   }
+
+  .textocompromisso h1 {
+     font-size: 1.8rem;
+   }
+  .textocompromisso h3 {
+    font-size: 1.2rem;
+  }
+  .textocompromisso p {
+    font-size: 0.95rem;
+  }
+   .graficos h2 {
+    font-size: 1.4rem;
+  }
+  .numeros h1 {
+     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 375px) {
+   .hero-content h1 {
+    font-size: 1.8rem; /* Reduzir mais */
+  }
+   .about h2 {
+    font-size: 1.6rem;
+  }
+
+  .missao-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .card-player {
+    transform: scale(1); /* Manter escala normal */
+  }
+  .metodolgia .card {
+     padding: 20px 10px;
+  }
+   .metodolgia .card h3 {
+    font-size: 1rem;
+  }
+  .metodolgia .card p {
+     font-size: 0.85rem;
+  }
+   .projeto-titulo h1 {
+    font-size: 1.6rem;
+  }
+   .projeto-titulo p {
+    font-size: 0.9rem;
+   }
+   .projeto-text-column h2 {
+     font-size: 1.3rem;
+   }
+   .projeto-text-column p {
+     font-size: 0.9rem;
+   }
+   .textocompromisso h1 {
+     font-size: 1.6rem;
+   }
+  .textocompromisso h3 {
+    font-size: 1.1rem;
+  }
+  .textocompromisso p {
+    font-size: 0.9rem;
+  }
+   .graficos h2 {
+    font-size: 1.3rem;
+  }
+   .numeros h1 {
+     font-size: 1.6rem;
+  }
 }
 
 /* Ajuste para a seção metodologia */
 .metodolgia {
-  padding: 60px 0 0; /* Remove padding bottom para a wave sobrepor */
+  padding: 60px 15px 0; /* Adicionar padding lateral */
   background-color: white;
   position: relative;
   z-index: 1;
@@ -601,7 +1000,7 @@ body {
 .metodologia-container {
   max-width: 1200px;
   margin: 0 auto;
-  height: 580px;
+  min-height: 580px;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -627,6 +1026,7 @@ body {
   line-height: 1.6;
   margin-bottom: 30px;
   text-align: justify;
+  padding: 0 5px; /* Adicionar padding mínimo */
 }
 
 .texto-metodologia button {
@@ -675,34 +1075,59 @@ body {
 
 .metodolgia .card {
   width: 100%;
-  height: 320px; /* Altura aumentada */
-  background: linear-gradient(to bottom, #e4f2ff, #c0e0ff);
+  min-height: 320px;
+  background-color: #fff;
   border-radius: 30px;
   margin: 0 0 20px;
   padding: 30px 15px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(8, 135, 255, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 153, 255, 0.171);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Adicionar de volta os estilos de hover e imagens para os cards */
+.metodolgia .card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(135deg, #52ACFF, #0687FF);
+  transition: 0.8s;
+  z-index: 0;
+  border-radius: 30px;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+.metodolgia .card:hover::before {
+  height: 100%;
+  transform: scaleY(1);
+}
+
 .metodolgia .card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 15px 35px rgba(8, 135, 255, 0.25);
+  transform: translate(5px, 5px);
+  box-shadow: 0 15px 35px rgba(0, 47, 255, 0.363);
 }
 
 .metodolgia .card img {
   width: 70px;
   height: 70px;
   margin-bottom: 25px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.9);
+  position: relative;
+  z-index: 1;
 }
 
 .metodolgia .card:hover img {
   transform: scale(1.1);
+  filter: brightness(1.1);
 }
 
 .metodolgia .card h3 {
@@ -710,12 +1135,26 @@ body {
   font-size: 1.2rem;
   margin-bottom: 20px;
   font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
 }
 
 .metodolgia .card p {
-  color: #666;
+  color: #555;
   font-size: 0.95rem;
   line-height: 1.5;
+  text-align: justify;
+  padding: 0 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.metodolgia .card:hover h3,
+.metodolgia .card:hover p {
+  color: #fff;
+  transform: translate(2px, 2px);
 }
 
 .divider {
@@ -755,33 +1194,39 @@ body {
 
 .projeto-container {
   max-width: 1200px;
+  max-height: 1300px;
   margin: 0 auto;
   padding: 0 0px;
 }
 
 .projeto-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
   margin-bottom: 50px;
   position: relative;
-  padding-left: 480px; /* Mais espaço à esquerda */
   margin-top: 100px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  min-height: 300px;
 }
 
 /* Corrigindo a posição da bola para não sair da tela */
 .bola {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   flex-shrink: 0;
   background: url('historiaimgs/bolafogo.png') no-repeat center center;
   background-size: contain;
   animation: float 6s ease-in-out infinite;
   filter: drop-shadow(0 15px 20px rgba(8, 135, 255, 0.4));
   z-index: 15;
-  margin-right: 0;
-  left: 90px; /* Ajustado para não sair da tela */
-  top: -220px; /* Ajustado para aparecer mais sobre a wave */
+  left: 40px;
+  top: -180px;
 }
 
 /* Ajuste no efeito de água para acompanhar a nova posição */
@@ -802,16 +1247,15 @@ body {
 
 .projeto-titulo {
   flex: 1;
-  text-align: right; /* Alinhando à direita */
-  padding-right: 50px; /* Espaço à direita */
+  text-align: right;
+  padding-right: 50px;
 }
 
 .projeto-titulo h1 {
   color: #0887ff;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  text-align: left; 
-  margin-left: 120px;/* Alinhando à direita */
+  text-align: right;
 }
 
 .projeto-titulo p {
@@ -821,26 +1265,26 @@ body {
   margin-bottom: 30px;
   text-align: justify;
   width: 550px;
-  margin-left: auto; /* Empurra para a direita */
+  margin-left: auto;
 }
 
 .projeto-content {
   display: flex;
   margin-top: 50px;
-  padding-right: 50px; /* Espaço à direita */
-  align-items: stretch; /* Esticar para alinhar verticalmente */
+  padding-right: 50px;
+  align-items: stretch;
 }
 
 .projeto-text-column {
   width: 50%;
-  padding-right: 30px; /* Restaurar algum espaçamento */
+  padding-right: 30px;
 }
 
 .projeto-text-column h2 {
   color: #0887ff;
   font-size: 1.8rem;
   margin-bottom: 20px;
-  text-align: left; /* Manter alinhado à esquerda */
+  text-align: left;
 }
 
 .projeto-text-column p {
@@ -895,18 +1339,18 @@ body {
 
 .wave-dividermeto {
   width: 100%;
-  overflow: hidden; /* Impedir que a imagem cause overflow */
+  overflow: hidden;
 }
 
 .wave-dividermeto img {
   width: 100%;
   display: block;
-  max-width: 100%; /* Garantir que a imagem não ultrapasse o container */
+  max-width: 100%;
 }
 
 /* Seção Objetivos/Compromisso Social */
 .objetivos {
-  background-color: #0084ff; /* Cor mais próxima da imagem */
+  background-color: #0084ff;
   color: white;
   padding: 30px 0 60px;
   position: relative;
@@ -963,7 +1407,6 @@ body {
 .graficos {
   width: 48%;
   padding: 20px;
-
 }
 
 .graficos h2 {
@@ -1074,6 +1517,7 @@ body {
 
 /* Media queries para responsividade */
 @media (max-width: 992px) {
+
   .objetivos-container {
     flex-direction: column;
   }
@@ -1152,11 +1596,14 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
+.card:hover{
+  transition: 0.2s;
+}
 .card.visible {
   opacity: 1;
   transform: translateY(0);
   transition-delay: calc(var(--order, 0) * 0.2s);
+  text-align: justify;
 }
 
 .card:nth-child(1) {
@@ -1220,6 +1667,7 @@ body {
   height: 350px;
   margin-top: 100px;
   left: -80px;
+  position: relative;
 }
 
 #card-pedro {
@@ -1227,4 +1675,332 @@ body {
   height: 350px;
   left: 80px;
   top: 40px;
+  position: relative;
+}
+
+/* Adicionando media query para 1060px */
+@media (max-width: 1060px) {
+  .metodologia-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .texto-metodologia {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .texto-metodologia h1 {
+    text-align: center;
+  }
+
+  .metodolgia .card-container {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .metodolgia .card-column {
+    width: 48%;
+    margin-top: 0 !important;
+  }
+
+  .metodolgia .card-column:first-child,
+  .metodolgia .card-column:last-child {
+    margin-top: 0;
+  }
+
+  .metodolgia .card {
+    height: auto;
+    min-height: 300px;
+  }
+
+  .projeto-header {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 80px;
+    gap: 0;
+    min-height: 0;
+  }
+
+  .bola {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -150px;
+    width: 350px;
+    height: 350px;
+    animation: none;
+  }
+  .bola:before {
+    display: none;
+  }
+
+  .projeto-titulo {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    padding-right: 0;
+    margin-left: 0;
+  }
+
+  .projeto-titulo h1 {
+    text-align: center;
+    margin-left: 0;
+  }
+   .projeto-titulo p {
+     margin-left: auto;
+     margin-right: auto;
+     padding: 0 15px;
+   }
+
+
+  .projeto-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .projeto-text-column {
+    width: 100%;
+    max-width: 700px;
+    padding-right: 0;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+   .projeto-text-column h2 {
+     text-align: center;
+   }
+   .projeto-text-column p {
+     padding: 0 10px;
+   }
+
+  .projeto-img-column {
+    width: 100%;
+    max-width: 700px;
+  }
+  .projeto-img-column img {
+    max-height: 450px;
+  }
+}
+
+/* Ajustes adicionais na media query de 992px se necessário */
+@media (max-width: 992px) {
+  .metodolgia .card-column {
+    width: 45%;
+    min-width: 250px;
+  }
+   .bola {
+     width: 320px;
+     height: 320px;
+     top: -140px;
+     
+   }
+   .projeto-titulo p {
+    width: 100%;
+    margin:0px;
+   }}
+
+
+@media (max-width: 768px) {
+  .about p {
+    padding: 0 10px;
+  }
+  .missao .card-column {
+    width: 90%;
+    max-width: 400px;
+  }
+  .texto-missao p {
+    padding: 0 5px;
+  }
+
+  .metodolgia .card-container {
+     flex-direction: column;
+     align-items: center;
+  }
+  .metodolgia .card-column {
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  .metodolgia .card {
+    min-height: auto;
+  }
+
+   .bola {
+     width: 300px;
+     height: 300px;
+     top: -130px;
+   }
+
+   .projeto-titulo p {
+     padding: 0 10px;
+   }
+   .projeto-text-column p {
+     padding: 0 5px;
+   }
+   .projeto-img-column img {
+    max-height: 400px;
+   }
+   .textocompromisso p {
+    padding: 0;
+   }}
+
+@media (max-width: 576px) {
+  .about p {
+    font-size: 1rem;
+    padding: 0 5px;
+    text-align: justify;
+  }
+
+  .missao .card-column {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .texto-missao p {
+    font-size: 0.9rem;
+    text-align: justify;
+    padding: 0;
+  }
+
+  /* Metodologia */
+  .metodolgia {
+    padding: 40px 15px 0;
+    height: auto;
+  }
+
+  .metodologia-container {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    align-items: center;
+  }
+
+  .texto-metodologia {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .texto-metodologia h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .texto-metodologia p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0 5px;
+  }
+
+  .metodolgia .card-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .metodolgia .card-column {
+    width: 100%;
+    max-width: 350px;
+    margin-top: 0;
+  }
+
+  .bola {
+    width: 280px;
+    height: 280px;
+    top: -120px;
+  }
+
+  .projeto-titulo p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0 5px;
+  }
+
+  .projeto-text-column p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0;
+  }
+
+  .projeto-img-column img {
+     height: auto;
+     max-height: 300px;
+     object-fit: cover;
+  }
+
+  .textocompromisso p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0;
+  }
+}
+
+@media (max-width: 414px) {
+  .about p {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+  .texto-missao p {
+     font-size: 0.85rem;
+     text-align: justify;
+  }
+   .texto-metodologia p {
+     font-size: 0.95rem;
+     text-align: justify;
+   }
+
+   .projeto-titulo p {
+    font-size: 0.95rem;
+    text-align: justify;
+   }
+
+   .projeto-text-column p {
+     font-size: 0.95rem;
+     text-align: justify;
+   }
+
+  .textocompromisso p {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+}
+
+@media (max-width: 375px) {
+  .about p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .metodolgia .card p {
+     font-size: 0.85rem;
+     text-align: center;
+  }
+  .texto-metodologia p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .projeto-titulo p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .projeto-text-column p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .textocompromisso p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
 }
