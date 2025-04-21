@@ -384,14 +384,12 @@ margin-top: 100px;
 
 /* Estilo para o "post" do Instagram à esquerda */
 .foto {
-  width: 35%;
-  padding: 20px;
+  width: 30%;
 }
 
 .foto img {
   max-width: 100%;
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
