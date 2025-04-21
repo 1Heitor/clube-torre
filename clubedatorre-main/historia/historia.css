@@ -15,6 +15,8 @@
   --sombra: 0 10px 30px rgba(0, 0, 0, 0.1);
   --gradiente-azul: linear-gradient(135deg, var(--azul-claro), var(--azul-escuro));
   --transicao: all 0.3s ease;
+    --card-height: 300px;
+    --card-width: calc(var(--card-height) / 1.5);
 }
 
 body {
@@ -31,7 +33,6 @@ body {
     font-style: normal;
      }
   /* Animações de fade in */
-/* Animações de fade in */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -60,7 +61,7 @@ body {
   position: relative;
   height: 100vh;
   min-height: 550px;
-  background: url('imgs/imgback.jpg') center/cover no-repeat;
+  background: url('historiaimgs/fundo.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,13 +107,14 @@ body {
   display: inline-block;
 }
 
+/* Seção Sobre o Clube */
 .about {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   text-align: center;
-  padding: 80px 20px;
   position: relative;
   z-index: 1;
- /* espaço extra pro botão não encostar na onda */
+  height: 400px;
+  margin-top: 100px;
 }
 
 .about-container {
@@ -141,7 +143,7 @@ body {
 }
 
 .about p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.8;
   margin-bottom: 35px;
   color: #444;
@@ -278,36 +280,6 @@ body {
   transition: 100ms;
 }
 
-/* Seção Sobre o Clube */
-.about {
-  background-color: #ffffff;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  height: 400px;
-margin-top: 100px;
-}
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about h2 {
-  font-size: 2.8rem;
-  margin-bottom: 25px;
-  color: #0084ff;
-  position: relative;
-  display: inline-block;
-}
-
-.about p {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  margin-bottom: 35px;
-  color: #444;
-  font-weight: 300;
-}
 .about-btn {
   padding: 14px 35px;
   border: 2px solid #0084ff;
@@ -335,6 +307,7 @@ margin-top: 100px;
   background: url('historiaimgs/fundomissao.png') center/cover no-repeat;
   background-color: #003da5;
   position: relative;
+  height: 1200px;
   width: 100%;
   padding: 0; /* Remove padding para permitir que as ondas determinem os limites */
   color: #fff;
@@ -375,51 +348,246 @@ margin-top: 100px;
 /* Conteúdo principal entre as ondas */
 .missao-content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   padding: 60px 0; /* Espaço acima e abaixo do conteúdo */
   width: 100%;
 }
 
-/* Estilo para o "post" do Instagram à esquerda */
-.foto {
-  width: 30%;
+.missao-header {
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
-.foto img {
-  max-width: 100%;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
-
-.foto img:hover {
-  transform: scale(1.02);
-}
-
-/* Estilo para o texto à direita */
-.texto-missao {
-  width: 55%;
-  padding: 20px;
-}
-
-.texto-missao h2 {
+.missao-header h2 {
   font-size: 3.5rem;
-  margin-bottom: 0px;
   color: #ffffff;
   font-family: 'bluestar', cursive;
-  text-align: start; /* Centraliza o título, conforme imagem */
+}
+
+/* Estrutura de cards na seção missão */
+.missao .card-container {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: 100px;
+}
+
+.missao .card-column {
+  width: 45%;
+  align-items: center;
+}
+
+.card-player {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 36px;
+  perspective: 2500px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wrapper {
+  transition: all 0.5s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wrapper[data-image] {
+  background-image: url('');
+}
+
+.wrapper[data-image="escolha/fotocarlinhos.png"] {
+  background-image: url('escolha/fotocarlinhos.png');
+}
+
+.wrapper[data-image="escolha/fotopedro.png"] {
+  background-image: url('escolha/fotopedro.png');
+}
+
+.card-player:hover .wrapper,
+.card-player.selected .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(2, 18, 109, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 119, 255, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(2, 31, 112, 0.75);
+  background-image: url('escolha/torrefundo.png');
+  transition: 0.7s;
+}
+
+.card-player.selected {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0, 119, 255, 0.6);
+}
+
+.card-player.selected::after {
+  content: "Selecionado ✓ ";
+  position: absolute;
+  font-family: 'bluestar';	
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #00a2ff;
+  background-color: rgb(255, 255, 255);
+  width: 150px;
+  box-shadow: 0 0 10px rgba(11, 2, 133, 0.5);
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.wrapper::before,
+.wrapper::after {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 80px;
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+}
+.wrapper::before {
+  top: 0;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+.wrapper::after {
+  bottom: 0;
+  opacity: 1;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+
+.card-player:hover .wrapper::before,
+.card-player.selected .wrapper::before,
+.wrapper::after {
+  opacity: 1;
+}
+
+.card-player:hover .wrapper::after,
+.card-player.selected .wrapper::after {
+  height: 120px;
+}
+.title-character {
+  width: 100%;
+  opacity: 0;
+  transition: transform 0.8s, opacity 0.5s;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  z-index: 1;
+}
+.escolhaseupersonagem {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  z-index: 1;
+}
+.card-player:hover .escolhaseupersonagem {
+  opacity: 0;
+}
+.card-player:hover .title-character,
+.card-player.selected .title-character {
+  opacity: 1;
+  transition: transform 0.8s, opacity 0.5s;
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.character {
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  z-index: -1;
+}
+
+.card-player:hover .character,
+.card-player.selected .character {
+  opacity: 1;
+  transform: translate3d(0%, -30%, 100px);
+}
+.texto-missao {
+  width: 100%;
+  padding: 30px;
+  margin: 20px 0;
 }
 
 .texto-missao p {
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 25px;
   text-align: justify;
   color: #fff;
 }
 
+/* Estilos específicos para os texto-missao baseados nos inline styles */
+.missao .card-column:last-child .texto-missao:nth-of-type(1) {
+  margin-right: 500px;
+}
 
+.missao .card-column:last-child .texto-missao:nth-of-type(2) {
+  margin-right: 200px;
+}
+
+/* Responsividade para a seção missão */
+@media (max-width: 992px) {
+  .missao .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .missao .card-column {
+    width: 90%;
+    margin: 20px 0 !important;
+  }
+  
+  .missao {
+    height: auto;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .missao-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .card-player {
+    margin: 0 auto;
+  }
+  
+  .texto-missao {
+    padding: 20px;
+  }
+  
+  .texto-missao p {
+    font-size: 1rem;
+  }
+}
 
 /* Ajuste para a seção metodologia */
 .metodolgia {
@@ -480,34 +648,29 @@ margin-top: 100px;
   box-shadow: 0 5px 15px rgba(8, 135, 255, 0.3);
 }
 
+/* Container Geral de Cards (usado em metodologia, pode ser usado em missão) */
 .card-container {
-  width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
+  width: 60%;
 }
 
+/* Coluna Geral de Cards (usado em metodologia, pode ser usado em missão) */
+.card-column {
+  display: flex;
+  flex-direction: column;
+  width: 42%;
+}
+
+/* Deslocamento padrão das colunas (usado em metodologia) */
 .card-column:first-child {
-  margin-top: -40px; /* Move a primeira coluna para cima */
+  margin-top: -40px;
 }
 
 .card-column:last-child {
-  margin-top: 40px; /* Move a segunda coluna para baixo */
-}
-
-/* Restaurar a definição de card-column */
-.card-column {
-  width: 48%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Reduzir a largura dos cards */
-.card-column {
-  width: 42%; /* Redução da largura */
-  display: flex;
-  flex-direction: column;
+  margin-top: 40px;
 }
 
 .metodolgia .card {
@@ -713,6 +876,7 @@ margin-top: 100px;
 
 .projeto-img-column img {
   width: 100%;
+  height: 580px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
@@ -824,34 +988,43 @@ margin-top: 100px;
 }
 
 .grafico svg path {
-  animation: drawPath 3s ease-in-out forwards;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
+.grafico.visible svg path {
+  stroke-dashoffset: 0;
 }
 
 .grafico svg circle {
-  animation: fadeInDot 0.5s ease-in-out forwards;
   opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.grafico.visible svg circle {
+  opacity: 1;
+  transition-delay: calc(var(--order, 0) * 0.3s);
 }
 
 .grafico svg circle:nth-child(1) {
-  animation-delay: 0.5s;
+  --order: 1;
 }
 
 .grafico svg circle:nth-child(2) {
-  animation-delay: 1s;
+  --order: 2;
 }
 
 .grafico svg circle:nth-child(3) {
-  animation-delay: 1.5s;
+  --order: 3;
 }
 
 .grafico svg circle:nth-child(4) {
-  animation-delay: 2s;
+  --order: 4;
 }
 
 .grafico svg circle:nth-child(5) {
-  animation-delay: 2.5s;
+  --order: 5;
 }
 
 @keyframes drawPath {
@@ -1024,48 +1197,6 @@ margin-top: 100px;
   --order: 3;
 }
 
-/* Adicionar animação para a linha do gráfico */
-.grafico svg path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 2s ease-out;
-}
-
-.grafico.visible svg path {
-  stroke-dashoffset: 0;
-}
-
-/* Adicionar animação para os pontos do gráfico */
-.grafico svg circle {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-
-.grafico.visible svg circle {
-  opacity: 1;
-  transition-delay: calc(var(--order, 0) * 0.3s);
-}
-
-.grafico svg circle:nth-child(1) {
-  --order: 1;
-}
-
-.grafico svg circle:nth-child(2) {
-  --order: 2;
-}
-
-.grafico svg circle:nth-child(3) {
-  --order: 3;
-}
-
-.grafico svg circle:nth-child(4) {
-  --order: 4;
-}
-
-.grafico svg circle:nth-child(5) {
-  --order: 5;
-}
-
 /* Garantir espaço suficiente para os cards desalinhados */
 .card-column:first-child .card:first-child {
   margin-bottom: 30px;
@@ -1073,4 +1204,27 @@ margin-top: 100px;
 
 .card-column:last-child .card:first-child {
   margin-bottom: 30px;
+}
+
+/* Esconder escolhaseupersonagem no hover/selected */
+.card-player:hover .escolhaseupersonagem,
+.card-player.selected .escolhaseupersonagem {
+  opacity: 0 !important;
+}
+
+/* Mostrar title-character e character no hover/selected (regras existentes) */
+
+/* Estilos específicos para os cards baseados nos inline styles */
+#card-carlinhos {
+  width: 250px;
+  height: 350px;
+  margin-top: 100px;
+  left: -80px;
+}
+
+#card-pedro {
+  width: 250px;
+  height: 350px;
+  left: 80px;
+  top: 40px;
 }
