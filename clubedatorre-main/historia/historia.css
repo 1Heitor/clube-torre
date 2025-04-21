@@ -113,43 +113,55 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
-  height: 400px;
+  min-height: 430px;
   margin-top: 100px;
+  padding: 0 20px;
 }
 
 .about-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  padding: 30px 0;
 }
 
 .about h2 {
-  font-size: 2.8rem;
-  margin-bottom: 25px;
-  color: #0084ff;
+  font-size: 3rem;
+  margin-bottom: 35px;
+  color: #0084FF;
+  ;
   position: relative;
   display: inline-block;
+  font-weight: 700;
+  letter-spacing: -0.6px;
 }
 
-.titlecontainer h2:after {
+.about h2:after {
   content: '';
   position: absolute;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #0084ff, #005bb5);
-  bottom: -10px;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 3px;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.about:hover h2:after {
+  width: 150px;
 }
 
 .about p {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   line-height: 1.8;
   margin-bottom: 35px;
   color: #444;
   font-weight: 300;
-  padding: 0 15px; /* Adicionar padding lateral */
-  text-align: justify; /* Justificar texto */
+  padding: 0 15px;
+  text-align: justify;
+  text-rendering: optimizeLegibility;
 }
 
 @keyframes gradientShift {
@@ -311,11 +323,11 @@ body {
   position: relative;
   min-height: 1000px;
   width: 100%;
-  padding: 0; /* Remove padding para permitir que as ondas determinem os limites */
+  padding: 0;
   color: #fff;
   display: flex;
-  flex-direction: column; /* Organiza elementos verticalmente */
-  overflow: hidden; /* Garante que nada vaze para fora */
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Onda superior */
@@ -351,7 +363,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 0; /* Espaço acima e abaixo do conteúdo */
+  padding: 70px 0;
   width: 100%;
 }
 
@@ -543,16 +555,57 @@ body {
 }
 .texto-missao {
   width: 100%;
-  padding: 30px;
+  padding: 40px;
   margin: 20px 0;
+  position: relative;
+  border-radius: 15px;
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 61, 165, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.texto-missao:hover {
+  background-color: rgba(0, 61, 165, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.texto-missao h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.3rem;
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.texto-missao h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff, #52ACFF);
+  bottom: -15px;
+  left: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.texto-missao:hover h2:after {
+  width: 100px;
 }
 
 .texto-missao p {
+  font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
   line-height: 1.8;
   text-align: justify;
   color: #fff;
-  padding: 0 10px; /* Padding lateral */
+  padding: 0 10px;
+  opacity: 0.95;
+  text-rendering: optimizeLegibility;
 }
 
 /* Estilos específicos para os texto-missao baseados nos inline styles */
@@ -990,65 +1043,132 @@ body {
 
 /* Ajuste para a seção metodologia */
 .metodolgia {
-  padding: 60px 15px 0; /* Adicionar padding lateral */
+  padding: 85px 15px 0; 
   background-color: white;
   position: relative;
   z-index: 1;
-  overflow: visible; /* Permitir que os cards possam sair dos limites da seção */
+  overflow: visible;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(212, 235, 255, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(3, 94, 252, 0.03) 0%, transparent 35%);
 }
 
 .metodologia-container {
   max-width: 1200px;
   margin: 0 auto;
   min-height: 580px;
-  padding: 0 20px;
+  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .texto-metodologia {
-  width: 35%;
+  width: 40%;
   text-align: left;
-  padding-right: 20px;
+  padding-right: 40px;
+  position: relative;
+}
+
+.texto-metodologia::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+
 }
 
 .texto-metodologia h1 {
-  color: #0887ff;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+  color: #0084FF;
+  font-size: 3rem;
+  margin-bottom: 38px;
   text-align: left;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+}
+
+.texto-metodologia h1::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.texto-metodologia:hover h1::after {
+  width: 120px;
 }
 
 .texto-metodologia p {
-  color: #555;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  margin-bottom: 40px;
   text-align: justify;
-  padding: 0 5px; /* Adicionar padding mínimo */
+  padding: 0 5px;
+  font-weight: 400;
+  opacity: 0.95;
+  text-rendering: optimizeLegibility;
 }
 
 .texto-metodologia button {
-  background-color: #0887ff;
+  background: linear-gradient(135deg, #0047b3, #0084ff);
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 16px 36px;
   border-radius: 30px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.05rem;
   margin-bottom: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   display: inline-block;
+  box-shadow: 0 5px 15px rgba(0, 84, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.6px;
+  outline: none;
+}
+
+.texto-metodologia button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
 }
 
 .texto-metodologia button:hover {
-  background-color: #0769c7;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(8, 135, 255, 0.3);
+  background: linear-gradient(135deg, #0084ff, #0047b3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 84, 255, 0.3);
 }
 
-/* Container Geral de Cards (usado em metodologia, pode ser usado em missão) */
+.texto-metodologia button:hover::before {
+  left: 100%;
+}
+
+.texto-metodologia button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 84, 255, 0.25);
+}
+
+.texto-metodologia button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.3), 0 5px 15px rgba(0, 84, 255, 0.2);
+}
+
+/* Container Geral de Cards */
 .card-container {
   display: flex;
   justify-content: space-between;
@@ -1057,37 +1177,41 @@ body {
   width: 60%;
 }
 
-/* Coluna Geral de Cards (usado em metodologia, pode ser usado em missão) */
+/* Coluna Geral de Cards */
 .card-column {
   display: flex;
   flex-direction: column;
-  width: 42%;
+  width: 46%;
 }
 
-/* Deslocamento padrão das colunas (usado em metodologia) */
+/* Deslocamento das colunas */
 .card-column:first-child {
-  margin-top: -40px;
+  margin-top: -60px;
 }
 
 .card-column:last-child {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .metodolgia .card {
   width: 100%;
   min-height: 320px;
   background-color: #fff;
-  border-radius: 30px;
-  margin: 0 0 20px;
-  padding: 30px 15px;
+  border-radius: 20px;
+  margin: 0 0 30px;
+  padding: 38px 25px;
   text-align: center;
-  box-shadow: 0 10px 20px rgba(0, 153, 255, 0.171);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 20px rgba(0, 153, 255, 0.12);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(82, 172, 255, 0.08);
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .metodolgia .card::before {
@@ -1097,12 +1221,13 @@ body {
   left: 0;
   width: 100%;
   height: 0;
-  background: linear-gradient(135deg, #52ACFF, #0687FF);
-  transition: 0.8s;
+  background: linear-gradient(150deg, #52ACFF, #0049cf);
+  transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 0;
-  border-radius: 30px;
+  border-radius: 20px;
   transform-origin: bottom;
   transform: scaleY(0);
+  opacity: 0.98;
 }
 
 .metodolgia .card:hover::before {
@@ -1111,50 +1236,135 @@ body {
 }
 
 .metodolgia .card:hover {
-  transform: translate(5px, 5px);
-  box-shadow: 0 15px 35px rgba(0, 47, 255, 0.363);
+  transform: translate(5px, 5px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 47, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.metodolgia .card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.metodolgia .card:hover::after {
+  opacity: 1;
+  animation: shine 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-300%) rotate(45deg);
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translateX(300%) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 .metodolgia .card img {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 25px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: brightness(0.9);
+  width: 80px;
+  height: 80px;
+  margin-bottom: 32px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: brightness(0.95) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
   position: relative;
   z-index: 1;
+  transform-style: preserve-3d;
 }
 
 .metodolgia .card:hover img {
-  transform: scale(1.1);
-  filter: brightness(1.1);
+  transform: scale(1.15) translateY(-8px) translateZ(20px);
+  filter: brightness(1.1) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
 }
 
 .metodolgia .card h3 {
-  color: #0769c7;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  color: #0084FF;
+  font-size: 1.35rem;
+  margin-bottom: 25px;
   font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   z-index: 1;
+  letter-spacing: 0.5px;
+  transform-style: preserve-3d;
 }
 
 .metodolgia .card p {
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.7;
   text-align: justify;
-  padding: 0 10px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 15px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   z-index: 1;
+  opacity: 0.9;
+  transform-style: preserve-3d;
+  font-weight: 400;
 }
 
 .metodolgia .card:hover h3,
 .metodolgia .card:hover p {
   color: #fff;
-  transform: translate(2px, 2px);
+  transform: translate(2px, 2px) translateZ(15px);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.metodolgia .card:hover h3 {
+  margin-bottom: 30px;
+}
+
+.metodolgia .card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.3), 0 10px 20px rgba(0, 153, 255, 0.12);
+  transform: translate(3px, 3px);
+}
+
+.metodolgia .card:focus::before {
+  height: 10%;
+}
+
+/* Cards acessibilidade - screen readers */
+.metodolgia .card:focus-visible .card::before {
+  height: 5%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metodolgia .card,
+  .metodolgia .card::before,
+  .metodolgia .card::after,
+  .metodolgia .card img,
+  .metodolgia .card h3,
+  .metodolgia .card p,
+  .texto-metodologia button,
+  .texto-metodologia button::before,
+  .texto-metodologia h1::after {
+    transition-duration: 0.1s;
+    animation-duration: 0.1s;
+  }
 }
 
 .divider {
@@ -1168,7 +1378,6 @@ body {
 /* Ajuste para o divider na seção metodologia */
 .metodolgia .divider {
   width: 100%;
-  margin-top: 60px;
   position: relative;
   z-index: 10;
   margin-bottom: -100px; /* Valor negativo para criar sobreposição */
@@ -1187,16 +1396,16 @@ body {
   background-color: #ffffff;
   position: relative;
   overflow: visible;
-  margin: 0; /* Remover margem negativa */
+  margin: 0;
   z-index: 1;
-  width: 100%; /* Garantir que não ultrapasse a largura */
+  width: 100%;
 }
 
 .projeto-container {
   max-width: 1200px;
   max-height: 1300px;
   margin: 0 auto;
-  padding: 0 0px;
+  padding: 0 20px;
 }
 
 .projeto-header {
@@ -1204,14 +1413,14 @@ body {
   align-items: flex-start;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   position: relative;
-  margin-top: 100px;
+  margin-top: 120px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 20px;
-  min-height: 300px;
+  min-height: 320px;
 }
 
 /* Corrigindo a posição da bola para não sair da tela */
@@ -1252,77 +1461,160 @@ body {
 }
 
 .projeto-titulo h1 {
-  color: #0887ff;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  color: #0084FF;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
   text-align: right;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  position: relative;
+}
+
+.projeto-titulo h1:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  bottom: -15px;
+  right: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.projeto-titulo:hover h1:after {
+  width: 150px;
 }
 
 .projeto-titulo p {
-  color: #555;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.7;
   margin-bottom: 30px;
   text-align: justify;
   width: 550px;
   margin-left: auto;
+  text-rendering: optimizeLegibility;
 }
 
 .projeto-content {
   display: flex;
   margin-top: 50px;
-  padding-right: 50px;
+  padding: 0 20px 50px;
   align-items: stretch;
+  background: radial-gradient(circle at 80% 20%, rgba(212, 235, 255, 0.1) 0%, transparent 70%);
 }
 
 .projeto-text-column {
   width: 50%;
-  padding-right: 30px;
+  padding-right: 40px;
 }
 
 .projeto-text-column h2 {
-  color: #0887ff;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  color: #0084FF;
+  font-size: 2rem;
+  margin-bottom: 30px;
   text-align: left;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.projeto-text-column h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  bottom: -15px;
+  left: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.projeto-text-column:hover h2:after {
+  width: 120px;
 }
 
 .projeto-text-column p {
-  color: #555;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
   text-align: justify;
+  text-rendering: optimizeLegibility;
 }
 
 .projeto-text-column button {
-  background-color: #0887ff;
+  background: linear-gradient(135deg, #0047b3, #0084ff);
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 16px 36px;
   border-radius: 30px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.05rem;
   margin: 20px 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   display: inline-block;
+  box-shadow: 0 5px 15px rgba(0, 84, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.6px;
+  outline: none;
+}
+
+.projeto-text-column button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
 }
 
 .projeto-text-column button:hover {
-  background-color: #0769c7;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(8, 135, 255, 0.3);
+  background: linear-gradient(135deg, #0084ff, #0047b3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 84, 255, 0.3);
+}
+
+.projeto-text-column button:hover::before {
+  left: 100%;
+}
+
+.projeto-text-column button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 84, 255, 0.25);
 }
 
 .projeto-img-column {
   width: 50%;
+  position: relative;
+  height: 580px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 47, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projeto-img-column:hover {
+  transform: scale(1.02) translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 47, 255, 0.3);
 }
 
 .projeto-img-column img {
   width: 100%;
   height: 580px;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projeto-img-column:hover img {
+  transform: scale(1.05);
 }
 
 @keyframes float {
@@ -1351,10 +1643,24 @@ body {
 /* Seção Objetivos/Compromisso Social */
 .objetivos {
   background-color: #0084ff;
+  background-image: linear-gradient(135deg, #0084ff, #006ed8);
   color: white;
-  padding: 30px 0 60px;
+  padding: 60px 0;
   position: relative;
   overflow: hidden;
+}
+
+.objetivos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  z-index: 0;
 }
 
 .objetivos-container {
@@ -1364,56 +1670,98 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 0 20px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .textocompromisso {
   width: 48%;
-  padding-right: 30px;
+  padding-right: 40px;
 }
 
 .textocompromisso h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   text-align: left;
   margin-bottom: 40px;
   position: relative;
+  font-weight: 700;
+  letter-spacing: -0.6px;
 }
 
 .textocompromisso h1:after {
   content: '';
   position: absolute;
   width: 80px;
-  height: 3px;
-  background: white;
-  bottom: -10px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5));
+  bottom: -15px;
   left: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.textocompromisso:hover h1:after {
+  width: 150px;
 }
 
 .textocompromisso h3 {
-  font-size: 1.5rem;
-  margin: 30px 0 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  margin: 35px 0 15px;
   color: white;
   text-align: left;
+  font-weight: 600;
+  position: relative;
+  padding-left: 20px;
+}
+
+.textocompromisso h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .textocompromisso p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
   margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   text-align: justify;
+  text-rendering: optimizeLegibility;
+  padding-left: 20px;
 }
 
 .graficos {
   width: 48%;
   padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.graficos:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .graficos h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 40px;
   color: white;
   text-align: center;
+  position: relative;
+  font-weight: 600;
+  padding-bottom: 20px;
 }
 
 .grafico {
@@ -1994,13 +2342,10 @@ body {
     text-align: justify;
   }
 
-  .projeto-text-column p {
-    font-size: 0.9rem;
-    text-align: justify;
-  }
-
-  .textocompromisso p {
-    font-size: 0.9rem;
-    text-align: justify;
-  }
+.graficos:hover h2:after {
+  width: 170px;
 }
+
+/* Não modificar as classes abaixo, como solicitado */
+/* Grafico (classe preservada) */
+/* numerosaumentando (classe preservada) */
