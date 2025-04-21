@@ -20,6 +20,7 @@
 body {
   background-color: white;
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden; /* Impedir rolagem horizontal */
 }
 
 @font-face  {
@@ -80,8 +81,6 @@ body {
   text-align: center;
   z-index: 2;
   color: #fff;
-  
-
 }
 
 .hero-content h1 {
@@ -98,6 +97,7 @@ body {
   margin-bottom: 30px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
+
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
@@ -105,13 +105,14 @@ body {
   position: relative;
   display: inline-block;
 }
+
 .about {
   background-color: #f7f7f7;
   text-align: center;
   padding: 80px 20px;
   position: relative;
   z-index: 1;
-  padding-bottom: 120px; /* espaço extra pro botão não encostar na onda */
+ /* espaço extra pro botão não encostar na onda */
 }
 
 .about-container {
@@ -147,7 +148,6 @@ body {
   font-weight: 300;
 }
 
-
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -157,7 +157,7 @@ body {
   }
 }
 
-  /* ========== Ondas (wave dividers) ========== */
+/* ========== Ondas (wave dividers) ========== */
 .wave-section {
   position: relative; /* Fundamental para posicionar a onda */
 }
@@ -209,6 +209,7 @@ body {
     transform: translateY(0);
   }
 }
+
 /* Responsividade */
 @media (max-width: 768px) {
   .card {
@@ -275,4 +276,803 @@ body {
   color: white;
   transform: translateY(1px);
   transition: 100ms;
+}
+
+/* Seção Sobre o Clube */
+.about {
+  background-color: #ffffff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  height: 400px;
+margin-top: 100px;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  color: #0084ff;
+  position: relative;
+  display: inline-block;
+}
+
+.about p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 35px;
+  color: #444;
+  font-weight: 300;
+}
+.about-btn {
+  padding: 14px 35px;
+  border: 2px solid #0084ff;
+  border-radius: 50px;
+  background: transparent;
+  color: #0084ff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.1);
+}
+
+.about-btn:hover {
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 47, 255, 0.267);
+  transform: translateY(-3px);
+}
+
+/* Estilos para a seção Missão - baseados na imagem de referência */
+.missao {
+  background: url('historiaimgs/fundomissao.png') center/cover no-repeat;
+  background-color: #003da5;
+  position: relative;
+  width: 100%;
+  padding: 0; /* Remove padding para permitir que as ondas determinem os limites */
+  color: #fff;
+  display: flex;
+  flex-direction: column; /* Organiza elementos verticalmente */
+  overflow: hidden; /* Garante que nada vaze para fora */
+}
+
+/* Onda superior */
+.wave-top {
+  width: 100%;
+  line-height: 0;
+  margin-top:0px;
+  display: block;
+  opacity: 1; /* Define como visível desde o início */
+}
+
+.wave-top img {
+  width: 100%;
+
+  display: block;
+}
+
+/* Onda inferior */
+.custom-shape-divider {
+  width: 100%;
+  line-height: 0;
+  display: block;
+  margin-top: auto;
+  opacity: 1; /* Define como visível desde o início */
+}
+
+.custom-shape-divider svg {
+  width: 100%;
+  display: block;
+}
+
+/* Conteúdo principal entre as ondas */
+.missao-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 60px 0; /* Espaço acima e abaixo do conteúdo */
+  width: 100%;
+}
+
+/* Estilo para o "post" do Instagram à esquerda */
+.foto {
+  width: 35%;
+  padding: 20px;
+}
+
+.foto img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.foto img:hover {
+  transform: scale(1.02);
+}
+
+/* Estilo para o texto à direita */
+.texto-missao {
+  width: 55%;
+  padding: 20px;
+}
+
+.texto-missao h2 {
+  font-size: 3.5rem;
+  margin-bottom: 0px;
+  color: #ffffff;
+  font-family: 'bluestar', cursive;
+  text-align: start; /* Centraliza o título, conforme imagem */
+}
+
+.texto-missao p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  text-align: justify;
+  color: #fff;
+}
+
+
+
+/* Ajuste para a seção metodologia */
+.metodolgia {
+  padding: 60px 0 0; /* Remove padding bottom para a wave sobrepor */
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  overflow: visible; /* Permitir que os cards possam sair dos limites da seção */
+}
+
+.metodologia-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 580px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.texto-metodologia {
+  width: 35%;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.texto-metodologia h1 {
+  color: #0887ff;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.texto-metodologia p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.texto-metodologia button {
+  background-color: #0887ff;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.texto-metodologia button:hover {
+  background-color: #0769c7;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(8, 135, 255, 0.3);
+}
+
+.card-container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.card-column:first-child {
+  margin-top: -40px; /* Move a primeira coluna para cima */
+}
+
+.card-column:last-child {
+  margin-top: 40px; /* Move a segunda coluna para baixo */
+}
+
+/* Restaurar a definição de card-column */
+.card-column {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reduzir a largura dos cards */
+.card-column {
+  width: 42%; /* Redução da largura */
+  display: flex;
+  flex-direction: column;
+}
+
+.metodolgia .card {
+  width: 100%;
+  height: 320px; /* Altura aumentada */
+  background: linear-gradient(to bottom, #e4f2ff, #c0e0ff);
+  border-radius: 30px;
+  margin: 0 0 20px;
+  padding: 30px 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(8, 135, 255, 0.15);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Adicionar de volta os estilos de hover e imagens para os cards */
+.metodolgia .card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 35px rgba(8, 135, 255, 0.25);
+}
+
+.metodolgia .card img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.metodolgia .card:hover img {
+  transform: scale(1.1);
+}
+
+.metodolgia .card h3 {
+  color: #0769c7;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.metodolgia .card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.divider {
+  width: 100%;
+  position: relative; 
+  z-index: 10;
+  margin-bottom: -100px; /* Aumentar sobreposição */
+  overflow: hidden; /* Impedir overflow horizontal */
+}
+
+/* Ajuste para o divider na seção metodologia */
+.metodolgia .divider {
+  width: 100%;
+  margin-top: 60px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: -100px; /* Valor negativo para criar sobreposição */
+}
+
+.divider img {
+  width: 100%;
+  height: 350px;
+  display: block;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.05));
+  max-width: 100%; /* Garantir que a imagem não ultrapasse o container */
+}
+
+/* Seção Projeto */
+.projeto {
+  background-color: #ffffff;
+  position: relative;
+  overflow: visible;
+  margin: 0; /* Remover margem negativa */
+  z-index: 1;
+  width: 100%; /* Garantir que não ultrapasse a largura */
+}
+
+.projeto-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0px;
+}
+
+.projeto-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding-left: 480px; /* Mais espaço à esquerda */
+  margin-top: 100px;
+}
+
+/* Corrigindo a posição da bola para não sair da tela */
+.bola {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  flex-shrink: 0;
+  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background-size: contain;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 15px 20px rgba(8, 135, 255, 0.4));
+  z-index: 15;
+  margin-right: 0;
+  left: 90px; /* Ajustado para não sair da tela */
+  top: -220px; /* Ajustado para aparecer mais sobre a wave */
+}
+
+/* Ajuste no efeito de água para acompanhar a nova posição */
+.bola:before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  width: 600px;
+  height: 600px;
+  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background-size: 500px;
+  filter: blur(35px) opacity(0.15);
+  animation: pulse 6s ease-in-out infinite;
+  z-index: -1;
+  transform-origin: center center;
+}
+
+.projeto-titulo {
+  flex: 1;
+  text-align: right; /* Alinhando à direita */
+  padding-right: 50px; /* Espaço à direita */
+}
+
+.projeto-titulo h1 {
+  color: #0887ff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: left; 
+  margin-left: 120px;/* Alinhando à direita */
+}
+
+.projeto-titulo p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: justify;
+  width: 550px;
+  margin-left: auto; /* Empurra para a direita */
+}
+
+.projeto-content {
+  display: flex;
+  margin-top: 50px;
+  padding-right: 50px; /* Espaço à direita */
+  align-items: stretch; /* Esticar para alinhar verticalmente */
+}
+
+.projeto-text-column {
+  width: 50%;
+  padding-right: 30px; /* Restaurar algum espaçamento */
+}
+
+.projeto-text-column h2 {
+  color: #0887ff;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: left; /* Manter alinhado à esquerda */
+}
+
+.projeto-text-column p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.projeto-text-column button {
+  background-color: #0887ff;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.projeto-text-column button:hover {
+  background-color: #0769c7;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(8, 135, 255, 0.3);
+}
+
+.projeto-img-column {
+  width: 50%;
+}
+
+.projeto-img-column img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.wave-dividermeto {
+  width: 100%;
+  overflow: hidden; /* Impedir que a imagem cause overflow */
+}
+
+.wave-dividermeto img {
+  width: 100%;
+  display: block;
+  max-width: 100%; /* Garantir que a imagem não ultrapasse o container */
+}
+
+/* Seção Objetivos/Compromisso Social */
+.objetivos {
+  background-color: #0084ff; /* Cor mais próxima da imagem */
+  color: white;
+  padding: 30px 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.objetivos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.textocompromisso {
+  width: 48%;
+  padding-right: 30px;
+}
+
+.textocompromisso h1 {
+  font-size: 2.5rem;
+  text-align: left;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.textocompromisso h1:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: white;
+  bottom: -10px;
+  left: 0;
+}
+
+.textocompromisso h3 {
+  font-size: 1.5rem;
+  margin: 30px 0 15px;
+  color: white;
+  text-align: left;
+}
+
+.textocompromisso p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: justify;
+}
+
+.graficos {
+  width: 48%;
+  padding: 20px;
+
+}
+
+.graficos h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
+}
+
+.grafico {
+  height: 250px;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.grafico svg {
+  max-width: 100%;
+  height: 100%;
+}
+
+.grafico svg path {
+  animation: drawPath 3s ease-in-out forwards;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.grafico svg circle {
+  animation: fadeInDot 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+.grafico svg circle:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.grafico svg circle:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.grafico svg circle:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.grafico svg circle:nth-child(4) {
+  animation-delay: 2s;
+}
+
+.grafico svg circle:nth-child(5) {
+  animation-delay: 2.5s;
+}
+
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInDot {
+  to {
+    opacity: 1;
+  }
+}
+
+.numerosaumentando {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.numeros {
+  text-align: center;
+  padding: 20px;
+  margin-top: 15px;
+  background-color: #1A91FF;
+  border-radius: 10px;
+  width: 30%;
+  
+  transition: all 0.3s ease;
+}
+
+.numeros:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.numeros h1 {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.numeros h4 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 992px) {
+  .objetivos-container {
+    flex-direction: column;
+  }
+  
+  .textocompromisso, .graficos {
+    width: 100%;
+  }
+  
+  .textocompromisso {
+    margin-bottom: 40px;
+    padding-right: 0;
+  }
+  
+  .textocompromisso h1 {
+    text-align: center;
+  }
+  
+  .textocompromisso h1:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .textocompromisso h3 {
+    text-align: center;
+  }
+  
+  .textocompromisso p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .numeros {
+    width: 100%;
+  }
+}
+
+/* Adicionando o efeito de água em volta da bola */
+.projeto:before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 120px;
+  width: 400px;
+  height: 400px;
+  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background-size: 250px;
+  filter: blur(25px) opacity(0.2);
+  animation: pulse 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+}
+
+/* Adicionar animações de entrada */
+.metodologia-container, .card, .bola, .projeto-titulo, .textoprojeto-esquerda, .imgescolinha, .grafico, .numeros {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.metodologia-container.visible, .projeto-titulo.visible, .textoprojeto-esquerda.visible, .grafico.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--order, 0) * 0.2s);
+}
+
+.card:nth-child(1) {
+  --order: 1;
+}
+
+.card:nth-child(2) {
+  --order: 2;
+}
+
+.bola.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: float 6s ease-in-out infinite;
+}
+
+.imgescolinha.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.numeros.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--order, 0) * 0.2s);
+}
+
+.numeros:nth-child(1) {
+  --order: 1;
+}
+
+.numeros:nth-child(2) {
+  --order: 2;
+}
+
+.numeros:nth-child(3) {
+  --order: 3;
+}
+
+/* Adicionar animação para a linha do gráfico */
+.grafico svg path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
+.grafico.visible svg path {
+  stroke-dashoffset: 0;
+}
+
+/* Adicionar animação para os pontos do gráfico */
+.grafico svg circle {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.grafico.visible svg circle {
+  opacity: 1;
+  transition-delay: calc(var(--order, 0) * 0.3s);
+}
+
+.grafico svg circle:nth-child(1) {
+  --order: 1;
+}
+
+.grafico svg circle:nth-child(2) {
+  --order: 2;
+}
+
+.grafico svg circle:nth-child(3) {
+  --order: 3;
+}
+
+.grafico svg circle:nth-child(4) {
+  --order: 4;
+}
+
+.grafico svg circle:nth-child(5) {
+  --order: 5;
+}
+
+/* Garantir espaço suficiente para os cards desalinhados */
+.card-column:first-child .card:first-child {
+  margin-bottom: 30px;
+}
+
+.card-column:last-child .card:first-child {
+  margin-bottom: 30px;
 }
