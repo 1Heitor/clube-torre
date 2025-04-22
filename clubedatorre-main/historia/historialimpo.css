@@ -141,13 +141,29 @@ body {
   position: relative;
   height: 100vh;
   min-height: 550px;
-  background: url('historiaimgs/fundo.jpg') center/cover no-repeat;
+  background: url('historiaimgs/fundomaior.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+/* Media query para dispositivos móveis - carrega uma versão menor */
+@media (max-width: 768px) {
+  .hero {
+    background: url('historiaimgs/fundomenor.webp') center/cover no-repeat;
+    min-height: 450px; /* Altura mínima menor para dispositivos móveis */
+  }
+}
+
+/* Para dispositivos muito pequenos */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 400px;
+  }
+}
+
+/* Overlay com gradiente para melhorar contraste */
 .overlay {
   position: absolute;
   top: 0;
@@ -990,7 +1006,7 @@ body {
   animation: float 6s ease-in-out infinite;
   filter: drop-shadow(0 15px 20px rgba(8, 135, 255, 0.4));
   z-index: 15;
-  left: 40px;
+  left: 120px;
   top: -180px;
 }
 

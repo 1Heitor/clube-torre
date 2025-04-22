@@ -1,4 +1,20 @@
 window.addEventListener('load', function() {
+  // Código para pré-carregamento da imagem do hero
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    const screenWidth = window.innerWidth;
+    const imgSrc = screenWidth <= 768 ? 'historiaimgs/fundobackmenor.webp' : 'historiaimgs/fundobackmaior.webp';
+    
+    // Função para carregar a imagem em segundo plano
+    const preloadImage = (url) => {
+      const img = new Image();
+      img.src = url;
+    };
+    
+    // Inicia o pré-carregamento
+    preloadImage(imgSrc);
+  }
+  
   const prevButton = document.querySelector('.prev');
   const nextButton = document.querySelector('.next');
   const cards = document.querySelector('.cards');
