@@ -565,6 +565,9 @@ body {
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.divider {
+  height: 150px;
+}
 .texto-missao:hover {
   background-color: rgba(0, 61, 165, 0.2);
   transform: translateY(-5px);
@@ -634,7 +637,9 @@ body {
     max-width: 950px; /* Largura máxima */
     margin: 20px 0 !important;
   }
-  
+  .texto-missao {
+    margin-top:50px;
+  }
   .missao {
     height: auto;
   }
@@ -684,7 +689,7 @@ body {
   }
 
   .missao {
-    padding: 40px 0 60px; /* Ajustar padding, adicionar bottom */
+
     height: auto; /* Altura automática */
   }
 
@@ -783,18 +788,42 @@ body {
   }
 
   .metodolgia .card {
-    height: auto; /* Altura automática */
-    min-height: 300px; /* Altura mínima */
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
   }
-
-  .divider {
-    margin-bottom: -50px; /* Ajustar sobreposição da onda */
+  
+  .metodolgia .card img {
+    margin-bottom: 20px;
   }
-
-  .divider img {
-    height: auto; /* Altura automática */
+  
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
   }
-
+  
+  .metodolgia .card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+  }
 
   /* Projeto */
   .projeto {
@@ -873,15 +902,6 @@ body {
     text-align: justify;
   }
 
-  .projeto-img-column {
-    width: 100%; /* Largura total */
-  }
-
-  .projeto-img-column img {
-     height: auto; /* Altura automática */
-     max-height: 400px; /* Limitar altura máxima */
-     object-fit: cover; /* Cobrir container */
-  }
 
   /* Objetivos */
   .objetivos {
@@ -1303,6 +1323,7 @@ body {
   color: #0084FF;
   font-size: 1.35rem;
   margin-bottom: 25px;
+  text-align: center;
   font-weight: 600;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
@@ -2034,7 +2055,9 @@ body {
     height: auto;
     padding: 0 15px;
   }
-
+  .wave-dividermeto {
+    margin-top: 40px;
+ }
   .texto-metodologia {
     width: 100%;
     max-width: 600px;
@@ -2046,7 +2069,21 @@ body {
   .texto-metodologia h1 {
     text-align: center;
   }
-
+  .texto-metodologia h1::after{
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    transition: width 0.5s ease;}
+    
+.divider {
+  height: 450px;
+}
   .metodolgia .card-container {
     width: 100%;
     justify-content: space-around;
@@ -2062,9 +2099,43 @@ body {
     margin-top: 0;
   }
 
+
   .metodolgia .card {
-    height: auto;
-    min-height: 300px;
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+  }
+  
+  .metodolgia .card img {
+    margin-bottom: 20px;
+  }
+  
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .metodolgia .card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
   }
 
   .projeto-header {
@@ -2079,9 +2150,9 @@ body {
 
   .bola {
     position: absolute;
-    left: 50%;
+    left: 25%;
     transform: translateX(-50%);
-    top: -150px;
+    top: -320px;
     width: 350px;
     height: 350px;
     animation: none;
@@ -2103,9 +2174,22 @@ body {
     margin-left: 0;
   }
    .projeto-titulo p {
-     margin-left: auto;
-     margin-right: auto;
+    margin:auto;
+     justify-content: center;
      padding: 0 15px;
+     width: 100%;
+   }
+   .projeto-titulo h1::after{
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    transition: width 0.5s ease;
    }
 
 
@@ -2125,6 +2209,17 @@ body {
    .projeto-text-column h2 {
      text-align: center;
    }
+   .projeto-text-column h2::after{
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    transition: width 0.5s ease;}
    .projeto-text-column p {
      padding: 0 10px;
    }
@@ -2132,6 +2227,7 @@ body {
   .projeto-img-column {
     width: 100%;
     max-width: 700px;
+    max-height: 450px;
   }
   .projeto-img-column img {
     max-height: 450px;
@@ -2145,9 +2241,10 @@ body {
     min-width: 250px;
   }
    .bola {
+    margin-top: 30px;
      width: 320px;
+     top:-330px;
      height: 320px;
-     top: -140px;
      
    }
    .projeto-titulo p {
@@ -2155,7 +2252,15 @@ body {
     margin:0px;
    }}
 
+   .divider {
+    height: 350px;
+   }
 
+   @media (max-width: 924px) {
+    .metodolgia .card {
+      max-height: 360px;
+    }
+    }
 @media (max-width: 768px) {
   .about p {
     padding: 0 10px;
@@ -2184,8 +2289,8 @@ body {
    .bola {
      width: 300px;
      height: 300px;
-     top: -130px;
-   }
+     
+}
 
    .projeto-titulo p {
      padding: 0 10px;
@@ -2196,10 +2301,35 @@ body {
    .projeto-img-column img {
     max-height: 400px;
    }
+   .projeto-img-column {
+    max-height: 400px;
+   }
+   
    .textocompromisso p {
     padding: 0;
    }}
-
+   @media (max-width: 674px) {
+    .projeto-img-column {
+      height: 50vh;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .projeto-img-column img {
+      height: 50vh;
+      object-fit: cover;
+    } 
+   }
+   @media (max-width: 651px) {
+    .projeto-img-column {
+      height: 46vh;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .projeto-img-column img {
+      height: 45vh;
+      object-fit: cover;
+    } 
+   }
 @media (max-width: 576px) {
   .about p {
     font-size: 1rem;
@@ -2223,7 +2353,6 @@ body {
     padding: 40px 15px 0;
     height: auto;
   }
-
   .metodologia-container {
     flex-direction: column;
     height: auto;
@@ -2264,7 +2393,7 @@ body {
   .bola {
     width: 280px;
     height: 280px;
-    top: -120px;
+    top: -160px;
   }
 
   .projeto-titulo p {
@@ -2279,6 +2408,12 @@ body {
     padding: 0;
   }
 
+  .projeto-img-column {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+ }
+
   .projeto-img-column img {
      height: auto;
      max-height: 300px;
@@ -2290,7 +2425,12 @@ body {
     text-align: justify;
     padding: 0;
   }
+  
+.divider {
+  height: 250px;
 }
+}
+
 
 @media (max-width: 414px) {
   .about p {
@@ -2345,7 +2485,32 @@ body {
 .graficos:hover h2:after {
   width: 170px;
 }
+}
 
-/* Não modificar as classes abaixo, como solicitado */
-/* Grafico (classe preservada) */
-/* numerosaumentando (classe preservada) */
+@media (max-width: 1060px) {
+  .metodolgia .card {
+    min-height: 400px;
+    height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .metodolgia .card p {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+}
+@media (max-width: 924px) {
+  .metodolgia .card {
+    max-height: 360px;
+  }
+}
