@@ -193,7 +193,7 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
-  min-height: 430px;
+  min-height: 300px;
   margin-top: 100px;
   padding: 0 20px;
 }
@@ -819,7 +819,7 @@ body {
 }
 
 .metodolgia .card:hover {
-  transform: translate(5px, 5px) rotateX(2deg);
+  transform: translate(0, -10px) rotateX(2deg);
   box-shadow: 0 20px 40px rgba(0, 47, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.15);
 }
@@ -897,7 +897,7 @@ body {
 .metodolgia .card:hover h3,
 .metodolgia .card:hover p {
   color: #fff;
-  transform: translate(2px, 2px) translateZ(15px);
+  transform: translate(0, -2px) translateZ(15px);
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   opacity: 1;
 }
@@ -1165,7 +1165,7 @@ body {
 
 .projeto-img-column:hover {
   transform: scale(1.02) translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 47, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(1, 31, 202, 0.486);
 }
 
 .projeto-img-column img {
@@ -1196,8 +1196,7 @@ height: 200px;
 
 /* Seção Objetivos/Compromisso Social */
 .objetivos {
-  background-color: #0084ff;
-  background-image: linear-gradient(135deg, #0084ff, #006ed8);
+  background-color: #0084FF;
   color: white;
   padding: 60px 0;
   position: relative;
@@ -1248,7 +1247,6 @@ height: 200px;
   position: absolute;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5));
   bottom: -15px;
   left: 0;
   border-radius: 4px;
@@ -1262,12 +1260,11 @@ height: 200px;
 .textocompromisso h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
-  margin: 35px 0 15px;
+  margin:0 15px;  
   color: white;
   text-align: left;
   font-weight: 600;
   position: relative;
-  padding-left: 20px;
 }
 
 .textocompromisso h3::before {
@@ -1278,7 +1275,6 @@ height: 200px;
   transform: translateY(-50%);
   width: 8px;
   height: 8px;
-  background-color: white;
   border-radius: 50%;
 }
 
@@ -1286,11 +1282,11 @@ height: 200px;
   font-family: 'Poppins', sans-serif;
   font-size: 1.15rem;
   line-height: 1.8;
+  margin-left: 0px;
   margin-bottom: 20px;
   color: rgba(255, 255, 255, 0.95);
   text-align: justify;
   text-rendering: optimizeLegibility;
-  padding-left: 20px;
 }
 
 .graficos {
@@ -1316,7 +1312,7 @@ height: 200px;
   border-radius: 10px;
   background-color: white;
   padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(1, 31, 202, 0.678);
 }
 
 .grafico svg {
@@ -1386,7 +1382,7 @@ height: 200px;
   transform: translateY(-5px);
   background-color: #005cb3;
   transition: 0.5s;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.144);
+  box-shadow: 0 10px 30px rgba(1, 31, 202, 0.678);
 }
 
 .numeros h1 {

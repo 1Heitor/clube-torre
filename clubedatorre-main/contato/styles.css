@@ -287,6 +287,21 @@ h4{
   position: relative;
   display: inline-block;
 }
+.titlecontainer h2:after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+  .titlecontainer h2:hover:after {
+    width: 200px;
+  }
 
 
 .titlecontainer p {

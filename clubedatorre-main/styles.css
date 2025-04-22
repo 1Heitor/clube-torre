@@ -62,13 +62,19 @@ body {
   content: '';
   position: absolute;
   width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #0084ff, #005bb5);
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 3px;
+  transition: width 0.5s ease;
 }
+.section-title:hover:after {
+  width: 120px;
+}
+
+
 
 .section-subtitle {
   font-size: 1.2rem;
@@ -357,12 +363,13 @@ body {
   content: '';
   position: absolute;
   width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #0084ff, #005bb5);
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 3px;
+  transition: width 0.5s ease;
 }
 
 .about p {
@@ -439,12 +446,16 @@ body {
   content: '';
   position: absolute;
   width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #0084ff, #005bb5);
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  transition: width 0.5s ease;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 3px;
+}
+.map-title:hover:after {
+  width: 120px;
 }
 
 .map-description {
