@@ -1,0 +1,2517 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@supports (background-size: cover) {
+  .background { 
+      background-size: cover;
+  }
+}
+:root {
+  --azul-escuro: #0887ff;
+  --azul-claro: #007bff;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --gradiente-azul: linear-gradient(135deg, var(--azul-claro), var(--azul-escuro));
+  --transicao: all 0.3s ease;
+    --card-height: 300px;
+    --card-width: calc(var(--card-height) / 1.5);
+}
+
+body {
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden; /* Impedir rolagem horizontal */
+}
+
+@font-face  {
+    font-family: 'bluestar';
+    src: url('../../fonts/Bluestar-MediumItalic.ttf') format('truetype');
+    src: url('../../fonts/Bluestar-MediumItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+     }
+  /* Animações de fade in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Quando o elemento estiver visível, a classe "visible" será adicionada */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 550px;
+  background: url('historiaimgs/fundo.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.349), rgba(0, 12, 46, 0.548));
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  font-style: italic;
+  font-family: 'bluestar', cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--azul-claro);
+  position: relative;
+  display: inline-block;
+}
+
+/* Seção Sobre o Clube */
+.about {
+  background-color: #ffffff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  min-height: 430px;
+  margin-top: 100px;
+  padding: 0 20px;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding: 30px 0;
+}
+
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 35px;
+  color: #0084FF;
+  ;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.about h2:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.about:hover h2:after {
+  width: 150px;
+}
+
+.about p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 35px;
+  color: #444;
+  font-weight: 300;
+  padding: 0 15px;
+  text-align: justify;
+  text-rendering: optimizeLegibility;
+}
+
+
+
+/* ========== Ondas (wave dividers) ========== */
+.wave-section {
+  position: relative; /* Fundamental para posicionar a onda */
+}
+.wave-divider {
+  position: absolute;
+  left: 0; /* cola na borda esquerda */
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+.wave-divider svg{
+  color:transparent
+}
+.wave-bottom {
+  bottom: 0;
+}
+.wave-bottom svg {
+  display: block;
+  width: 100%; /* remove calc(100% + 1.3px) */
+  height: 80px; /* ajuste se quiser a onda mais alta ou baixa */
+  animation: waveFloat 6s ease-in-out infinite;
+}
+
+/* Cada onda deve ter a cor do fundo da próxima seção */
+.hero .wave-divider .wave-bottom .shape-fill {
+  fill: white; /* Próxima seção .services é branca */
+}
+.services .wave-bottom .shape-fill {
+  fill: white; /* Próxima seção .about é #f7f7f7 */
+}
+
+.wave-bottom .shape-fill {
+  fill: white; /* Próxima seção .map é branca */
+}
+
+.teste .wave-bottom .shape-fill {
+  fill: white; /* Footer é #004b91 */
+}
+
+/* (Opcional) Animação sutil de flutuação da onda */
+@keyframes waveFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card {
+      width: calc(50% - 20px);
+      min-width: 280px;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+      width: 100%;
+      min-width: 250px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .carousel-button {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+  }
+}
+
+.conhecer {
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: 0;
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+}
+
+.conhecer:hover {
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #ffffff, #e6e6e6);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+  color: #0084ff;
+  transform: translateY(-3px);
+}
+
+.conhecer:active {
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #005bb5, #004a94);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  transform: translateY(1px);
+  transition: 100ms;
+}
+
+.about-btn {
+  padding: 14px 35px;
+  border: 2px solid #0084ff;
+  border-radius: 50px;
+  background: transparent;
+  color: #0084ff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.1);
+}
+
+.about-btn:hover {
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 47, 255, 0.267);
+  transform: translateY(-3px);
+}
+
+/* Estilos para a seção Missão - baseados na imagem de referência */
+.missao {
+  background: url('historiaimgs/fundomissao.png') center/cover no-repeat;
+  background-color: #003da5;
+  position: relative;
+  min-height: 1000px;
+  width: 100%;
+  padding: 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Onda superior */
+.wave-top {
+  width: 100%;
+  line-height: 0;
+  margin-top:0px;
+  display: block;
+  opacity: 1; /* Define como visível desde o início */
+}
+
+.wave-top img {
+  width: 100%;
+  display: block;
+}
+
+/* Onda inferior */
+.custom-shape-divider {
+  width: 100%;
+  line-height: 0;
+  display: block;
+  margin-top: auto;
+  opacity: 1; /* Define como visível desde o início */
+}
+
+.custom-shape-divider svg {
+  width: 100%;
+  display: block;
+}
+
+/* Conteúdo principal entre as ondas */
+.missao-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 0;
+  width: 100%;
+}
+
+.missao-header {
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.missao-header h2 {
+  font-size: 3.5rem;
+  color: #ffffff;
+  font-family: 'bluestar', cursive;
+}
+
+/* Estrutura de cards na seção missão */
+.missao .card-container {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto; /* Centralizar */
+  margin-right: auto; /* Centralizar */
+  display: flex; /* Garantir flex */
+  justify-content: space-around; /* Espaçar */
+  flex-wrap: wrap; /* Permitir quebra de linha */
+  align-items: center; /* Alinhar verticalmente */
+}
+
+.missao .card-column {
+  width: 45%;
+  min-width: 280px; /* Largura mínima */
+  display: flex; /* Habilitar flex */
+  flex-direction: column; /* Organizar verticalmente */
+  align-items: center; /* Centralizar itens */
+  margin-bottom: 30px; /* Espaço abaixo */
+}
+
+.card-player {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 36px;
+  perspective: 2500px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wrapper {
+  transition: all 0.5s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wrapper[data-image] {
+  background-image: url('');
+}
+
+.wrapper[data-image="escolha/fotocarlinhos.png"] {
+  background-image: url('escolha/fotocarlinhos.png');
+}
+
+.wrapper[data-image="escolha/fotopedro.png"] {
+  background-image: url('escolha/fotopedro.png');
+}
+
+.card-player:hover .wrapper,
+.card-player.selected .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(2, 18, 109, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 119, 255, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(2, 31, 112, 0.75);
+  background-image: url('escolha/torrefundo.png');
+  transition: 0.7s;
+}
+
+.card-player.selected {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0, 119, 255, 0.6);
+}
+
+.card-player.selected::after {
+  content: "Selecionado ✓ ";
+  position: absolute;
+  font-family: 'bluestar';	
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #00a2ff;
+  background-color: rgb(255, 255, 255);
+  width: 150px;
+  box-shadow: 0 0 10px rgba(11, 2, 133, 0.5);
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.wrapper::before,
+.wrapper::after {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 80px;
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+}
+.wrapper::before {
+  top: 0;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+.wrapper::after {
+  bottom: 0;
+  opacity: 1;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+
+.card-player:hover .wrapper::before,
+.card-player.selected .wrapper::before,
+.wrapper::after {
+  opacity: 1;
+}
+
+.card-player:hover .wrapper::after,
+.card-player.selected .wrapper::after {
+  height: 120px;
+}
+.title-character {
+  width: 100%;
+  opacity: 0;
+  transition: transform 0.8s, opacity 0.5s;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  z-index: 1;
+}
+.escolhaseupersonagem {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  z-index: 1;
+}
+.card-player:hover .escolhaseupersonagem {
+  opacity: 0;
+}
+.card-player:hover .title-character,
+.card-player.selected .title-character {
+  opacity: 1;
+  transition: transform 0.8s, opacity 0.5s;
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.character {
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  z-index: -1;
+}
+
+.card-player:hover .character,
+.card-player.selected .character {
+  opacity: 1;
+  transform: translate3d(0%, -30%, 100px);
+}
+.texto-missao {
+  width: 100%;
+  padding: 40px;
+  margin: 20px 0;
+  position: relative;
+  border-radius: 15px;
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 61, 165, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.divider {
+  height: 150px;
+}
+.texto-missao:hover {
+  background-color: rgba(0, 61, 165, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.texto-missao h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.3rem;
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.texto-missao h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff, #52ACFF);
+  bottom: -15px;
+  left: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.texto-missao:hover h2:after {
+  width: 100px;
+}
+
+.texto-missao p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: #fff;
+  padding: 0 10px;
+  opacity: 0.95;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* Estilos específicos para os texto-missao baseados nos inline styles */
+/*
+.missao .card-column:last-child .texto-missao:nth-of-type(1) {
+  margin-right: 500px;
+}
+
+.missao .card-column:last-child .texto-missao:nth-of-type(2) {
+  margin-right: 200px;
+}
+*/
+
+/* Responsividade para a seção missão */
+@media (max-width: 992px) {
+  .missao .card-container {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    width: 100%; /* Ocupar largura total */
+    padding: 0 15px; /* Adicionar padding */
+  }
+  
+  .missao .card-column {
+    width: 90%; /* Ajustar largura */
+    max-width: 950px; /* Largura máxima */
+    margin: 20px 0 !important;
+  }
+  .texto-missao {
+    margin-top:50px;
+  }
+  .missao {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .missao-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .card-player {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .texto-missao {
+    padding: 20px;
+  }
+  
+  .texto-missao p {
+    font-size: 1rem;
+  }
+
+  .missao .card-column:last-child .texto-missao:nth-of-type(1),
+  .missao .card-column:last-child .texto-missao:nth-of-type(2) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content h1 {
+    font-size: 2.2rem; /* Reduzir um pouco mais */
+  }
+
+  .about {
+    height: auto; /* Altura automática */
+    padding: 40px 15px; /* Adicionar padding */
+    margin-top: 50px; /* Reduzir margem superior */
+  }
+
+  .about h2 {
+    font-size: 2rem; /* Ajustar tamanho */
+  }
+
+  .about p {
+    font-size: 1rem; /* Ajustar tamanho */
+  }
+
+  .missao {
+
+    height: auto; /* Altura automática */
+  }
+
+  .missao-content {
+    padding: 30px 15px; /* Adicionar padding horizontal */
+  }
+
+  .missao-header h2 {
+    font-size: 2rem;
+  }
+
+  .card-player {
+    width: 90%; /* Ajustar largura */
+    max-width: 300px; /* Definir largura máxima */
+    padding: 0 10px;
+    margin: 20px auto; /* Centralizar e adicionar margem */
+    transform: scale(1); /* Resetar escala */
+  }
+
+  #card-carlinhos, #card-pedro {
+    width: 90%; /* Usar porcentagem */
+    max-width: 300px;
+    height: auto; /* Altura automática */
+    left: 0; /* Resetar posição */
+    top: 0; /* Resetar posição */
+    margin: 20px auto; /* Centralizar */
+    position: relative; /* Mudar para relativo para fluxo normal */
+  }
+
+  .missao .card-container {
+    width: 100%;
+    margin-left: 0; /* Resetar margem */
+    flex-direction: column; /* Garantir coluna */
+    align-items: center; /* Centralizar itens */
+  }
+
+  .missao .card-column {
+    width: 100%;
+    display: flex; /* Usar flex */
+    flex-direction: column; /* Empilhar cards */
+    align-items: center; /* Centralizar cards */
+    margin: 0 !important; /* Resetar margens !important */
+  }
+
+  .texto-missao {
+    padding: 15px;
+    width: 100%; /* Ocupar largura total */
+    text-align: center; /* Centralizar texto */
+  }
+
+  .texto-missao p {
+    font-size: 0.9rem;
+    text-align: justify; /* Justificar parágrafos */
+  }
+
+  /* Metodologia */
+  .metodolgia {
+    padding: 40px 15px 0; /* Adicionar padding */
+    height: auto; /* Altura automática */
+  }
+
+  .metodologia-container {
+    flex-direction: column; /* Empilhar */
+    height: auto; /* Altura automática */
+    padding: 0; /* Remover padding interno */
+    align-items: center; /* Centralizar itens */
+  }
+
+  .texto-metodologia {
+    width: 100%; /* Largura total */
+    padding-right: 0; /* Remover padding */
+    text-align: center; /* Centralizar */
+    margin-bottom: 30px; /* Adicionar espaço abaixo */
+  }
+
+  .texto-metodologia h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+    text-align: center;
+  }
+
+  .texto-metodologia p {
+    font-size: 1rem; /* Ajustar tamanho */
+    text-align: justify;
+  }
+
+  .metodolgia .card-container {
+    width: 100%; /* Largura total */
+    flex-direction: column; /* Empilhar colunas */
+    align-items: center; /* Centralizar */
+  }
+
+  .metodolgia .card-column {
+    width: 100%; /* Largura total */
+    max-width: 350px; /* Limitar largura */
+    margin-top: 0; /* Remover margens */
+  }
+
+  .metodolgia .card {
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+  }
+  
+  .metodolgia .card img {
+    margin-bottom: 20px;
+  }
+  
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .metodolgia .card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Projeto */
+  .projeto {
+    padding: 60px 15px 40px; /* Adicionar padding */
+    margin-top: 50px; /* Adicionar espaço acima */
+  }
+
+  .projeto-container {
+    padding: 0; /* Remover padding interno */
+  }
+
+  .projeto-header {
+    display: block; /* Empilhar */
+    padding-left: 0; /* Remover padding */
+    margin-top: 0; /* Remover margem */
+    margin-bottom: 30px; /* Adicionar espaço abaixo */
+  }
+
+  .bola {
+    /* Opcional: esconder a bola em telas muito pequenas */
+    /* display: none; */
+    width: 250px; /* Reduzir tamanho */
+    height: 250px;
+    left: 50%; /* Centralizar */
+    transform: translateX(-50%); /* Centralizar */
+    top: -100px; /* Ajustar posição vertical */
+    filter: drop-shadow(0 10px 15px rgba(8, 135, 255, 0.3)); /* Sombra menor */
+  }
+
+  .bola:before {
+    /* Ajustar efeito de água ou remover */
+     display: none;
+  }
+
+  .projeto-titulo {
+    width: 100%; /* Largura total */
+    padding-right: 0; /* Remover padding */
+    margin-left: 0; /* Remover margem */
+    text-align: center; /* Centralizar */
+  }
+
+  .projeto-titulo h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+    text-align: center; /* Centralizar */
+    margin-left: 0; /* Remover margem */
+  }
+
+  .projeto-titulo p {
+    width: 100%; /* Largura total */
+    margin-left: auto; /* Resetar margem */
+    margin-right: auto; /* Resetar margem */
+    font-size: 1rem; /* Ajustar tamanho */
+    text-align: justify;
+  }
+
+  .projeto-content {
+    flex-direction: column; /* Empilhar */
+    padding-right: 0; /* Remover padding */
+    margin-top: 30px; /* Adicionar espaço */
+  }
+
+  .projeto-text-column {
+    width: 100%; /* Largura total */
+    padding-right: 0; /* Remover padding */
+    margin-bottom: 30px; /* Espaço abaixo */
+    text-align: center; /* Centralizar */
+  }
+
+  .projeto-text-column h2 {
+    text-align: center; /* Centralizar */
+    font-size: 1.5rem; /* Ajustar tamanho */
+  }
+
+  .projeto-text-column p {
+    font-size: 1rem; /* Ajustar tamanho */
+    text-align: justify;
+  }
+
+
+  /* Objetivos */
+  .objetivos {
+    padding: 40px 15px; /* Adicionar padding */
+  }
+
+  .objetivos-container {
+     padding: 0; /* Remover padding interno */
+  }
+
+  .textocompromisso h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+  }
+
+  .textocompromisso h3 {
+    font-size: 1.3rem; /* Ajustar tamanho */
+  }
+
+  .textocompromisso p {
+    font-size: 1rem; /* Ajustar tamanho */
+  }
+
+  .graficos h2 {
+    font-size: 1.5rem; /* Ajustar tamanho */
+  }
+
+  .grafico {
+    height: 200px; /* Reduzir altura */
+    margin-bottom: 40px; /* Ajustar margem */
+  }
+
+  .numeros {
+    width: 100%; /* Largura total */
+    margin-bottom: 15px; /* Adicionar espaço */
+  }
+  .numeros h1 {
+    font-size: 2rem; /* Ajustar tamanho */
+  }
+  .numeros h4 {
+    font-size: 0.9rem; /* Ajustar tamanho */
+  }
+}
+
+@media (max-width: 414px) {
+  .hero-content h1 {
+    font-size: 2rem; /* Reduzir mais */
+  }
+  .about h2 {
+    font-size: 1.8rem;
+  }
+  .about p {
+    font-size: 0.95rem;
+  }
+
+  .missao-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .card-player {
+    transform: scale(1); /* Manter escala normal */
+  }
+
+  .texto-missao {
+    padding: 10px;
+  }
+  .texto-missao p {
+     font-size: 0.85rem;
+  }
+
+  .metodolgia .card h3 {
+    font-size: 1.1rem;
+  }
+  .metodolgia .card p {
+     font-size: 0.9rem;
+  }
+
+  .projeto-titulo h1 {
+    font-size: 1.8rem;
+  }
+   .projeto-titulo p {
+    font-size: 0.95rem;
+   }
+   .projeto-text-column h2 {
+     font-size: 1.4rem;
+   }
+   .projeto-text-column p {
+     font-size: 0.95rem;
+   }
+
+  .textocompromisso h1 {
+     font-size: 1.8rem;
+   }
+  .textocompromisso h3 {
+    font-size: 1.2rem;
+  }
+  .textocompromisso p {
+    font-size: 0.95rem;
+  }
+   .graficos h2 {
+    font-size: 1.4rem;
+  }
+  .numeros h1 {
+     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 375px) {
+   .hero-content h1 {
+    font-size: 1.8rem; /* Reduzir mais */
+  }
+   .about h2 {
+    font-size: 1.6rem;
+  }
+
+  .missao-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .card-player {
+    transform: scale(1); /* Manter escala normal */
+  }
+  .metodolgia .card {
+     padding: 20px 10px;
+  }
+   .metodolgia .card h3 {
+    font-size: 1rem;
+  }
+  .metodolgia .card p {
+     font-size: 0.85rem;
+  }
+   .projeto-titulo h1 {
+    font-size: 1.6rem;
+  }
+   .projeto-titulo p {
+    font-size: 0.9rem;
+   }
+   .projeto-text-column h2 {
+     font-size: 1.3rem;
+   }
+   .projeto-text-column p {
+     font-size: 0.9rem;
+   }
+   .textocompromisso h1 {
+     font-size: 1.6rem;
+   }
+  .textocompromisso h3 {
+    font-size: 1.1rem;
+  }
+  .textocompromisso p {
+    font-size: 0.9rem;
+  }
+   .graficos h2 {
+    font-size: 1.3rem;
+  }
+   .numeros h1 {
+     font-size: 1.6rem;
+  }
+}
+
+/* Ajuste para a seção metodologia */
+.metodolgia {
+  padding: 85px 15px 0; 
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(212, 235, 255, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(3, 94, 252, 0.03) 0%, transparent 35%);
+}
+
+.metodologia-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 580px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.texto-metodologia {
+  width: 40%;
+  text-align: left;
+  padding-right: 40px;
+  position: relative;
+}
+
+.texto-metodologia::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+
+}
+
+.texto-metodologia h1 {
+  color: #0084FF;
+  font-size: 3rem;
+  margin-bottom: 38px;
+  text-align: left;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+}
+
+.texto-metodologia h1::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.texto-metodologia:hover h1::after {
+  width: 120px;
+}
+
+.texto-metodologia p {
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  text-align: justify;
+  padding: 0 5px;
+  font-weight: 400;
+  opacity: 0.95;
+  text-rendering: optimizeLegibility;
+}
+
+.texto-metodologia button {
+  background: linear-gradient(135deg, #0047b3, #0084ff);
+  color: white;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-block;
+  box-shadow: 0 5px 15px rgba(0, 84, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.6px;
+  outline: none;
+}
+
+.texto-metodologia button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.texto-metodologia button:hover {
+  background: linear-gradient(135deg, #0084ff, #0047b3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 84, 255, 0.3);
+}
+
+.texto-metodologia button:hover::before {
+  left: 100%;
+}
+
+.texto-metodologia button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 84, 255, 0.25);
+}
+
+.texto-metodologia button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.3), 0 5px 15px rgba(0, 84, 255, 0.2);
+}
+
+/* Container Geral de Cards */
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  width: 60%;
+}
+
+/* Coluna Geral de Cards */
+.card-column {
+  display: flex;
+  flex-direction: column;
+  width: 46%;
+}
+
+/* Deslocamento das colunas */
+.card-column:first-child {
+  margin-top: -60px;
+}
+
+.card-column:last-child {
+  margin-top: 60px;
+}
+
+.metodolgia .card {
+  width: 100%;
+  min-height: 320px;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 0 0 30px;
+  padding: 38px 25px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 153, 255, 0.12);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(82, 172, 255, 0.08);
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.metodolgia .card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(150deg, #52ACFF, #0049cf);
+  transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+  border-radius: 20px;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  opacity: 0.98;
+}
+
+.metodolgia .card:hover::before {
+  height: 100%;
+  transform: scaleY(1);
+}
+
+.metodolgia .card:hover {
+  transform: translate(5px, 5px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 47, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.metodolgia .card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.metodolgia .card:hover::after {
+  opacity: 1;
+  animation: shine 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-300%) rotate(45deg);
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translateX(300%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.metodolgia .card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 32px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: brightness(0.95) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+
+.metodolgia .card:hover img {
+  transform: scale(1.15) translateY(-8px) translateZ(20px);
+  filter: brightness(1.1) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2));
+}
+
+.metodolgia .card h3 {
+  color: #0084FF;
+  font-size: 1.35rem;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+  transform-style: preserve-3d;
+}
+
+.metodolgia .card p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: justify;
+  padding: 0 15px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  z-index: 1;
+  opacity: 0.9;
+  transform-style: preserve-3d;
+  font-weight: 400;
+}
+
+.metodolgia .card:hover h3,
+.metodolgia .card:hover p {
+  color: #fff;
+  transform: translate(2px, 2px) translateZ(15px);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.metodolgia .card:hover h3 {
+  margin-bottom: 30px;
+}
+
+.metodolgia .card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.3), 0 10px 20px rgba(0, 153, 255, 0.12);
+  transform: translate(3px, 3px);
+}
+
+.metodolgia .card:focus::before {
+  height: 10%;
+}
+
+/* Cards acessibilidade - screen readers */
+.metodolgia .card:focus-visible .card::before {
+  height: 5%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metodolgia .card,
+  .metodolgia .card::before,
+  .metodolgia .card::after,
+  .metodolgia .card img,
+  .metodolgia .card h3,
+  .metodolgia .card p,
+  .texto-metodologia button,
+  .texto-metodologia button::before,
+  .texto-metodologia h1::after {
+    transition-duration: 0.1s;
+    animation-duration: 0.1s;
+  }
+}
+
+.divider {
+  width: 100%;
+  position: relative; 
+  z-index: 10;
+  margin-bottom: -100px; /* Aumentar sobreposição */
+  overflow: hidden; /* Impedir overflow horizontal */
+}
+
+/* Ajuste para o divider na seção metodologia */
+.metodolgia .divider {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  margin-bottom: -100px; /* Valor negativo para criar sobreposição */
+}
+
+.divider img {
+  width: 100%;
+  height: 350px;
+  display: block;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.05));
+  max-width: 100%; /* Garantir que a imagem não ultrapasse o container */
+}
+
+/* Seção Projeto */
+.projeto {
+  background-color: #ffffff;
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.projeto-container {
+  max-width: 1200px;
+  max-height: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.projeto-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 60px;
+  position: relative;
+  margin-top: 120px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  min-height: 320px;
+}
+
+/* Corrigindo a posição da bola para não sair da tela */
+.bola {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  flex-shrink: 0;
+  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background-size: contain;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 15px 20px rgba(8, 135, 255, 0.4));
+  z-index: 15;
+  left: 40px;
+  top: -180px;
+}
+
+/* Ajuste no efeito de água para acompanhar a nova posição */
+.bola:before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  width: 600px;
+  height: 600px;
+  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background-size: 500px;
+  filter: blur(35px) opacity(0.15);
+  animation: pulse 6s ease-in-out infinite;
+  z-index: -1;
+  transform-origin: center center;
+}
+
+.projeto-titulo {
+  flex: 1;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.projeto-titulo h1 {
+  color: #0084FF;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  text-align: right;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  position: relative;
+}
+
+.projeto-titulo h1:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  bottom: -15px;
+  right: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.projeto-titulo:hover h1:after {
+  width: 150px;
+}
+
+.projeto-titulo p {
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  text-align: justify;
+  width: 550px;
+  margin-left: auto;
+  text-rendering: optimizeLegibility;
+}
+
+.projeto-content {
+  display: flex;
+  margin-top: 50px;
+  padding: 0 20px 50px;
+  align-items: stretch;
+  background: radial-gradient(circle at 80% 20%, rgba(212, 235, 255, 0.1) 0%, transparent 70%);
+}
+
+.projeto-text-column {
+  width: 50%;
+  padding-right: 40px;
+}
+
+.projeto-text-column h2 {
+  color: #0084FF;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: left;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.projeto-text-column h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047b3, #52ACFF);
+  bottom: -15px;
+  left: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.projeto-text-column:hover h2:after {
+  width: 120px;
+}
+
+.projeto-text-column p {
+  color: #444;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  text-align: justify;
+  text-rendering: optimizeLegibility;
+}
+
+.projeto-text-column button {
+  background: linear-gradient(135deg, #0047b3, #0084ff);
+  color: white;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-block;
+  box-shadow: 0 5px 15px rgba(0, 84, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.6px;
+  outline: none;
+}
+
+.projeto-text-column button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.projeto-text-column button:hover {
+  background: linear-gradient(135deg, #0084ff, #0047b3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 84, 255, 0.3);
+}
+
+.projeto-text-column button:hover::before {
+  left: 100%;
+}
+
+.projeto-text-column button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 84, 255, 0.25);
+}
+
+.projeto-img-column {
+  width: 50%;
+  position: relative;
+  height: 580px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 47, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projeto-img-column:hover {
+  transform: scale(1.02) translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 47, 255, 0.3);
+}
+
+.projeto-img-column img {
+  width: 100%;
+  height: 580px;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projeto-img-column:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.wave-dividermeto {
+  width: 100%;
+  overflow: hidden;
+}
+
+.wave-dividermeto img {
+  width: 100%;
+  display: block;
+  max-width: 100%;
+}
+
+/* Seção Objetivos/Compromisso Social */
+.objetivos {
+  background-color: #0084ff;
+  background-image: linear-gradient(135deg, #0084ff, #006ed8);
+  color: white;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.objetivos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.objetivos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.textocompromisso {
+  width: 48%;
+  padding-right: 40px;
+}
+
+.textocompromisso h1 {
+  font-size: 2.8rem;
+  text-align: left;
+  margin-bottom: 40px;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.textocompromisso h1:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5));
+  bottom: -15px;
+  left: 0;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.textocompromisso:hover h1:after {
+  width: 150px;
+}
+
+.textocompromisso h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  margin: 35px 0 15px;
+  color: white;
+  text-align: left;
+  font-weight: 600;
+  position: relative;
+  padding-left: 20px;
+}
+
+.textocompromisso h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.textocompromisso p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: justify;
+  text-rendering: optimizeLegibility;
+  padding-left: 20px;
+}
+
+.graficos {
+  width: 48%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.graficos:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.graficos h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
+  position: relative;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.grafico {
+  height: 250px;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.grafico svg {
+  max-width: 100%;
+  height: 100%;
+}
+
+.grafico svg path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
+.grafico.visible svg path {
+  stroke-dashoffset: 0;
+}
+
+.grafico svg circle {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.grafico.visible svg circle {
+  opacity: 1;
+  transition-delay: calc(var(--order, 0) * 0.3s);
+}
+
+.grafico svg circle:nth-child(1) {
+  --order: 1;
+}
+
+.grafico svg circle:nth-child(2) {
+  --order: 2;
+}
+
+.grafico svg circle:nth-child(3) {
+  --order: 3;
+}
+
+.grafico svg circle:nth-child(4) {
+  --order: 4;
+}
+
+.grafico svg circle:nth-child(5) {
+  --order: 5;
+}
+
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInDot {
+  to {
+    opacity: 1;
+  }
+}
+
+.numerosaumentando {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.numeros {
+  text-align: center;
+  padding: 20px;
+  margin-top: 15px;
+  background-color: #1A91FF;
+  border-radius: 10px;
+  width: 30%;
+  
+  transition: all 0.3s ease;
+}
+
+.numeros:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.numeros h1 {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.numeros h4 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 992px) {
+
+  .objetivos-container {
+    flex-direction: column;
+  }
+  
+  .textocompromisso, .graficos {
+    width: 100%;
+  }
+  
+  .textocompromisso {
+    margin-bottom: 40px;
+    padding-right: 0;
+  }
+  
+  .textocompromisso h1 {
+    text-align: center;
+  }
+  
+  .textocompromisso h1:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .textocompromisso h3 {
+    text-align: center;
+  }
+  
+  .textocompromisso p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .numeros {
+    width: 100%;
+  }
+}
+
+/* Adicionando o efeito de água em volta da bola */
+.projeto:before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 120px;
+  width: 400px;
+  height: 400px;
+  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background-size: 250px;
+  filter: blur(25px) opacity(0.2);
+  animation: pulse 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+}
+
+/* Adicionar animações de entrada */
+.metodologia-container, .card, .bola, .projeto-titulo, .textoprojeto-esquerda, .imgescolinha, .grafico, .numeros {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.metodologia-container.visible, .projeto-titulo.visible, .textoprojeto-esquerda.visible, .grafico.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card:hover{
+  transition: 0.2s;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--order, 0) * 0.2s);
+  text-align: justify;
+}
+
+.card:nth-child(1) {
+  --order: 1;
+}
+
+.card:nth-child(2) {
+  --order: 2;
+}
+
+.bola.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: float 6s ease-in-out infinite;
+}
+
+.imgescolinha.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.numeros.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--order, 0) * 0.2s);
+}
+
+.numeros:nth-child(1) {
+  --order: 1;
+}
+
+.numeros:nth-child(2) {
+  --order: 2;
+}
+
+.numeros:nth-child(3) {
+  --order: 3;
+}
+
+/* Garantir espaço suficiente para os cards desalinhados */
+.card-column:first-child .card:first-child {
+  margin-bottom: 30px;
+}
+
+.card-column:last-child .card:first-child {
+  margin-bottom: 30px;
+}
+
+/* Esconder escolhaseupersonagem no hover/selected */
+.card-player:hover .escolhaseupersonagem,
+.card-player.selected .escolhaseupersonagem {
+  opacity: 0 !important;
+}
+
+/* Mostrar title-character e character no hover/selected (regras existentes) */
+
+/* Estilos específicos para os cards baseados nos inline styles */
+#card-carlinhos {
+  width: 250px;
+  height: 350px;
+  margin-top: 100px;
+  left: -80px;
+  position: relative;
+}
+
+#card-pedro {
+  width: 250px;
+  height: 350px;
+  left: 80px;
+  top: 40px;
+  position: relative;
+}
+
+/* Adicionando media query para 1060px */
+@media (max-width: 1060px) {
+  .metodologia-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 0 15px;
+  }
+  .wave-dividermeto {
+    margin-top: 40px;
+ }
+  .texto-metodologia {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .texto-metodologia h1 {
+    text-align: center;
+  }
+  .texto-metodologia h1::after{
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    transition: width 0.5s ease;}
+    
+.divider {
+  height: 450px;
+}
+  .metodolgia .card-container {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .metodolgia .card-column {
+    width: 48%;
+    margin-top: 0 !important;
+  }
+
+  .metodolgia .card-column:first-child,
+  .metodolgia .card-column:last-child {
+    margin-top: 0;
+  }
+
+
+  .metodolgia .card {
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+  }
+  
+  .metodolgia .card img {
+    margin-bottom: 20px;
+  }
+  
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .metodolgia .card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .projeto-header {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 80px;
+    gap: 0;
+    min-height: 0;
+  }
+
+  .bola {
+    position: absolute;
+    left: 25%;
+    transform: translateX(-50%);
+    top: -320px;
+    width: 350px;
+    height: 350px;
+    animation: none;
+  }
+  .bola:before {
+    display: none;
+  }
+
+  .projeto-titulo {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    padding-right: 0;
+    margin-left: 0;
+  }
+
+  .projeto-titulo h1 {
+    text-align: center;
+    margin-left: 0;
+  }
+   .projeto-titulo p {
+    margin:auto;
+     justify-content: center;
+     padding: 0 15px;
+     width: 100%;
+   }
+   .projeto-titulo h1::after{
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+   }
+
+
+  .projeto-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .projeto-text-column {
+    width: 100%;
+    max-width: 700px;
+    padding-right: 0;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+   .projeto-text-column h2 {
+     text-align: center;
+   }
+   .projeto-text-column h2::after{
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047b3, #52ACFF);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    transition: width 0.5s ease;}
+   .projeto-text-column p {
+     padding: 0 10px;
+   }
+
+  .projeto-img-column {
+    width: 100%;
+    max-width: 700px;
+    max-height: 450px;
+  }
+  .projeto-img-column img {
+    max-height: 450px;
+  }
+}
+
+/* Ajustes adicionais na media query de 992px se necessário */
+@media (max-width: 992px) {
+  .metodolgia .card-column {
+    width: 45%;
+    min-width: 250px;
+  }
+   .bola {
+    margin-top: 30px;
+     width: 320px;
+     top:-330px;
+     height: 320px;
+     
+   }
+   .projeto-titulo p {
+    width: 100%;
+    margin:0px;
+   }}
+
+   .divider {
+    height: 350px;
+   }
+
+   @media (max-width: 924px) {
+    .metodolgia .card {
+      max-height: 360px;
+    }
+    }
+@media (max-width: 768px) {
+  .about p {
+    padding: 0 10px;
+  }
+  .missao .card-column {
+    width: 90%;
+    max-width: 400px;
+  }
+  .texto-missao p {
+    padding: 0 5px;
+  }
+
+  .metodolgia .card-container {
+     flex-direction: column;
+     align-items: center;
+  }
+  .metodolgia .card-column {
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  .metodolgia .card {
+    min-height: auto;
+  }
+
+   .bola {
+     width: 300px;
+     height: 300px;
+     
+}
+
+   .projeto-titulo p {
+     padding: 0 10px;
+   }
+   .projeto-text-column p {
+     padding: 0 5px;
+   }
+   .projeto-img-column img {
+    max-height: 400px;
+   }
+   .projeto-img-column {
+    max-height: 400px;
+   }
+   
+   .textocompromisso p {
+    padding: 0;
+   }}
+   @media (max-width: 674px) {
+    .projeto-img-column {
+      height: 50vh;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .projeto-img-column img {
+      height: 50vh;
+      object-fit: cover;
+    } 
+   }
+   @media (max-width: 651px) {
+    .projeto-img-column {
+      height: 46vh;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .projeto-img-column img {
+      height: 45vh;
+      object-fit: cover;
+    } 
+   }
+@media (max-width: 576px) {
+  .about p {
+    font-size: 1rem;
+    padding: 0 5px;
+    text-align: justify;
+  }
+
+  .missao .card-column {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .texto-missao p {
+    font-size: 0.9rem;
+    text-align: justify;
+    padding: 0;
+  }
+
+  /* Metodologia */
+  .metodolgia {
+    padding: 40px 15px 0;
+    height: auto;
+  }
+  .metodologia-container {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    align-items: center;
+  }
+
+  .texto-metodologia {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .texto-metodologia h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .texto-metodologia p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0 5px;
+  }
+
+  .metodolgia .card-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .metodolgia .card-column {
+    width: 100%;
+    max-width: 350px;
+    margin-top: 0;
+  }
+
+  .bola {
+    width: 280px;
+    height: 280px;
+    top: -160px;
+  }
+
+  .projeto-titulo p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0 5px;
+  }
+
+  .projeto-text-column p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0;
+  }
+
+  .projeto-img-column {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+ }
+
+  .projeto-img-column img {
+     height: auto;
+     max-height: 300px;
+     object-fit: cover;
+  }
+
+  .textocompromisso p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0;
+  }
+  
+.divider {
+  height: 250px;
+}
+}
+
+
+@media (max-width: 414px) {
+  .about p {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+  .texto-missao p {
+     font-size: 0.85rem;
+     text-align: justify;
+  }
+   .texto-metodologia p {
+     font-size: 0.95rem;
+     text-align: justify;
+   }
+
+   .projeto-titulo p {
+    font-size: 0.95rem;
+    text-align: justify;
+   }
+
+   .projeto-text-column p {
+     font-size: 0.95rem;
+     text-align: justify;
+   }
+
+  .textocompromisso p {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+}
+
+@media (max-width: 375px) {
+  .about p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .metodolgia .card p {
+     font-size: 0.85rem;
+     text-align: center;
+  }
+  .texto-metodologia p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .projeto-titulo p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+.graficos:hover h2:after {
+  width: 170px;
+}
+}
+
+@media (max-width: 1060px) {
+  .metodolgia .card {
+    min-height: 400px;
+    height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .metodolgia .card p {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+}
+@media (max-width: 924px) {
+  .metodolgia .card {
+    max-height: 360px;
+  }
+}

@@ -197,7 +197,6 @@ footer {
   @media (max-width: 576px) {
     footer {
       padding: 25px 15px;
-      margin-top: 30px;
     }
     
     .footer-section h4 {

@@ -32,6 +32,63 @@ body {
     font-weight: normal;
     font-style: normal;
      }
+     @keyframes drawPath {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    @keyframes fadeInDot {
+      to {
+        opacity: 1;
+      }
+    }
+    
+    
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-25px) rotate(3deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+    
+    @keyframes shine {
+      0% {
+        transform: translateX(-300%) rotate(45deg);
+        opacity: 0;
+      }
+      
+      50% {
+        opacity: 1;
+      }
+      
+      100% {
+        transform: translateX(300%) rotate(45deg);
+        opacity: 0;
+      }
+    }
+    
+    
+    
+    /* (Opcional) Animação sutil de flutuação da onda */
+    @keyframes waveFloat {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
   /* Animações de fade in */
 @keyframes fadeInUp {
   from {
@@ -43,6 +100,29 @@ body {
     transform: translateY(0);
   }
 }
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+}
+
 
 .animate {
   opacity: 0;
@@ -119,7 +199,7 @@ body {
 }
 
 .about-container {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
   position: relative;
   padding: 30px 0;
@@ -164,14 +244,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
+
 
 /* ========== Ondas (wave dividers) ========== */
 .wave-section {
@@ -213,55 +286,10 @@ body {
   fill: white; /* Footer é #004b91 */
 }
 
-/* (Opcional) Animação sutil de flutuação da onda */
-@keyframes waveFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+
 
 /* Responsividade */
-@media (max-width: 768px) {
-  .card {
-      width: calc(50% - 20px);
-      min-width: 280px;
-  }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .card {
-      width: 100%;
-      min-width: 250px;
-  }
-  
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-  
-  .section-title {
-    font-size: 1.8rem;
-  }
-  
-  .carousel-button {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-  }
-}
 
 .conhecer {
   padding: 17px 40px;
@@ -277,44 +305,7 @@ body {
   font-weight: bold;
 }
 
-.conhecer:hover {
-  letter-spacing: 3px;
-  background: linear-gradient(135deg, #ffffff, #e6e6e6);
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
-  color: #0084ff;
-  transform: translateY(-3px);
-}
 
-.conhecer:active {
-  letter-spacing: 3px;
-  background: linear-gradient(135deg, #005bb5, #004a94);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  color: white;
-  transform: translateY(1px);
-  transition: 100ms;
-}
-
-.about-btn {
-  padding: 14px 35px;
-  border: 2px solid #0084ff;
-  border-radius: 50px;
-  background: transparent;
-  color: #0084ff;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 132, 255, 0.1);
-}
-
-.about-btn:hover {
-  background: linear-gradient(135deg, #0084ff, #005bb5);
-  color: #fff;
-  box-shadow: 0 6px 15px rgba(0, 47, 255, 0.267);
-  transform: translateY(-3px);
-}
 
 /* Estilos para a seção Missão - baseados na imagem de referência */
 .missao {
@@ -602,12 +593,13 @@ body {
 
 .texto-missao p {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.15rem;
+  line-height: 1.75;
   text-align: justify;
   color: #fff;
-  padding: 0 10px;
+  padding: 0 5px;
   opacity: 0.95;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 
@@ -623,443 +615,11 @@ body {
 */
 
 /* Responsividade para a seção missão */
-@media (max-width: 992px) {
-  .missao .card-container {
-    flex-direction: column;
-    align-items: center;
-    margin-left: 0;
-    width: 100%; /* Ocupar largura total */
-    padding: 0 15px; /* Adicionar padding */
-  }
-  
-  .missao .card-column {
-    width: 90%; /* Ajustar largura */
-    max-width: 950px; /* Largura máxima */
-    margin: 20px 0 !important;
-  }
-  .texto-missao {
-    margin-top:50px;
-  }
-  .missao {
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .missao-header h2 {
-    font-size: 2.5rem;
-  }
-  
-  .card-player {
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .texto-missao {
-    padding: 20px;
-  }
-  
-  .texto-missao p {
-    font-size: 1rem;
-  }
-
-  .missao .card-column:last-child .texto-missao:nth-of-type(1),
-  .missao .card-column:last-child .texto-missao:nth-of-type(2) {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-content h1 {
-    font-size: 2.2rem; /* Reduzir um pouco mais */
-  }
-
-  .about {
-    height: auto; /* Altura automática */
-    padding: 40px 15px; /* Adicionar padding */
-    margin-top: 50px; /* Reduzir margem superior */
-  }
-
-  .about h2 {
-    font-size: 2rem; /* Ajustar tamanho */
-  }
-
-  .about p {
-    font-size: 1rem; /* Ajustar tamanho */
-  }
-
-  .missao {
-
-    height: auto; /* Altura automática */
-  }
-
-  .missao-content {
-    padding: 30px 15px; /* Adicionar padding horizontal */
-  }
-
-  .missao-header h2 {
-    font-size: 2rem;
-  }
-
-  .card-player {
-    width: 90%; /* Ajustar largura */
-    max-width: 300px; /* Definir largura máxima */
-    padding: 0 10px;
-    margin: 20px auto; /* Centralizar e adicionar margem */
-    transform: scale(1); /* Resetar escala */
-  }
-
-  #card-carlinhos, #card-pedro {
-    width: 90%; /* Usar porcentagem */
-    max-width: 300px;
-    height: auto; /* Altura automática */
-    left: 0; /* Resetar posição */
-    top: 0; /* Resetar posição */
-    margin: 20px auto; /* Centralizar */
-    position: relative; /* Mudar para relativo para fluxo normal */
-  }
-
-  .missao .card-container {
-    width: 100%;
-    margin-left: 0; /* Resetar margem */
-    flex-direction: column; /* Garantir coluna */
-    align-items: center; /* Centralizar itens */
-  }
-
-  .missao .card-column {
-    width: 100%;
-    display: flex; /* Usar flex */
-    flex-direction: column; /* Empilhar cards */
-    align-items: center; /* Centralizar cards */
-    margin: 0 !important; /* Resetar margens !important */
-  }
-
-  .texto-missao {
-    padding: 15px;
-    width: 100%; /* Ocupar largura total */
-    text-align: center; /* Centralizar texto */
-  }
-
-  .texto-missao p {
-    font-size: 0.9rem;
-    text-align: justify; /* Justificar parágrafos */
-  }
-
-  /* Metodologia */
-  .metodolgia {
-    padding: 40px 15px 0; /* Adicionar padding */
-    height: auto; /* Altura automática */
-  }
-
-  .metodologia-container {
-    flex-direction: column; /* Empilhar */
-    height: auto; /* Altura automática */
-    padding: 0; /* Remover padding interno */
-    align-items: center; /* Centralizar itens */
-  }
-
-  .texto-metodologia {
-    width: 100%; /* Largura total */
-    padding-right: 0; /* Remover padding */
-    text-align: center; /* Centralizar */
-    margin-bottom: 30px; /* Adicionar espaço abaixo */
-  }
-
-  .texto-metodologia h1 {
-    font-size: 2rem; /* Ajustar tamanho */
-    text-align: center;
-  }
-
-  .texto-metodologia p {
-    font-size: 1rem; /* Ajustar tamanho */
-    text-align: justify;
-  }
-
-  .metodolgia .card-container {
-    width: 100%; /* Largura total */
-    flex-direction: column; /* Empilhar colunas */
-    align-items: center; /* Centralizar */
-  }
-
-  .metodolgia .card-column {
-    width: 100%; /* Largura total */
-    max-width: 350px; /* Limitar largura */
-    margin-top: 0; /* Remover margens */
-  }
-
-  .metodolgia .card {
-    height: 400px;
-    min-height: 400px;
-    max-height: 400px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 20px;
-  }
-  
-  .metodolgia .card img {
-    margin-bottom: 20px;
-  }
-  
-  .metodolgia .card h3 {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 15px;
-  }
-  
-  .metodolgia .card p {
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  /* Projeto */
-  .projeto {
-    padding: 60px 15px 40px; /* Adicionar padding */
-    margin-top: 50px; /* Adicionar espaço acima */
-  }
-
-  .projeto-container {
-    padding: 0; /* Remover padding interno */
-  }
-
-  .projeto-header {
-    display: block; /* Empilhar */
-    padding-left: 0; /* Remover padding */
-    margin-top: 0; /* Remover margem */
-    margin-bottom: 30px; /* Adicionar espaço abaixo */
-  }
-
-  .bola {
-    /* Opcional: esconder a bola em telas muito pequenas */
-    /* display: none; */
-    width: 250px; /* Reduzir tamanho */
-    height: 250px;
-    left: 50%; /* Centralizar */
-    transform: translateX(-50%); /* Centralizar */
-    top: -100px; /* Ajustar posição vertical */
-    filter: drop-shadow(0 10px 15px rgba(8, 135, 255, 0.3)); /* Sombra menor */
-  }
-
-  .bola:before {
-    /* Ajustar efeito de água ou remover */
-     display: none;
-  }
-
-  .projeto-titulo {
-    width: 100%; /* Largura total */
-    padding-right: 0; /* Remover padding */
-    margin-left: 0; /* Remover margem */
-    text-align: center; /* Centralizar */
-  }
-
-  .projeto-titulo h1 {
-    font-size: 2rem; /* Ajustar tamanho */
-    text-align: center; /* Centralizar */
-    margin-left: 0; /* Remover margem */
-  }
-
-  .projeto-titulo p {
-    width: 100%; /* Largura total */
-    margin-left: auto; /* Resetar margem */
-    margin-right: auto; /* Resetar margem */
-    font-size: 1rem; /* Ajustar tamanho */
-    text-align: justify;
-  }
-
-  .projeto-content {
-    flex-direction: column; /* Empilhar */
-    padding-right: 0; /* Remover padding */
-    margin-top: 30px; /* Adicionar espaço */
-  }
-
-  .projeto-text-column {
-    width: 100%; /* Largura total */
-    padding-right: 0; /* Remover padding */
-    margin-bottom: 30px; /* Espaço abaixo */
-    text-align: center; /* Centralizar */
-  }
-
-  .projeto-text-column h2 {
-    text-align: center; /* Centralizar */
-    font-size: 1.5rem; /* Ajustar tamanho */
-  }
-
-  .projeto-text-column p {
-    font-size: 1rem; /* Ajustar tamanho */
-    text-align: justify;
-  }
 
 
-  /* Objetivos */
-  .objetivos {
-    padding: 40px 15px; /* Adicionar padding */
-  }
 
-  .objetivos-container {
-     padding: 0; /* Remover padding interno */
-  }
 
-  .textocompromisso h1 {
-    font-size: 2rem; /* Ajustar tamanho */
-  }
 
-  .textocompromisso h3 {
-    font-size: 1.3rem; /* Ajustar tamanho */
-  }
-
-  .textocompromisso p {
-    font-size: 1rem; /* Ajustar tamanho */
-  }
-
-  .graficos h2 {
-    font-size: 1.5rem; /* Ajustar tamanho */
-  }
-
-  .grafico {
-    height: 200px; /* Reduzir altura */
-    margin-bottom: 40px; /* Ajustar margem */
-  }
-
-  .numeros {
-    width: 100%; /* Largura total */
-    margin-bottom: 15px; /* Adicionar espaço */
-  }
-  .numeros h1 {
-    font-size: 2rem; /* Ajustar tamanho */
-  }
-  .numeros h4 {
-    font-size: 0.9rem; /* Ajustar tamanho */
-  }
-}
-
-@media (max-width: 414px) {
-  .hero-content h1 {
-    font-size: 2rem; /* Reduzir mais */
-  }
-  .about h2 {
-    font-size: 1.8rem;
-  }
-  .about p {
-    font-size: 0.95rem;
-  }
-
-  .missao-header h2 {
-    font-size: 1.8rem;
-  }
-
-  .card-player {
-    transform: scale(1); /* Manter escala normal */
-  }
-
-  .texto-missao {
-    padding: 10px;
-  }
-  .texto-missao p {
-     font-size: 0.85rem;
-  }
-
-  .metodolgia .card h3 {
-    font-size: 1.1rem;
-  }
-  .metodolgia .card p {
-     font-size: 0.9rem;
-  }
-
-  .projeto-titulo h1 {
-    font-size: 1.8rem;
-  }
-   .projeto-titulo p {
-    font-size: 0.95rem;
-   }
-   .projeto-text-column h2 {
-     font-size: 1.4rem;
-   }
-   .projeto-text-column p {
-     font-size: 0.95rem;
-   }
-
-  .textocompromisso h1 {
-     font-size: 1.8rem;
-   }
-  .textocompromisso h3 {
-    font-size: 1.2rem;
-  }
-  .textocompromisso p {
-    font-size: 0.95rem;
-  }
-   .graficos h2 {
-    font-size: 1.4rem;
-  }
-  .numeros h1 {
-     font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 375px) {
-   .hero-content h1 {
-    font-size: 1.8rem; /* Reduzir mais */
-  }
-   .about h2 {
-    font-size: 1.6rem;
-  }
-
-  .missao-header h2 {
-    font-size: 1.6rem;
-  }
-
-  .card-player {
-    transform: scale(1); /* Manter escala normal */
-  }
-  .metodolgia .card {
-     padding: 20px 10px;
-  }
-   .metodolgia .card h3 {
-    font-size: 1rem;
-  }
-  .metodolgia .card p {
-     font-size: 0.85rem;
-  }
-   .projeto-titulo h1 {
-    font-size: 1.6rem;
-  }
-   .projeto-titulo p {
-    font-size: 0.9rem;
-   }
-   .projeto-text-column h2 {
-     font-size: 1.3rem;
-   }
-   .projeto-text-column p {
-     font-size: 0.9rem;
-   }
-   .textocompromisso h1 {
-     font-size: 1.6rem;
-   }
-  .textocompromisso h3 {
-    font-size: 1.1rem;
-  }
-  .textocompromisso p {
-    font-size: 0.9rem;
-  }
-   .graficos h2 {
-    font-size: 1.3rem;
-  }
-   .numeros h1 {
-     font-size: 1.6rem;
-  }
-}
 
 /* Ajuste para a seção metodologia */
 .metodolgia {
@@ -1149,6 +709,7 @@ body {
   font-size: 1.05rem;
   margin-bottom: 30px;
   cursor: pointer;
+  font-weight: bold;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   display: inline-block;
   box-shadow: 0 5px 15px rgba(0, 84, 255, 0.2);
@@ -1187,6 +748,8 @@ body {
 .texto-metodologia button:focus {
   box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.3), 0 5px 15px rgba(0, 84, 255, 0.2);
 }
+
+
 
 /* Container Geral de Cards */
 .card-container {
@@ -1287,21 +850,6 @@ body {
   animation: shine 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes shine {
-  0% {
-    transform: translateX(-300%) rotate(45deg);
-    opacity: 0;
-  }
-  
-  50% {
-    opacity: 1;
-  }
-  
-  100% {
-    transform: translateX(300%) rotate(45deg);
-    opacity: 0;
-  }
-}
 
 .metodolgia .card img {
   width: 80px;
@@ -1373,20 +921,7 @@ body {
   height: 5%;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .metodolgia .card,
-  .metodolgia .card::before,
-  .metodolgia .card::after,
-  .metodolgia .card img,
-  .metodolgia .card h3,
-  .metodolgia .card p,
-  .texto-metodologia button,
-  .texto-metodologia button::before,
-  .texto-metodologia h1::after {
-    transition-duration: 0.1s;
-    animation-duration: 0.1s;
-  }
-}
+
 
 .divider {
   width: 100%;
@@ -1478,7 +1013,6 @@ body {
 .projeto-titulo {
   flex: 1;
   text-align: right;
-  padding-right: 50px;
 }
 
 .projeto-titulo h1 {
@@ -1521,7 +1055,7 @@ body {
 .projeto-content {
   display: flex;
   margin-top: 50px;
-  padding: 0 20px 50px;
+  padding: 0 20px;
   align-items: stretch;
   background: radial-gradient(circle at 80% 20%, rgba(212, 235, 255, 0.1) 0%, transparent 70%);
 }
@@ -1566,6 +1100,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+
 .projeto-text-column button {
   background: linear-gradient(135deg, #0047b3, #0084ff);
   color: white;
@@ -1574,8 +1109,9 @@ body {
   border-radius: 30px;
   font-weight: 500;
   font-size: 1.05rem;
-  margin: 20px 0;
+  margin-bottom: 30px;
   cursor: pointer;
+  font-weight: bold;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   display: inline-block;
   box-shadow: 0 5px 15px rgba(0, 84, 255, 0.2);
@@ -1611,6 +1147,12 @@ body {
   box-shadow: 0 4px 10px rgba(0, 84, 255, 0.25);
 }
 
+.projeto-text-column button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.3), 0 5px 15px rgba(0, 84, 255, 0.2);
+}
+
+
+
 .projeto-img-column {
   width: 50%;
   position: relative;
@@ -1638,17 +1180,7 @@ body {
   transform: scale(1.05);
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-25px) rotate(3deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}
+
 
 .wave-dividermeto {
   width: 100%;
@@ -1657,6 +1189,7 @@ body {
 
 .wave-dividermeto img {
   width: 100%;
+height: 200px;
   display: block;
   max-width: 100%;
 }
@@ -1763,17 +1296,9 @@ body {
 .graficos {
   width: 48%;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.graficos:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
 
 .graficos h2 {
   font-size: 2.2rem;
@@ -1839,17 +1364,6 @@ body {
   --order: 5;
 }
 
-@keyframes drawPath {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes fadeInDot {
-  to {
-    opacity: 1;
-  }
-}
 
 .numerosaumentando {
   display: flex;
@@ -1863,14 +1377,16 @@ body {
   margin-top: 15px;
   background-color: #1A91FF;
   border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 28, 105, 0.233);
   width: 30%;
-  
   transition: all 0.3s ease;
 }
 
 .numeros:hover {
   transform: translateY(-5px);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #005cb3;
+  transition: 0.5s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.144);
 }
 
 .numeros h1 {
@@ -1884,45 +1400,7 @@ body {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Media queries para responsividade */
-@media (max-width: 992px) {
 
-  .objetivos-container {
-    flex-direction: column;
-  }
-  
-  .textocompromisso, .graficos {
-    width: 100%;
-  }
-  
-  .textocompromisso {
-    margin-bottom: 40px;
-    padding-right: 0;
-  }
-  
-  .textocompromisso h1 {
-    text-align: center;
-  }
-  
-  .textocompromisso h1:after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .textocompromisso h3 {
-    text-align: center;
-  }
-  
-  .textocompromisso p {
-    text-align: center;
-  }
-}
-
-@media (max-width: 576px) {
-  .numeros {
-    width: 100%;
-  }
-}
 
 /* Adicionando o efeito de água em volta da bola */
 .projeto:before {
@@ -1939,20 +1417,7 @@ body {
   z-index: 0;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1) translateY(0);
-    opacity: 0.15;
-  }
-  50% {
-    transform: scale(1.05) translateY(-10px);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(1) translateY(0);
-    opacity: 0.15;
-  }
-}
+
 
 /* Adicionar animações de entrada */
 .metodologia-container, .card, .bola, .projeto-titulo, .textoprojeto-esquerda, .imgescolinha, .grafico, .numeros {
@@ -2047,7 +1512,27 @@ body {
   position: relative;
 }
 
-/* Adicionando media query para 1060px */
+.divider {
+  height: 50px;
+ }
+
+/* Media Queries */
+
+@media (prefers-reduced-motion: reduce) {
+  .metodolgia .card,
+  .metodolgia .card::before,
+  .metodolgia .card::after,
+  .metodolgia .card img,
+  .metodolgia .card h3,
+  .metodolgia .card p,
+  .texto-metodologia button,
+  .texto-metodologia button::before,
+  .texto-metodologia h1::after {
+    transition-duration: 0.1s;
+    animation-duration: 0.1s;
+  }
+}
+
 @media (max-width: 1060px) {
   .metodologia-container {
     flex-direction: column;
@@ -2055,9 +1540,11 @@ body {
     height: auto;
     padding: 0 15px;
   }
+  
   .wave-dividermeto {
     margin-top: 40px;
- }
+  }
+  
   .texto-metodologia {
     width: 100%;
     max-width: 600px;
@@ -2069,7 +1556,8 @@ body {
   .texto-metodologia h1 {
     text-align: center;
   }
-  .texto-metodologia h1::after{
+  
+  .texto-metodologia h1::after {
     content: '';
     position: absolute;
     width: 80px;
@@ -2079,11 +1567,13 @@ body {
     left: 50%;
     transform: translateX(-50%);
     border-radius: 4px;
-    transition: width 0.5s ease;}
+    transition: width 0.5s ease;
+  }
     
-.divider {
-  height: 450px;
-}
+  .divider {
+    height: 380px;
+  }
+  
   .metodolgia .card-container {
     width: 100%;
     justify-content: space-around;
@@ -2098,7 +1588,6 @@ body {
   .metodolgia .card-column:last-child {
     margin-top: 0;
   }
-
 
   .metodolgia .card {
     height: 400px;
@@ -2141,8 +1630,7 @@ body {
   .projeto-header {
     flex-direction: column;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0 15px;
     margin-top: 80px;
     gap: 0;
     min-height: 0;
@@ -2152,11 +1640,12 @@ body {
     position: absolute;
     left: 25%;
     transform: translateX(-50%);
-    top: -320px;
+    top: -340px;
     width: 350px;
     height: 350px;
     animation: none;
   }
+  
   .bola:before {
     display: none;
   }
@@ -2173,13 +1662,15 @@ body {
     text-align: center;
     margin-left: 0;
   }
-   .projeto-titulo p {
-    margin:auto;
-     justify-content: center;
-     padding: 0 15px;
-     width: 100%;
-   }
-   .projeto-titulo h1::after{
+  
+  .projeto-titulo p {
+    margin: auto;
+    justify-content: center;
+    padding: 0 15px;
+    width: 100%;
+  }
+  
+  .projeto-titulo h1::after {
     content: '';
     position: absolute;
     width: 80px;
@@ -2190,8 +1681,7 @@ body {
     transform: translateX(-50%);
     border-radius: 4px;
     transition: width 0.5s ease;
-   }
-
+  }
 
   .projeto-content {
     flex-direction: column;
@@ -2206,10 +1696,12 @@ body {
     margin-bottom: 30px;
     text-align: center;
   }
-   .projeto-text-column h2 {
-     text-align: center;
-   }
-   .projeto-text-column h2::after{
+  
+  .projeto-text-column h2 {
+    text-align: center;
+  }
+  
+  .projeto-text-column h2::after {
     content: '';
     position: absolute;
     width: 35px;
@@ -2219,140 +1711,245 @@ body {
     left: 50%;
     transform: translateX(-50%);
     border-radius: 4px;
-    transition: width 0.5s ease;}
-   .projeto-text-column p {
-     padding: 0 10px;
-   }
+    transition: width 0.5s ease;
+  }
+  
+  .projeto-text-column p {
+    padding: 0 10px;
+  }
 
   .projeto-img-column {
     width: 100%;
     max-width: 700px;
     max-height: 450px;
   }
+  
   .projeto-img-column img {
     max-height: 450px;
   }
 }
 
-/* Ajustes adicionais na media query de 992px se necessário */
 @media (max-width: 992px) {
+  .missao .card-container {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .missao .card-column {
+    width: 90%;
+    max-width: 950px;
+    margin: 20px 0 !important;
+  }
+  
+  .texto-missao {
+    margin-top: 50px;
+  }
+  
+  .missao {
+    height: auto;
+  }
+  
   .metodolgia .card-column {
     width: 45%;
     min-width: 250px;
   }
-   .bola {
+  
+  .bola {
     margin-top: 30px;
-     width: 320px;
-     top:-330px;
-     height: 320px;
-     
-   }
-   .projeto-titulo p {
+    width: 320px;
+    top: -330px;
+    height: 320px;
+  }
+  
+  .projeto-titulo p {
     width: 100%;
-    margin:0px;
-   }}
+    margin: 0;
+  }
+  
+  .objetivos-container {
+    flex-direction: column;
+  }
+  
+  .textocompromisso, .graficos {
+    width: 100%;
+  }
+  
+  .textocompromisso {
+    margin-bottom: 40px;
+    padding-right: 0;
+  }
+  
+  .textocompromisso h1 {
+    text-align: center;
+  }
+  
+  .textocompromisso h1:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .textocompromisso h3 {
+    text-align: center;
+  }
+  
+  .textocompromisso p {
+    text-align: center;
+  }
+}
 
-   .divider {
-    height: 350px;
-   }
 
-   @media (max-width: 924px) {
-    .metodolgia .card {
-      max-height: 360px;
-    }
-    }
+@media (max-width: 924px) {
+  .metodolgia .card {
+    max-height: 360px;
+  }
+}
+
 @media (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
+    min-width: 280px;
+  }
+  
   .about p {
     padding: 0 10px;
   }
+  
   .missao .card-column {
     width: 90%;
-    max-width: 400px;
+    max-width: 600px;
   }
+  
   .texto-missao p {
     padding: 0 5px;
   }
 
   .metodolgia .card-container {
-     flex-direction: column;
-     align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
+  
   .metodolgia .card-column {
     width: 90%;
     max-width: 400px;
     margin-bottom: 10px;
   }
+  
   .metodolgia .card {
     min-height: auto;
   }
 
-   .bola {
-     width: 300px;
-     height: 300px;
-     
+  .bola {
+    width: 300px;
+    height: 300px;
+  }
+
+  .projeto-titulo p {
+    padding: 0 10px;
+  }
+  
+  .projeto-text-column p {
+    padding: 0 5px;
+  }
+  
+  .projeto-img-column,
+  .projeto-img-column img {
+    max-height: 400px;
+  }
+  
+  .textocompromisso p {
+    padding: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .missao-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .card-player {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .texto-missao {
+    padding: 20px;
+  }
+  
+  .texto-missao p {
+    font-size: 1rem;
+  }
+
+  .missao .card-column:last-child .texto-missao:nth-of-type(1),
+  .missao .card-column:last-child .texto-missao:nth-of-type(2) {
+    margin-right: 0;
+  }
 }
 
-   .projeto-titulo p {
-     padding: 0 10px;
-   }
-   .projeto-text-column p {
-     padding: 0 5px;
-   }
-   .projeto-img-column img {
-    max-height: 400px;
-   }
-   .projeto-img-column {
-    max-height: 400px;
-   }
-   
-   .textocompromisso p {
-    padding: 0;
-   }}
-   @media (max-width: 674px) {
-    .projeto-img-column {
-      height: 50vh;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-    .projeto-img-column img {
-      height: 50vh;
-      object-fit: cover;
-    } 
-   }
-   @media (max-width: 651px) {
-    .projeto-img-column {
-      height: 46vh;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-    .projeto-img-column img {
-      height: 45vh;
-      object-fit: cover;
-    } 
-   }
+@media (max-width: 674px) {
+  .projeto-img-column,
+  .projeto-img-column img {
+    height: 50vh;
+    object-fit: cover;
+  }
+  
+  .projeto-img-column {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 651px) {
+  .projeto-img-column {
+    height: 46vh;
+    margin-bottom: 20px;
+  }
+  
+  .projeto-img-column img {
+    height: 45vh;
+    object-fit: cover;
+  }
+}
+
 @media (max-width: 576px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .numeros {
+    width: 100%;
+  }
+
+  .about {
+    height: auto;
+    padding: 40px 15px;
+    margin-top: 50px;
+  }
+
+  .about h2 {
+    font-size: 2rem;
+  }
+
   .about p {
     font-size: 1rem;
     padding: 0 5px;
     text-align: justify;
-  }
-
-  .missao .card-column {
-    width: 90%;
-    max-width: 350px;
-  }
-
-  .texto-missao p {
-    font-size: 0.9rem;
-    text-align: justify;
     padding: 0;
   }
 
-  /* Metodologia */
+
   .metodolgia {
     padding: 40px 15px 0;
     height: auto;
   }
+
   .metodologia-container {
     flex-direction: column;
     height: auto;
@@ -2390,10 +1987,261 @@ body {
     margin-top: 0;
   }
 
+  .metodolgia .card {
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+  }
+
+  .metodolgia .card img {
+    margin-bottom: 20px;
+  }
+
+  .metodolgia .card h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .metodolgia .card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .projeto {
+    padding: 60px 15px 40px;
+    margin-top: 50px;
+  }
+
+  .projeto-container {
+    padding: 0;
+  }
+
+  .projeto-header {
+    display: block;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+
   .bola {
     width: 280px;
     height: 280px;
-    top: -160px;
+    top: -230px;
+  }
+  .projeto-titulo {
+    width: 100%;
+    padding-right: 0;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .projeto-titulo h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .projeto-titulo p {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0 5px;
+  }
+
+  .projeto-content {
+    flex-direction: column;
+    padding-right: 0;
+    margin-top: 30px;
+  }
+
+  .projeto-text-column {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .projeto-text-column h2 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .projeto-text-column p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0;
+  }
+
+  .projeto-img-column {
+    height: auto;
+    max-height: 600px;
+  }
+
+  .projeto-img-column img {
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+  }
+
+  .objetivos {
+    padding: 40px 15px;
+  }
+
+  .objetivos-container {
+    padding: 0;
+  }
+
+  .textocompromisso h1 {
+    font-size: 2rem;
+  }
+
+  .textocompromisso h3 {
+    font-size: 1.3rem;
+  }
+
+  .textocompromisso p {
+    font-size: 1rem;
+    text-align: justify;
+    padding: 0;
+  }
+
+  .graficos h2 {
+    font-size: 1.5rem;
+  }
+
+  .grafico {
+    height: 200px;
+    margin-bottom: 40px;
+  }
+
+  .numeros {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .numeros h1 {
+    font-size: 2rem;
+  }
+
+  .numeros h4 {
+    font-size: 0.9rem;
+  }
+
+  .divider {
+    height: 250px;
+  }
+}
+@media (max-width: 500px) {
+  .bola {
+    left: 70px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    min-width: 250px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .carousel-button {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .about p,
+  .texto-metodologia p,
+  .projeto-titulo p,
+  .projeto-text-column p,
+  .textocompromisso p {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+
+  .texto-missao p {
+    font-size: 0.85rem;
+    text-align: justify;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .about h2,
+  .missao-header h2,
+  .projeto-titulo h1,
+  .textocompromisso h1,
+  .numeros h1 {
+    font-size: 1.8rem;
+  }
+
+  .metodolgia .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .metodolgia .card p {
+    font-size: 0.9rem;
+  }
+
+  .projeto-text-column h2,
+  .graficos h2 {
+    font-size: 1.4rem;
+  }
+
+  .textocompromisso h3 {
+    font-size: 1.2rem;
+  }
+    .bola {
+      left: 50px;
+      transform: translateX(-50%);
+    }
+    .divider{
+      height: 280px;
+    }
+  }
+
+@media (max-width: 375px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .about h2,
+  .missao-header h2,
+  .projeto-titulo h1,
+  .textocompromisso h1,
+  .numeros h1 {
+    font-size: 1.6rem;
   }
 
   .projeto-titulo p {
@@ -2410,13 +2258,13 @@ body {
 
   .projeto-img-column {
     height: auto;
-    max-height: 300px;
+    max-height: 270px;
     object-fit: cover;
  }
 
   .projeto-img-column img {
      height: auto;
-     max-height: 300px;
+     max-height: 270px;
      object-fit: cover;
   }
 
@@ -2428,89 +2276,25 @@ body {
   
 .divider {
   height: 250px;
+} }
+.wave-dividermeto{
+margin-top: 100px;
 }
-}
-
-
-@media (max-width: 414px) {
-  .about p {
-    font-size: 0.95rem;
-    text-align: justify;
-  }
-  .texto-missao p {
-     font-size: 0.85rem;
-     text-align: justify;
-  }
-   .texto-metodologia p {
-     font-size: 0.95rem;
-     text-align: justify;
-   }
-
-   .projeto-titulo p {
-    font-size: 0.95rem;
-    text-align: justify;
-   }
-
-   .projeto-text-column p {
-     font-size: 0.95rem;
-     text-align: justify;
-   }
-
-  .textocompromisso p {
-    font-size: 0.95rem;
-    text-align: justify;
-  }
-}
-
-@media (max-width: 375px) {
-  .about p {
-    font-size: 0.9rem;
-    text-align: justify;
-  }
-
-  .metodolgia .card p {
-     font-size: 0.85rem;
-     text-align: center;
-  }
-  .texto-metodologia p {
-    font-size: 0.9rem;
-    text-align: justify;
-  }
-
-  .projeto-titulo p {
-    font-size: 0.9rem;
-    text-align: justify;
-  }
-
-.graficos:hover h2:after {
-  width: 170px;
-}
-}
-
-@media (max-width: 1060px) {
-  .metodolgia .card {
-    min-height: 400px;
-    height: 400px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+ 
+@media (max-width: 480px) {
+  .card {
+      width: 100%;
+      min-width: 250px;
   }
   
-  .metodolgia .card h3 {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .hero-content h1 {
+    font-size: 2.5rem;
   }
   
-  .metodolgia .card p {
-    flex-grow: 1;
-    overflow-y: auto;
+  .section-title {
+    font-size: 1.8rem;
   }
+  
+}
 
-}
-@media (max-width: 924px) {
-  .metodolgia .card {
-    max-height: 360px;
-  }
-}
+
