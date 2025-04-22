@@ -148,6 +148,37 @@ body {
   overflow: hidden;
 }
 
+.conhecer-hero{
+  padding: 17px 40px;
+  border-radius: 50px;
+  border: 0;
+  background: linear-gradient(135deg, #0084ff, #005bb5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+}
+
+.conhecer-hero:hover{
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #ffffff, #e6e6e6);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+  color: #0084ff;
+  transform: translateY(-3px);
+}
+
+.conhecer-hero:active{
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #005bb5, #004a94);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  transform: translateY(1px);
+  transition: 100ms;
+}
+
 /* Media query para dispositivos móveis - carrega uma versão menor */
 @media (max-width: 768px) {
   .hero {
