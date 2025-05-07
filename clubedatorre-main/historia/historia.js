@@ -42,7 +42,7 @@ window.addEventListener('load', function() {
       cards.scrollLeft = cards.scrollWidth / 4; // posiciona no meio dos clones
     }, 100);
     
-    // Função de teletransporte com limiar para ambos os lados
+    // Função de teletransporte com limiar para ambos os dos
     function teleport() {
       const half = cards.scrollWidth / 2;
       const threshold = 50; // 50px de margem

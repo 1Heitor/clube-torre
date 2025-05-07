@@ -763,19 +763,7 @@ textarea.form-control {
     }
     
     /* Destaca visualmente o card do WhatsApp */
-    .contact-cards .contact-card:nth-child(3) .contact-icon {
-        width: 90px;
-        height: 90px;
-    }
-    
-    .contact-cards .contact-card:nth-child(3) .contact-icon img {
-        width: 50px;
-    }
-    
-    .contact-cards .contact-card:nth-child(3) h3 {
-        font-size: 1.7rem;
-    }
-    
+ 
     .contact-form {
         padding: 40px 30px;
     }

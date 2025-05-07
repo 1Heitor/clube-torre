@@ -276,6 +276,7 @@ body {
   transition: width 0.5s ease;
 }
 
+
 .about:hover h2:after {
   width: 150px;
 }
@@ -931,7 +932,7 @@ body {
   color: #333;
   font-size: 1rem;
   line-height: 1.7;
-  text-align: justify;
+  text-align: center;
   padding: 0 15px;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
@@ -1290,16 +1291,17 @@ height: 200px;
 }
 
 .textocompromisso h1:after {
+
+  background: linear-gradient(90deg, #0047b3, #52ACFF, #ffffff);
   content: '';
   position: absolute;
-  width: 80px;
+  width: 60px;
   height: 4px;
   bottom: -15px;
-  left: 0;
+  left: 3px;
   border-radius: 4px;
   transition: width 0.5s ease;
 }
-
 .textocompromisso:hover h1:after {
   width: 150px;
 }
@@ -1312,17 +1314,6 @@ height: 200px;
   text-align: left;
   font-weight: 600;
   position: relative;
-}
-
-.textocompromisso h3::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
 }
 
 .textocompromisso p {
@@ -1351,6 +1342,22 @@ height: 200px;
   position: relative;
   font-weight: 600;
   padding-bottom: 20px;
+}
+.graficos h2:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg,  #0047b3, #52ACFF, #ffffff);
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.graficos:hover h2:after {
+  width: 150px;
 }
 
 .grafico {
@@ -1412,6 +1419,7 @@ height: 200px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  
 }
 
 .numeros {
@@ -1421,7 +1429,7 @@ height: 200px;
   background-color: #1A91FF;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 28, 105, 0.233);
-  width: 30%;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
@@ -1758,7 +1766,7 @@ height: 200px;
   }
   
   .projeto-text-column p {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 
   .projeto-img-column {
@@ -1839,7 +1847,7 @@ height: 200px;
   }
   
   .textocompromisso p {
-    text-align: center;
+    text-align: justify;
   }
 }
 
@@ -1892,9 +1900,8 @@ height: 200px;
   .projeto-titulo p {
     padding: 0 10px;
   }
-  
   .projeto-text-column p {
-    padding: 0 5px;
+    padding: 0 10px;
   }
   
   .projeto-img-column,
@@ -1921,6 +1928,7 @@ height: 200px;
   .card-player {
     margin: 0 auto;
     padding: 0 20px;
+
   }
   
   .texto-missao {
@@ -1968,6 +1976,7 @@ height: 200px;
   
   .numeros {
     width: 100%;
+
   }
 
   .about {
@@ -2015,7 +2024,7 @@ height: 200px;
   .texto-metodologia p {
     font-size: 1rem;
     text-align: justify;
-    padding: 0 5px;
+    padding: 0 20px;
   }
 
   .metodolgia .card-container {
@@ -2079,8 +2088,7 @@ height: 200px;
 
   .projeto-header {
     display: block;
-    padding-left: 0;
-    margin-top: 0;
+    padding: 0;
     margin-bottom: 30px;
   }
 
@@ -2113,13 +2121,13 @@ height: 200px;
 
   .projeto-content {
     flex-direction: column;
-    padding-right: 0;
+  padding: 0px;
     margin-top: 30px;
   }
 
   .projeto-text-column {
     width: 100%;
-    padding-right: 0;
+    padding: 0px;
     margin-bottom: 30px;
     text-align: center;
   }
@@ -2221,7 +2229,16 @@ height: 200px;
     font-size: 2rem;
   }
 }
-
+@media (max-width:440px){
+  #card-carlinhos {
+    left: -55px;
+  }
+  
+  #card-pedro {
+    left: 55px;
+  }
+  
+}
 @media (max-width: 414px) {
   .about p,
   .texto-metodologia p,
