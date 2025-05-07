@@ -675,10 +675,7 @@ body {
   background-color: white;
   position: relative;
   z-index: 1;
-  overflow: visible;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(212, 235, 255, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 80% 80%, rgba(3, 94, 252, 0.03) 0%, transparent 35%);
+
 }
 
 .metodologia-container {
@@ -1244,7 +1241,7 @@ height: 200px;
 
 /* Seção Objetivos/Compromisso Social */
 .objetivos {
-  background-color: #0A88FF;
+  background-color: #0981F2;
   color: white;
   padding: 60px 0;
   position: relative;
