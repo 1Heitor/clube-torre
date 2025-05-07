@@ -90,7 +90,7 @@ body {
   position: relative;
   height: 100vh;
   min-height: 550px;
-  background: url('imgshome/imgcampo.JPG') center/cover no-repeat;
+  background: url('imgshome/imgcampo.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -698,7 +698,7 @@ body {
 
 @media (max-width: 768px) {
   .hero {
-    background: url('imgshome/imgfundomenor.png') center/cover no-repeat;
+    background: url('imgshome/imgfundomenor.webp') center/cover no-repeat;
   }
   
   .hero-content h1 {

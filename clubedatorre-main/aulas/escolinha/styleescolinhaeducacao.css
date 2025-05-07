@@ -59,7 +59,7 @@ body {
   position: relative;
   height: 100vh;
   min-height: 550px;
-  background: url('imgs/imgback2.jpg') center/cover no-repeat;
+  background: url('imgs/imgback2.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,7 +188,7 @@ body {
 /* Responsividade */
 @media (max-width: 1024px) {
   .hero {
-    background: url('imgs/imgback2menor.jpg') center/cover no-repeat;
+    background: url('imgs/imgback2menor.webp') center/cover no-repeat;
     position: relative;
     height: 100vh;
     min-height: 550px;

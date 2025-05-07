@@ -59,7 +59,7 @@ body {
   position: relative;
   height: 100vh;
   min-height: 550px;
-  background: url('imgfundo.png') center/cover no-repeat;
+  background: url('fotos/imgfundo.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,7 +190,7 @@ body {
   }
   
   .hero{
-    background: url('imgfundomenor.png') center/cover no-repeat;
+    background: url('fotos/imgfundomenor.webp') center/cover no-repeat;
   }
   .hero-content h1 {
     font-size: 3.1rem;

@@ -382,7 +382,7 @@ body {
 
 /* Estilos para a seção Missão - baseados na imagem de referência */
 .missao {
-  background: url('historiaimgs/fundomissao.png') center/cover no-repeat;
+  background: url('historiaimgs/fundomissao.webp') center/cover no-repeat;
   background-color: #003da5;
   position: relative;
   min-height: 1000px;
@@ -493,15 +493,15 @@ body {
 }
 
 .wrapper[data-image] {
-  background-image: url('');
+  background-image: url('escolha/torrefundo.webp');
 }
 
-.wrapper[data-image="escolha/fotocarlinhos.png"] {
-  background-image: url('escolha/fotocarlinhos.png');
+.wrapper[data-image="escolha/fotocarlinhos.webp"] {
+  background-image: url('escolha/fotocarlinhos.webp');
 }
 
-.wrapper[data-image="escolha/fotopedro.png"] {
-  background-image: url('escolha/fotopedro.png');
+.wrapper[data-image="escolha/fotopedro.webp"] {
+  background-image: url('escolha/fotopedro.webp');
 }
 
 .card-player:hover .wrapper,
@@ -510,7 +510,7 @@ body {
   box-shadow: 2px 35px 32px -8px rgba(2, 18, 109, 0.75);
   -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 119, 255, 0.75);
   -moz-box-shadow: 2px 35px 32px -8px rgba(2, 31, 112, 0.75);
-  background-image: url('escolha/torrefundo.png');
+  background-image: url('escolha/torrefundo.webp');
   transition: 0.7s;
 }
 
@@ -1055,7 +1055,7 @@ body {
   width: 450px;
   height: 450px;
   flex-shrink: 0;
-  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background: url('historiaimgs/bolafogo.webp') no-repeat center center;
   background-size: contain;
   animation: float 6s ease-in-out infinite;
   filter: drop-shadow(0 15px 20px rgba(8, 135, 255, 0.4));
@@ -1072,7 +1072,7 @@ body {
   top: -40px;
   width: 600px;
   height: 600px;
-  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background: url('historiaimgs/bolafogo.webp') no-repeat center center;
   background-size: 500px;
   filter: blur(35px) opacity(0.15);
   animation: pulse 6s ease-in-out infinite;
@@ -1480,7 +1480,7 @@ height: 200px;
   top: 120px;
   width: 400px;
   height: 400px;
-  background: url('historiaimgs/bolafogo.png') no-repeat center center;
+  background: url('historiaimgs/bolafogo.webp') no-repeat center center;
   background-size: 250px;
   filter: blur(25px) opacity(0.2);
   animation: pulse 6s ease-in-out infinite;
