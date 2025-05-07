@@ -812,11 +812,38 @@ body {
   }
   
   .map-info {
-    top: 10px;
-    height: 210px;
-    max-width: 280px;
+
+    height: 170px;
+    max-width: 240px;
+    padding: 8px 15px 15px 15px;
   }
-  
+  .map-info h3 {
+    font-size: 1.2rem
+     }
+     .stars-text {
+      font-size: 14px;
+     }
+     .stars {
+      font-size: 20px;
+     }
+     .location-details p {
+      font-size: 0.8rem;
+     }
+     .location-details i {
+      font-size: 1.2rem;
+     }
+     .location-details a {
+      font-size: 0.8rem;
+      height: 40px;
+      padding: 0px;
+      width: 80%;
+      margin: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+     }
   .custom-shape-divider svg {
     height: 60px;
   }

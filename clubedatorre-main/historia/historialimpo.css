@@ -1244,7 +1244,7 @@ height: 200px;
 
 /* Seção Objetivos/Compromisso Social */
 .objetivos {
-  background-color: #0084FF;
+  background-color: #0A88FF;
   color: white;
   padding: 60px 0;
   position: relative;
@@ -1258,9 +1258,6 @@ height: 200px;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
   z-index: 0;
 }
 
