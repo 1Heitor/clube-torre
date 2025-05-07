@@ -66,7 +66,7 @@ body {
   background: linear-gradient(90deg, #0047b3, #52ACFF);
   bottom: -7px;
   left: 50%;
-  margin-bottom: ;
+  margin-bottom: 0;
   transform: translateX(-50%);
   border-radius: 3px;
   transition: width 0.5s ease;
@@ -176,6 +176,11 @@ body {
   box-shadow: 0 4px 10px rgba(0, 132, 255, 0.2);
   font-size: 0.85rem;
   letter-spacing: 0.5px;
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  
+  text-align: center;
 }
 
 .card-btn:hover, .direction-btn:hover {
@@ -264,6 +269,10 @@ body {
   min-width: 300px;
   margin: 10px;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -712,6 +721,9 @@ body {
     min-width: initial;
     border: initial;
   }
+  .card p{
+    font-size: 1.2rem;
+  }
   
   .cards {
     display: flex;
@@ -814,7 +826,6 @@ body {
   }
   
   .map-info {
-
     height: 170px;
     max-width: 240px;
     padding: 8px 15px 15px 15px;
@@ -848,5 +859,10 @@ body {
      }
   .custom-shape-divider svg {
     height: 60px;
+  }
+}
+@media (max-width: 413px) {
+  .card p{
+    font-size: 0.9rem;
   }
 }

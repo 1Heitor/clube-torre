@@ -944,6 +944,43 @@ textarea.form-control {
         clear: both;
     }
 }
+@media (max-width: 480px) {
+    .map-info {
+
+        height: 170px;
+        max-width: 240px;
+        padding: 8px 15px 15px 15px;
+      }
+      .map-info h3 {
+        margin-top: 2px;
+        font-size: 1.2rem;
+         }
+         .stars-text {
+          font-size: 14px;
+         }
+         .stars {
+          font-size: 20px;
+         }
+         .location-details p {
+          font-size: 0.8rem;
+         }
+         .location-details i {
+          font-size: 1.2rem;
+         }
+         .location-details a {
+          font-size: 0.8rem;
+          height: 40px;
+          padding: 0px;
+          width: 80%;
+          margin: 0px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+    
+    
+         }
+
+         }
 
 /* Regra específica para garantir que o footer fique abaixo do conteúdo em todas as viewports */
 .page-contato footer {
