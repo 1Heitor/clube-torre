@@ -2019,23 +2019,6 @@ height: 200px;
     font-size: 2.2rem;
   }
   
-  .numeros {
-    padding: 15px 20px 15px 80px;
-  }
-  
-  .numero-icone {
-    width: 45px;
-    height: 45px;
-    left: 15px;
-  }
-  
-  .numeros h1 {
-    font-size: 2rem;
-  }
-  
-  .numeros h4 {
-    font-size: 0.9rem;
-  }
 
   .about {
     height: auto;
