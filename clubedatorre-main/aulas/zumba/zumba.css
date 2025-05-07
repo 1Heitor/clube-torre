@@ -184,7 +184,20 @@ body {
     transform: translateY(0);
   }
 }
+
 /* Responsividade */
+@media (max-width: 1024px) {
+  .hero {
+    background: url('imgfundomenor.jpg') center/cover no-repeat;
+    position: relative;
+    height: 100vh;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+}
 @media (max-width: 480px) {
   .card {
       width: 100%;

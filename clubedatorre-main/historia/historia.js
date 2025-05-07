@@ -251,14 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Efeito parallax na bola de água
-  window.addEventListener('scroll', function() {
-    const bola = document.querySelector('.bola');
-    if (bola) {
-      const scrollY = window.scrollY;
-      bola.style.transform = `translateY(${scrollY * 0.05}px)`;
-    }
-  });
+
   
   // Contador animado para os números
   const numeros = document.querySelectorAll('.numeros h1');
