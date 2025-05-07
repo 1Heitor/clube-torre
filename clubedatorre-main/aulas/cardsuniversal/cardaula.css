@@ -12,7 +12,7 @@
   width: 60px;
   height: 4px;
   background: linear-gradient(90deg, #0047b3, #52ACFF);
-  bottom: -5px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 3px;

@@ -126,7 +126,7 @@ body {
 
 .animate {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -134,6 +134,31 @@ body {
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Delays para elementos sequenciais */
+.card.visible:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.card.visible:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.card.visible:nth-child(3) {
+  transition-delay: 0.5s;
+}
+.card.visible:nth-child(4) {
+  transition-delay: 0.7s;
+}
+
+/* Delay para números */
+.numeros.visible:nth-child(1) {
+  transition-delay: 0.2s;
+}
+.numeros.visible:nth-child(2) {
+  transition-delay: 0.4s;
+}
+.numeros.visible:nth-child(3) {
+  transition-delay: 0.6s;
 }
 
 /* Hero Section */

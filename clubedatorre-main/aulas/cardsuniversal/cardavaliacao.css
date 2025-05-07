@@ -20,7 +20,7 @@
 .testimonials-container h2 {
   font-size: 2.5rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #007bff;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -39,6 +39,7 @@
   transform: translateX(-50%);
   border-radius: 3px;
   transition: width 0.5s ease;
+
 }
 .testimonials-container h2:hover:after {
   width: 120px;

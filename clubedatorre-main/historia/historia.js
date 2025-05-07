@@ -213,23 +213,92 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Animação ao scrollar
+  // Adiciona classe animate a todos elementos que devem ter lazy loading
+  function prepararAnimacoes() {
+    const seletores = [
+      'p',                   // Todos os parágrafos
+      'h1, h2, h3, h4',      // Todos os títulos
+      '.hero-content',       
+      '.about h2',
+      '.about p',
+      '.texto-missao',       
+      '.texto-missao p',
+      '.texto-missao h2',
+      '.metodologia-container',
+      '.texto-metodologia',
+      '.texto-metodologia h1',
+      '.texto-metodologia p',
+      '.card',
+      '.bola',
+      '.projeto-titulo',
+      '.projeto-titulo p',
+      '.projeto-text-column',
+      '.projeto-text-column h2',
+      '.projeto-text-column p',
+      '.projeto-img-column',
+      '.textocompromisso h1',
+      '.textocompromisso h3',
+      '.textocompromisso p',
+      '.graficos',
+      '.graficos h2',
+      '.grafico',
+      '.numeros',
+      'button'               // Todos os botões
+    ];
+    
+    // Concatena todos os seletores em uma única string
+    const todosElementos = document.querySelectorAll(seletores.join(', '));
+    
+    todosElementos.forEach((elemento) => {
+      // Evita adicionar a classe duas vezes
+      if (!elemento.classList.contains('animate')) {
+        elemento.classList.add('animate');
+      }
+    });
+  }
+  
+  // Animação ao scrollar - usando Intersection Observer para melhor performance
+  function configurarObservador() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      root: null, // viewport
+      rootMargin: '0px',
+      threshold: 0.15 // elemento é considerado visível quando 15% dele estiver visível
+    });
+    
+    // Observar todos os elementos com a classe animate
+    document.querySelectorAll('.animate').forEach(element => {
+      observer.observe(element);
+    });
+  }
+  
+  // Preparar todos os elementos com a classe animate
+  prepararAnimacoes();
+  
+  // Configurar o observador de interseção
+  configurarObservador();
+  
+  // Manter compatibilidade com o código existente
   function checkVisibility() {
-    const elements = document.querySelectorAll('.metodologia-container, .card, .bola, .projeto-titulo, .projeto-text-column, .projeto-img-column, .grafico, .numeros');
+    const elements = document.querySelectorAll('.animate:not(.visible)');
     
     elements.forEach((element) => {
       const position = element.getBoundingClientRect();
-      // Verifica se o elemento está visível na tela
-      if (position.top < window.innerHeight * 0.8) {
+      if (position.top < window.innerHeight * 0.85) {
         element.classList.add('visible');
       }
     });
   }
   
-  // Verifica a visibilidade dos elementos ao carregar a página
+  // Verificar uma vez ao carregar a página
   checkVisibility();
   
-  // Verifica a visibilidade dos elementos ao rolar a página
+  // Também verificar ao rolar (backup para o Intersection Observer)
   window.addEventListener('scroll', checkVisibility);
   
   // Botão "Saiba mais" da metodologia rola para a seção de projeto
@@ -250,8 +319,6 @@ document.addEventListener('DOMContentLoaded', function() {
       window.location.href = '../contato/contato.html';
     });
   }
-  
-
   
   // Contador animado para os números
   const numeros = document.querySelectorAll('.numeros h1');

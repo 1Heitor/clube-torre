@@ -61,11 +61,12 @@ body {
 .section-title:after {
   content: '';
   position: absolute;
-  width: 60px;
+  width: 80px;
   height: 4px;
   background: linear-gradient(90deg, #0047b3, #52ACFF);
-  bottom: -10px;
+  bottom: -7px;
   left: 50%;
+  margin-bottom: ;
   transform: translateX(-50%);
   border-radius: 3px;
   transition: width 0.5s ease;
@@ -79,6 +80,7 @@ body {
 .section-subtitle {
   font-size: 1.2rem;
   margin-bottom: 50px;
+  margin-top: 5px;
   color: #666666;
   font-weight: 300;
 }
