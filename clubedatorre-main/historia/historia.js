@@ -311,7 +311,24 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-  
+const conhecerBtn = document.querySelector('.conhecer-hero');
+if (conhecerBtn) {
+  conhecerBtn.addEventListener('click', () => {
+    const target = document.querySelector('.section-title');
+    if (target) {
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? -230 : -290; // ajuste conforme seu layout
+
+      const y = target.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: y + offset,
+        behavior: 'smooth'
+      });
+    }
+  });
+}
+
   // Botão "Venha conhecer" do projeto abre a página de contato
   const venhaConhecerBtn = document.querySelector('.projeto-text-column button');
   if (venhaConhecerBtn) {

@@ -75,6 +75,7 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.349), rgba(0, 12, 46, 0.548));
 }
 
+
 .hero-content {
   position: relative;
   text-align: center;
@@ -86,7 +87,6 @@ body {
 
 .hero-content h1 {
   font-size: 4rem;
-  margin-bottom: 20px;
   font-style: italic;
   font-family: 'bluestar', cursive;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
