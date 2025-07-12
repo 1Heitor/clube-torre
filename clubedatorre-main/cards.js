@@ -419,3 +419,20 @@ window.addEventListener("load", function () {
   console.log("Carousel Initialized");
 
 }); 
+const conhecerBtn = document.querySelector('.conhecer');
+if (conhecerBtn) {
+  conhecerBtn.addEventListener('click', () => {
+    const target = document.querySelector('.section-title');
+    if (target) {
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? -200 : -120; // ajuste conforme seu layout
+
+      const y = target.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: y + offset,
+        behavior: 'smooth'
+      });
+    }
+  });
+}

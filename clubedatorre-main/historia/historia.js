@@ -303,14 +303,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Botão "Saiba mais" da metodologia rola para a seção de projeto
   const saibaMaisBtn = document.querySelector('.texto-metodologia button');
-  if (saibaMaisBtn) {
-    saibaMaisBtn.addEventListener('click', function() {
-      document.querySelector('.projeto').scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+if (saibaMaisBtn) {
+  saibaMaisBtn.addEventListener('click', () => {
+    const target = document.querySelector('.projeto-header');
+    if (target) {
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? -440 : -290; // ajuste conforme seu layout
+
+      const y = target.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: y + offset,
+        behavior: 'smooth'
       });
-    });
-  }
+    }
+  });
+}
 const conhecerBtn = document.querySelector('.conhecer-hero');
 if (conhecerBtn) {
   conhecerBtn.addEventListener('click', () => {
